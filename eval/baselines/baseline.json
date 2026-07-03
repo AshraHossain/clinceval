@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-07-03T20:59:13.866026+00:00",
+  "created_at": "2026-07-03T21:33:19.245385+00:00",
   "results": [
     {
       "id": "core_chads_01",
@@ -36,7 +36,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5256087183952332,
+      "similarity": 0.4940022826194763,
       "pipeline_result": {
         "query": "A 75-year-old female with atrial fibrillation presents for a routine checkup. She has a history of well-controlled hypertension. We want to assess her stroke risk.",
         "retrieved_chunks": [
@@ -44,9 +44,9 @@
             "id": "chads2_vasc_chunk_4",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Interpretation Bands\nContent:\n- 0 points (male) or 1 point (female): Low risk. No antithrombotic therapy (or aspirin) is recommended.\n- 1 point (male): Moderate risk. Oral anticoagulation should be considered.\n- 2 or more points (male or female): High risk. Oral anticoagulation therapy is strongly recommended.",
             "metadata": {
-              "source": "chads2_vasc.md",
               "section": "Interpretation Bands",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
+              "source": "chads2_vasc.md"
             },
             "distance": 0.4160226583480835
           },
@@ -61,14 +61,14 @@
             "distance": 0.462909996509552
           },
           {
-            "id": "chads2_vasc_chunk_0",
-            "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Purpose\nContent:\nThe CHA2DS2-VASc score is a clinical prediction rule for estimating the risk of stroke in patients with non-valvular atrial fibrillation (AF). It helps clinicians decide whether treatment is needed with anticoagulant therapy or antiplatelet therapy.",
+            "id": "has_bled_chunk_0",
+            "text": "Calculator: HAS-BLED Score for Major Bleeding Risk\nSection: Purpose\nContent:\nThe HAS-BLED score estimates the risk of major bleeding in patients with atrial fibrillation who are starting or taking oral anticoagulation. It assists in identifying correctable bleeding risk factors.",
             "metadata": {
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
-              "source": "chads2_vasc.md",
-              "section": "Purpose"
+              "section": "Purpose",
+              "source": "has_bled.md",
+              "calculator": "HAS-BLED Score for Major Bleeding Risk"
             },
-            "distance": 0.4781721830368042
+            "distance": 0.489327609539032
           }
         ],
         "recommendation": {
@@ -77,16 +77,15 @@
           "confidence": 0.8,
           "citations": [
             "chads2_vasc_chunk_4",
-            "chads2_vasc_chunk_1",
-            "chads2_vasc_chunk_0"
+            "chads2_vasc_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0009911060333251953,
-          "pipeline_latency": 0.8031001091003418,
+          "generation_latency": 0.0003421306610107422,
+          "pipeline_latency": 0.14388394355773926,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -146,7 +145,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5256087183952332,
+      "similarity": 0.5059438347816467,
       "pipeline_result": {
         "query": "A 68-year-old male patient with non-valvular atrial fibrillation has a history of congestive heart failure and type 2 diabetes. What is his stroke risk classification?",
         "retrieved_chunks": [
@@ -154,8 +153,8 @@
             "id": "chads2_vasc_chunk_4",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Interpretation Bands\nContent:\n- 0 points (male) or 1 point (female): Low risk. No antithrombotic therapy (or aspirin) is recommended.\n- 1 point (male): Moderate risk. Oral anticoagulation should be considered.\n- 2 or more points (male or female): High risk. Oral anticoagulation therapy is strongly recommended.",
             "metadata": {
-              "section": "Interpretation Bands",
               "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
+              "section": "Interpretation Bands",
               "source": "chads2_vasc.md"
             },
             "distance": 0.4077044129371643
@@ -164,21 +163,21 @@
             "id": "chads2_vasc_chunk_1",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Inputs Required\nContent:\n- Congestive heart failure (or left ventricular dysfunction)\n- Hypertension (or treated hypertension)\n- Age (under 65, 65-74, or 75 and older)\n- Diabetes mellitus\n- Stroke, TIA, or thromboembolism history\n- Vascular disease (prior MI, peripheral artery disease, or aortic plaque)\n- Sex category (female or male)",
             "metadata": {
-              "source": "chads2_vasc.md",
+              "section": "Inputs Required",
               "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
-              "section": "Inputs Required"
+              "source": "chads2_vasc.md"
             },
             "distance": 0.42467546463012695
           },
           {
-            "id": "chads2_vasc_chunk_2",
-            "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Congestive heart failure (CHF) history: +1 point\n- Hypertension (HTN) history: +1 point\n- Age >= 75 years: +2 points\n- Diabetes Mellitus (DM): +1 point\n- Stroke / TIA / thromboembolism history: +2 points\n- Vascular disease history: +1 point\n- Age 65-74 years: +1 point\n- Female sex: +1 point",
+            "id": "has_bled_chunk_0",
+            "text": "Calculator: HAS-BLED Score for Major Bleeding Risk\nSection: Purpose\nContent:\nThe HAS-BLED score estimates the risk of major bleeding in patients with atrial fibrillation who are starting or taking oral anticoagulation. It assists in identifying correctable bleeding risk factors.",
             "metadata": {
-              "section": "Scoring Logic",
-              "source": "chads2_vasc.md",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "calculator": "HAS-BLED Score for Major Bleeding Risk",
+              "source": "has_bled.md",
+              "section": "Purpose"
             },
-            "distance": 0.4404241442680359
+            "distance": 0.5221394300460815
           }
         ],
         "recommendation": {
@@ -187,16 +186,15 @@
           "confidence": 0.8,
           "citations": [
             "chads2_vasc_chunk_4",
-            "chads2_vasc_chunk_1",
-            "chads2_vasc_chunk_2"
+            "chads2_vasc_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00034618377685546875,
-          "pipeline_latency": 0.034780263900756836,
+          "generation_latency": 7.486343383789062e-05,
+          "pipeline_latency": 0.007665157318115234,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -256,7 +254,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7490276098251343,
+      "similarity": 0.37604421377182007,
       "pipeline_result": {
         "query": "A 45-year-old female patient presents with acute shortness of breath and pleuritic chest pain. She underwent knee replacement surgery 2 weeks ago. Her heart rate is 115 bpm, and she has swelling in her left calf. Is pulmonary embolism likely?",
         "retrieved_chunks": [
@@ -264,9 +262,9 @@
             "id": "wells_pe_chunk_2",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Clinical signs and symptoms of DVT (objective swelling, pain): +3.0 points\n- An alternative diagnosis is less likely than PE: +3.0 points\n- Heart rate > 100 beats per minute: +1.5 points\n- Immobilization (>= 3 days) or surgery in the previous 4 weeks: +1.5 points\n- Previous objectively documented DVT or PE: +1.5 points\n- Hemoptysis (coughing up blood): +1.0 point\n- Malignancy with active treatment within 6 months or palliative: +1.0 point",
             "metadata": {
-              "section": "Scoring Logic",
               "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
-              "source": "wells_pe.md"
+              "source": "wells_pe.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.46246886253356934
           },
@@ -274,9 +272,9 @@
             "id": "perc_rule_chunk_1",
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Inputs Required\nContent:\n- Age (< 50 years)\n- Heart rate (< 100 beats per minute)\n- Oxygen saturation (SpO2 >= 95% on room air)\n- Prior history of DVT or PE\n- Recent trauma or surgery within the last 4 weeks (requiring hospitalization or anesthesia)\n- Hemoptysis (coughing up blood)\n- Exogenous estrogen use (oral contraceptives, hormone replacement therapy, or transdermal estrogen)\n- Unilateral leg swelling (visual asymmetry of the calves)",
             "metadata": {
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "section": "Inputs Required",
               "source": "perc_rule.md",
-              "section": "Inputs Required"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
             },
             "distance": 0.4896741509437561
           },
@@ -285,8 +283,8 @@
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Scoring Logic\nContent:\nThe rule is applied to patients who are already stratified as low risk for PE (e.g., clinician gestates < 15% probability of PE).\nA patient must meet ALL 8 criteria to be \"PERC negative\":\n1. Age < 50 years\n2. Heart rate < 100 bpm\n3. SpO2 >= 95% on room air\n4. No prior DVT or PE\n5. No recent trauma or surgery (within 4 weeks)\n6. No hemoptysis\n7. No exogenous estrogen use\n8. No unilateral leg swelling",
             "metadata": {
               "section": "Scoring Logic",
-              "source": "perc_rule.md",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "source": "perc_rule.md"
             },
             "distance": 0.5267565250396729
           }
@@ -303,8 +301,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.000244140625,
-          "pipeline_latency": 0.01805591583251953,
+          "generation_latency": 8.296966552734375e-05,
+          "pipeline_latency": 0.005232095718383789,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -364,7 +362,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7490276098251343,
+      "similarity": 0.5780274868011475,
       "pipeline_result": {
         "query": "A 60-year-old male with active lung cancer undergoing chemotherapy presents with hemoptysis and chest pain. No clinical signs of DVT are present, but the clinician believes PE is the most likely diagnosis. What is his probability?",
         "retrieved_chunks": [
@@ -372,8 +370,8 @@
             "id": "wells_pe_chunk_2",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Clinical signs and symptoms of DVT (objective swelling, pain): +3.0 points\n- An alternative diagnosis is less likely than PE: +3.0 points\n- Heart rate > 100 beats per minute: +1.5 points\n- Immobilization (>= 3 days) or surgery in the previous 4 weeks: +1.5 points\n- Previous objectively documented DVT or PE: +1.5 points\n- Hemoptysis (coughing up blood): +1.0 point\n- Malignancy with active treatment within 6 months or palliative: +1.0 point",
             "metadata": {
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "section": "Scoring Logic",
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "source": "wells_pe.md"
             },
             "distance": 0.4880979657173157
@@ -382,21 +380,21 @@
             "id": "wells_pe_chunk_4",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Three-Tier Model (Clinical Probability):\n- Score 0 to 1: Low probability.\n- Score 2 to 6: Moderate probability.\n- Score > 6: High probability.",
             "metadata": {
-              "section": "Interpretation Bands",
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "source": "wells_pe.md",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
+              "section": "Interpretation Bands"
             },
             "distance": 0.5262839198112488
           },
           {
-            "id": "wells_pe_chunk_3",
-            "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Two-Tier Model (Clinical Probability):\n- Score 0 to 4: PE Unlikely. Consider D-dimer testing to rule out PE.\n- Score > 4: PE Likely. Direct to diagnostic imaging (CTPA).",
+            "id": "perc_rule_chunk_4",
+            "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Interpretation Bands\nContent:\n- **PERC Negative** (meets all 8 criteria): Post-test probability of PE is extremely low (< 1%). No further diagnostic evaluation for PE is required.\n- **PERC Positive** (fails 1 or more criteria): The rule cannot be used to exclude PE. Further testing (typically D-dimer or imaging) is needed.",
             "metadata": {
-              "section": "Interpretation Bands",
-              "source": "wells_pe.md",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "source": "perc_rule.md",
+              "section": "Interpretation Bands"
             },
-            "distance": 0.5290980339050293
+            "distance": 0.5710697174072266
           }
         ],
         "recommendation": {
@@ -405,16 +403,15 @@
           "confidence": 0.8,
           "citations": [
             "wells_pe_chunk_2",
-            "wells_pe_chunk_4",
-            "wells_pe_chunk_3"
+            "wells_pe_chunk_4"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0003159046173095703,
-          "pipeline_latency": 0.013289928436279297,
+          "generation_latency": 7.605552673339844e-05,
+          "pipeline_latency": 0.0052280426025390625,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -474,7 +471,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5412390828132629,
+      "similarity": 0.7536543607711792,
       "pipeline_result": {
         "query": "A 50-year-old male patient complains of right calf swelling and pain. On exam, the calf is tender along the deep veins, swollen entirely, and measures 4 cm larger than the left calf. There is pitting edema on the right side only.",
         "retrieved_chunks": [
@@ -483,8 +480,8 @@
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Inputs Required\nContent:\n- Active cancer (treatment ongoing, within 6 months, or palliative)\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities\n- Recently bedridden for >= 3 days or major surgery within 12 weeks requiring general or regional anesthesia\n- Localized tenderness along the distribution of the deep venous system\n- Entire leg swollen\n- Calf swelling >= 3 cm larger than asymptomatic side (measured 10 cm below tibial tuberosity)\n- Pitting edema confined to the symptomatic leg\n- Collateral superficial veins (nonvaricose)\n- Previously documented DVT\n- Alternative diagnosis at least as likely as DVT",
             "metadata": {
               "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
-              "section": "Inputs Required",
-              "source": "wells_dvt.md"
+              "source": "wells_dvt.md",
+              "section": "Inputs Required"
             },
             "distance": 0.4508756995201111
           },
@@ -492,9 +489,9 @@
             "id": "wells_dvt_chunk_2",
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Active cancer (treatment ongoing, within 6 months, or palliative): +1 point\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities: +1 point\n- Recently bedridden for >= 3 days or major surgery within 12 weeks: +1 point\n- Localized tenderness along the distribution of the deep venous system: +1 point\n- Entire leg swollen: +1 point\n- Calf swelling >= 3 cm larger than asymptomatic side: +1 point\n- Pitting edema confined to the symptomatic leg: +1 point\n- Collateral superficial veins (nonvaricose): +1 point\n- Previously documented DVT: +1 point\n- Alternative diagnosis at least as likely as DVT: -2 points",
             "metadata": {
-              "source": "wells_dvt.md",
               "section": "Scoring Logic",
-              "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)"
+              "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
+              "source": "wells_dvt.md"
             },
             "distance": 0.4935173988342285
           },
@@ -502,9 +499,9 @@
             "id": "perc_rule_chunk_1",
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Inputs Required\nContent:\n- Age (< 50 years)\n- Heart rate (< 100 beats per minute)\n- Oxygen saturation (SpO2 >= 95% on room air)\n- Prior history of DVT or PE\n- Recent trauma or surgery within the last 4 weeks (requiring hospitalization or anesthesia)\n- Hemoptysis (coughing up blood)\n- Exogenous estrogen use (oral contraceptives, hormone replacement therapy, or transdermal estrogen)\n- Unilateral leg swelling (visual asymmetry of the calves)",
             "metadata": {
-              "section": "Inputs Required",
               "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
-              "source": "perc_rule.md"
+              "source": "perc_rule.md",
+              "section": "Inputs Required"
             },
             "distance": 0.5909505486488342
           }
@@ -522,8 +519,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00020599365234375,
-          "pipeline_latency": 0.016410112380981445,
+          "generation_latency": 8.511543273925781e-05,
+          "pipeline_latency": 0.0055828094482421875,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -583,7 +580,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5412390828132629,
+      "similarity": 0.5518390536308289,
       "pipeline_result": {
         "query": "A 70-year-old bedridden female patient undergoing treatment for breast cancer presents with new superficial collateral veins on her left leg. She had major abdominal surgery 6 weeks ago.",
         "retrieved_chunks": [
@@ -591,8 +588,8 @@
             "id": "wells_dvt_chunk_1",
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Inputs Required\nContent:\n- Active cancer (treatment ongoing, within 6 months, or palliative)\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities\n- Recently bedridden for >= 3 days or major surgery within 12 weeks requiring general or regional anesthesia\n- Localized tenderness along the distribution of the deep venous system\n- Entire leg swollen\n- Calf swelling >= 3 cm larger than asymptomatic side (measured 10 cm below tibial tuberosity)\n- Pitting edema confined to the symptomatic leg\n- Collateral superficial veins (nonvaricose)\n- Previously documented DVT\n- Alternative diagnosis at least as likely as DVT",
             "metadata": {
-              "section": "Inputs Required",
               "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
+              "section": "Inputs Required",
               "source": "wells_dvt.md"
             },
             "distance": 0.39680641889572144
@@ -601,9 +598,9 @@
             "id": "wells_dvt_chunk_2",
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Active cancer (treatment ongoing, within 6 months, or palliative): +1 point\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities: +1 point\n- Recently bedridden for >= 3 days or major surgery within 12 weeks: +1 point\n- Localized tenderness along the distribution of the deep venous system: +1 point\n- Entire leg swollen: +1 point\n- Calf swelling >= 3 cm larger than asymptomatic side: +1 point\n- Pitting edema confined to the symptomatic leg: +1 point\n- Collateral superficial veins (nonvaricose): +1 point\n- Previously documented DVT: +1 point\n- Alternative diagnosis at least as likely as DVT: -2 points",
             "metadata": {
-              "source": "wells_dvt.md",
               "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "wells_dvt.md"
             },
             "distance": 0.4266059994697571
           },
@@ -611,9 +608,9 @@
             "id": "perc_rule_chunk_2",
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Scoring Logic\nContent:\nThe rule is applied to patients who are already stratified as low risk for PE (e.g., clinician gestates < 15% probability of PE).\nA patient must meet ALL 8 criteria to be \"PERC negative\":\n1. Age < 50 years\n2. Heart rate < 100 bpm\n3. SpO2 >= 95% on room air\n4. No prior DVT or PE\n5. No recent trauma or surgery (within 4 weeks)\n6. No hemoptysis\n7. No exogenous estrogen use\n8. No unilateral leg swelling",
             "metadata": {
-              "section": "Scoring Logic",
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
               "source": "perc_rule.md",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "section": "Scoring Logic"
             },
             "distance": 0.7213252186775208
           }
@@ -631,8 +628,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002048015594482422,
-          "pipeline_latency": 0.02079296112060547,
+          "generation_latency": 7.796287536621094e-05,
+          "pipeline_latency": 0.0051860809326171875,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -692,7 +689,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.8042751550674438,
+      "similarity": 0.7075589299201965,
       "pipeline_result": {
         "query": "A 52-year-old male patient with cirrhosis has a serum creatinine of 1.8 mg/dL, total bilirubin of 2.5 mg/dL, INR of 1.5, and serum sodium of 135 mEq/L. He has not had dialysis. Calculate his 3-month mortality risk.",
         "retrieved_chunks": [
@@ -701,8 +698,8 @@
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Scoring Logic\nContent:\nNotes on MELD calculation:\n- If bilirubin, creatinine, or INR is < 1.0, use 1.0.\n- If the patient has had dialysis twice or more within the past week, or continuous venovenous hemodiafiltration, creatinine is automatically set to 4.0 mg/dL.\n- Maximum MELD score is capped at 40.\n- Modern MELD (MELD-Na) incorporates serum sodium when MELD > 11.",
             "metadata": {
               "source": "meld.md",
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "calculator": "MELD Score (Model for End-Stage Liver Disease)"
             },
             "distance": 0.38621580600738525
           },
@@ -710,9 +707,9 @@
             "id": "child_pugh_chunk_1",
             "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Inputs Required\nContent:\n- Total Bilirubin (umol/L or mg/dL)\n- Serum Albumin (g/dL or g/L)\n- INR (or prothrombin time prolongation)\n- Ascites (none, mild/medically controlled, or moderate-severe/refractory)\n- Hepatic encephalopathy (none, grade 1-2, or grade 3-4)",
             "metadata": {
+              "section": "Inputs Required",
               "calculator": "Child-Pugh Score for Cirrhosis Mortality",
-              "source": "child_pugh.md",
-              "section": "Inputs Required"
+              "source": "child_pugh.md"
             },
             "distance": 0.4111916422843933
           },
@@ -720,8 +717,8 @@
             "id": "meld_chunk_1",
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Inputs Required\nContent:\n- Serum Creatinine (mg/dL)\n- Total Bilirubin (mg/dL)\n- International Normalized Ratio (INR)\n- Serum Sodium (mEq/L)\n- Whether the patient has had hemodialysis or renal replacement therapy at least twice in the past week",
             "metadata": {
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
               "section": "Inputs Required",
+              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
               "source": "meld.md"
             },
             "distance": 0.41172826290130615
@@ -740,8 +737,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0005321502685546875,
-          "pipeline_latency": 0.02007603645324707,
+          "generation_latency": 8.320808410644531e-05,
+          "pipeline_latency": 0.006575822830200195,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -801,7 +798,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6616829037666321,
+      "similarity": 0.60850590467453,
       "pipeline_result": {
         "query": "A 70-year-old male patient presents with cough, fever, and new onset mental confusion. Chest X-ray confirms pneumonia. His respiratory rate is 32 breaths per minute, BP is 120/80 mmHg, and BUN is 15 mg/dL. Should he be admitted?",
         "retrieved_chunks": [
@@ -809,8 +806,8 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
-              "source": "curb_65.md",
               "section": "Inputs Required",
+              "source": "curb_65.md",
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.46031999588012695
@@ -820,20 +817,20 @@
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
             "metadata": {
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "section": "Scoring Logic",
-              "source": "curb_65.md"
+              "source": "curb_65.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.4769090414047241
           },
           {
-            "id": "curb_65_chunk_4",
-            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Low risk. 30-day mortality risk is low (< 3%). Suitable for outpatient treatment.\n- Score 2: Moderate risk. 30-day mortality risk is moderate (approx. 9%). Consider short-stay inpatient admission or close outpatient monitoring.\n- Score 3 to 5: High risk. 30-day mortality risk is high (15% to 57%). Requires urgent hospitalization; for scores 4 or 5, consider intensive care unit (ICU) admission.",
+            "id": "sirs_chunk_2",
+            "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "source": "curb_65.md",
-              "section": "Interpretation Bands",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
+              "source": "sirs.md",
+              "section": "Scoring Logic"
             },
-            "distance": 0.5298172235488892
+            "distance": 0.5603182911872864
           }
         ],
         "recommendation": {
@@ -842,16 +839,15 @@
           "confidence": 0.8,
           "citations": [
             "curb_65_chunk_1",
-            "curb_65_chunk_2",
-            "curb_65_chunk_4"
+            "curb_65_chunk_2"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00021696090698242188,
-          "pipeline_latency": 0.0262908935546875,
+          "generation_latency": 9.322166442871094e-05,
+          "pipeline_latency": 0.005069732666015625,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -911,7 +907,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6616829037666321,
+      "similarity": 0.703434944152832,
       "pipeline_result": {
         "query": "A 55-year-old female patient with community-acquired pneumonia has a respiratory rate of 24 breaths/min, blood pressure of 85/50 mmHg, urea of 28 mg/dL, and is alert and oriented. What is her pneumonia mortality risk category?",
         "retrieved_chunks": [
@@ -919,8 +915,8 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
-              "source": "curb_65.md",
               "section": "Inputs Required",
+              "source": "curb_65.md",
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.31664031744003296
@@ -929,21 +925,21 @@
             "id": "curb_65_chunk_4",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Low risk. 30-day mortality risk is low (< 3%). Suitable for outpatient treatment.\n- Score 2: Moderate risk. 30-day mortality risk is moderate (approx. 9%). Consider short-stay inpatient admission or close outpatient monitoring.\n- Score 3 to 5: High risk. 30-day mortality risk is high (15% to 57%). Requires urgent hospitalization; for scores 4 or 5, consider intensive care unit (ICU) admission.",
             "metadata": {
-              "section": "Interpretation Bands",
               "source": "curb_65.md",
+              "section": "Interpretation Bands",
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.354810893535614
           },
           {
-            "id": "curb_65_chunk_2",
-            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
+            "id": "sirs_chunk_2",
+            "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "section": "Scoring Logic",
-              "source": "curb_65.md",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
+              "source": "sirs.md",
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
+              "section": "Scoring Logic"
             },
-            "distance": 0.3608834743499756
+            "distance": 0.5335311889648438
           }
         ],
         "recommendation": {
@@ -952,16 +948,15 @@
           "confidence": 0.8,
           "citations": [
             "curb_65_chunk_1",
-            "curb_65_chunk_4",
-            "curb_65_chunk_2"
+            "curb_65_chunk_4"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0001780986785888672,
-          "pipeline_latency": 0.01575493812561035,
+          "generation_latency": 8.821487426757812e-05,
+          "pipeline_latency": 0.0049228668212890625,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1021,7 +1016,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7720451354980469,
+      "similarity": 0.3767632842063904,
       "pipeline_result": {
         "query": "A 58-year-old male smoker with hypertension presents to the emergency department with chest pain described as moderately suspicious for cardiac ischemia. His ECG is normal, and initial troponin is within normal limits.",
         "retrieved_chunks": [
@@ -1029,8 +1024,8 @@
             "id": "heart_score_chunk_1",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Inputs Required\nContent:\n- History (highly suspicious, moderately suspicious, or slightly/non-suspicious chest pain description)\n- ECG (significant ST-depression, non-specific repolarization disturbance, or normal)\n- Age (< 45, 45-64, or >= 65 years)\n- Risk factors (presence of hypertension, hypercholesterolemia, diabetes, smoking, family history of CAD, obesity)\n- Troponin (elevated 1-2x normal, > 2x normal, or normal)",
             "metadata": {
-              "section": "Inputs Required",
               "source": "heart_score.md",
+              "section": "Inputs Required",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)"
             },
             "distance": 0.6170792579650879
@@ -1039,21 +1034,21 @@
             "id": "heart_score_chunk_2",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Scoring Logic\nContent:\nPoints are assigned from 0 to 2 for each of the 5 categories (HEART):\n- **H**istory:\n  - Highly suspicious: 2 points\n  - Moderately suspicious: 1 point\n  - Slightly or non-suspicious: 0 points\n- **E**CG:\n  - Significant ST-deviation: 2 points\n  - Non-specific repolarization disturbance / LBBB / PM: 1 point\n  - Normal: 0 points\n- **A**ge:\n  - Age >= 65: 2 points\n  - Age 45 to 64: 1 point\n  - Age < 45: 0 points\n- **R**isk Factors (HTN, hypercholesterolemia, DM, smoking, family history, obesity):\n  - >= 3 risk factors or history of atherosclerotic disease: 2 points\n  - 1 or 2 risk factors: 1 point\n  - No risk factors: 0 points\n- **T**roponin:\n  - >= 2x normal limit: 2 points\n  - 1 to <2x normal limit: 1 point\n  - Normal limit (<= normal): 0 points",
             "metadata": {
+              "section": "Scoring Logic",
               "source": "heart_score.md",
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "section": "Scoring Logic"
+              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)"
             },
             "distance": 0.6340208053588867
           },
           {
-            "id": "heart_score_chunk_0",
-            "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Purpose\nContent:\nThe HEART Score predicts the 6-week risk of a major adverse cardiac event (MACE) in patients presenting to the emergency department with chest pain of suspected cardiac origin. It helps risk-stratify patients and identify those who can be safely discharged.",
+            "id": "wells_pe_chunk_1",
+            "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Inputs Required\nContent:\n- Clinical signs and symptoms of deep vein thrombosis (DVT)\n- An alternative diagnosis is less likely than PE\n- Heart rate (tachycardia)\n- Immobilization or surgery in the previous 4 weeks\n- Previous DVT or PE\n- Hemoptysis\n- Malignancy (treatment ongoing, within 6 months, or palliative)",
             "metadata": {
-              "section": "Purpose",
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "source": "heart_score.md"
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
+              "source": "wells_pe.md",
+              "section": "Inputs Required"
             },
-            "distance": 0.691222608089447
+            "distance": 0.7326725125312805
           }
         ],
         "recommendation": {
@@ -1062,16 +1057,15 @@
           "confidence": 0.8,
           "citations": [
             "heart_score_chunk_1",
-            "heart_score_chunk_2",
-            "heart_score_chunk_0"
+            "heart_score_chunk_2"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002448558807373047,
-          "pipeline_latency": 0.013487100601196289,
+          "generation_latency": 9.131431579589844e-05,
+          "pipeline_latency": 0.00481104850769043,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1131,7 +1125,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7720451354980469,
+      "similarity": 0.6880955100059509,
       "pipeline_result": {
         "query": "A 67-year-old female patient presents with highly suspicious crushing substernal chest pain. ECG shows significant ST-segment depression in V4-V6. Initial troponin is elevated at 3 times the upper limit of normal.",
         "retrieved_chunks": [
@@ -1139,9 +1133,9 @@
             "id": "heart_score_chunk_1",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Inputs Required\nContent:\n- History (highly suspicious, moderately suspicious, or slightly/non-suspicious chest pain description)\n- ECG (significant ST-depression, non-specific repolarization disturbance, or normal)\n- Age (< 45, 45-64, or >= 65 years)\n- Risk factors (presence of hypertension, hypercholesterolemia, diabetes, smoking, family history of CAD, obesity)\n- Troponin (elevated 1-2x normal, > 2x normal, or normal)",
             "metadata": {
-              "source": "heart_score.md",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "section": "Inputs Required"
+              "section": "Inputs Required",
+              "source": "heart_score.md"
             },
             "distance": 0.6103285551071167
           },
@@ -1150,20 +1144,20 @@
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Scoring Logic\nContent:\nPoints are assigned from 0 to 2 for each of the 5 categories (HEART):\n- **H**istory:\n  - Highly suspicious: 2 points\n  - Moderately suspicious: 1 point\n  - Slightly or non-suspicious: 0 points\n- **E**CG:\n  - Significant ST-deviation: 2 points\n  - Non-specific repolarization disturbance / LBBB / PM: 1 point\n  - Normal: 0 points\n- **A**ge:\n  - Age >= 65: 2 points\n  - Age 45 to 64: 1 point\n  - Age < 45: 0 points\n- **R**isk Factors (HTN, hypercholesterolemia, DM, smoking, family history, obesity):\n  - >= 3 risk factors or history of atherosclerotic disease: 2 points\n  - 1 or 2 risk factors: 1 point\n  - No risk factors: 0 points\n- **T**roponin:\n  - >= 2x normal limit: 2 points\n  - 1 to <2x normal limit: 1 point\n  - Normal limit (<= normal): 0 points",
             "metadata": {
               "source": "heart_score.md",
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)"
             },
             "distance": 0.6667815446853638
           },
           {
-            "id": "heart_score_chunk_0",
-            "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Purpose\nContent:\nThe HEART Score predicts the 6-week risk of a major adverse cardiac event (MACE) in patients presenting to the emergency department with chest pain of suspected cardiac origin. It helps risk-stratify patients and identify those who can be safely discharged.",
+            "id": "curb_65_chunk_2",
+            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
             "metadata": {
-              "section": "Purpose",
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "source": "heart_score.md"
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
+              "source": "curb_65.md",
+              "section": "Scoring Logic"
             },
-            "distance": 0.6888850927352905
+            "distance": 0.74474036693573
           }
         ],
         "recommendation": {
@@ -1172,16 +1166,15 @@
           "confidence": 0.8,
           "citations": [
             "heart_score_chunk_1",
-            "heart_score_chunk_2",
-            "heart_score_chunk_0"
+            "heart_score_chunk_2"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00027108192443847656,
-          "pipeline_latency": 0.024755001068115234,
+          "generation_latency": 8.392333984375e-05,
+          "pipeline_latency": 0.004930019378662109,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1241,7 +1234,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7210137248039246,
+      "similarity": 0.32857269048690796,
       "pipeline_result": {
         "query": "A 30-year-old patient who suffered a head injury in a motor vehicle accident opens eyes only in response to a spoken request, speaks in a confused manner when asked questions, and moves his hand toward a painful stimulus applied to his head. What is his GCS score?",
         "retrieved_chunks": [
@@ -1249,9 +1242,9 @@
             "id": "gcs_chunk_2",
             "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Scoring Logic\nContent:\nThe GCS is calculated by adding the scores of the three behaviors: GCS = E + V + M.\n- **Eye Opening Response (E)**:\n  - Spontaneous (eyes open before stimulus): 4 points\n  - To sound (eyes open to spoken or shouted request): 3 points\n  - To pressure (eyes open to stimulus applied to finger nail bed): 2 points\n  - None (no eye opening at any time): 1 point\n- **Verbal Response (V)**:\n  - Oriented (correctly gives name, place, and date): 5 points\n  - Confused (answers questions but is disoriented): 4 points\n  - Inappropriate words (random, shouting, or expletives): 3 points\n  - Incomprehensible sounds (moaning or groaning, no words): 2 points\n  - None (no verbal response): 1 point\n- **Motor Response (M)**:\n  - Obeys commands (moves limb as requested): 6 points\n  - Localizing (moves hand toward pressure stimulus on head/neck): 5 points\n  - Normal flexion / Withdrawal (pulls limb away from pressure stimulus): 4 points\n  - Abnormal flexion / Decorticate (flexion at elbow, internal rotation, adduction): 3 points\n  - Extension / Decerebrate (extension at elbow, adduction, internal rotation): 2 points\n  - None (no motor response): 1 point",
             "metadata": {
+              "source": "gcs.md",
               "calculator": "Glasgow Coma Scale (GCS)",
-              "section": "Scoring Logic",
-              "source": "gcs.md"
+              "section": "Scoring Logic"
             },
             "distance": 0.3784486651420593
           },
@@ -1260,20 +1253,20 @@
             "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Inputs Required\nContent:\n- Eye opening response\n- Verbal response\n- Motor response",
             "metadata": {
               "source": "gcs.md",
-              "calculator": "Glasgow Coma Scale (GCS)",
-              "section": "Inputs Required"
+              "section": "Inputs Required",
+              "calculator": "Glasgow Coma Scale (GCS)"
             },
             "distance": 0.3851519227027893
           },
           {
-            "id": "gcs_chunk_4",
-            "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Interpretation Bands\nContent:\nClassification of head injury severity:\n- Score 13 to 15: Mild brain injury / concussion.\n- Score 9 to 12: Moderate brain injury.\n- Score 3 to 8: Severe brain injury / Coma. A score of 8 or less typically indicates the need for intubation.",
+            "id": "pecarn_head_injury_chunk_1",
+            "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Inputs Required\nContent:\n- Age group (under 2 years vs 2 years and older)\n- Glasgow Coma Scale (GCS) score\n- Signs of basilar skull fracture\n- Altered mental status\n- History of loss of consciousness (LOC)\n- History of vomiting\n- Severe mechanism of injury (e.g. MVC with ejection, fall >3 feet for <2 years, fall >5 feet for >=2 years)\n- Severe headache (for >=2 years)\n- Acted normally per parent (for <2 years)\n- Occipital or parietal or temporal scalp hematoma (for <2 years)",
             "metadata": {
-              "section": "Interpretation Bands",
-              "calculator": "Glasgow Coma Scale (GCS)",
-              "source": "gcs.md"
+              "calculator": "PECARN Pediatric Head Injury Rule",
+              "section": "Inputs Required",
+              "source": "pecarn_head_injury.md"
             },
-            "distance": 0.3857818841934204
+            "distance": 0.5310264825820923
           }
         ],
         "recommendation": {
@@ -1282,16 +1275,15 @@
           "confidence": 0.8,
           "citations": [
             "gcs_chunk_2",
-            "gcs_chunk_1",
-            "gcs_chunk_4"
+            "gcs_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00024390220642089844,
-          "pipeline_latency": 0.028650999069213867,
+          "generation_latency": 7.700920104980469e-05,
+          "pipeline_latency": 0.005584001541137695,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1351,7 +1343,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7210137248039246,
+      "similarity": 0.40073686838150024,
       "pipeline_result": {
         "query": "An unresponsive 18-year-old patient has no eye opening to any stimulus, makes only incomprehensible groaning sounds, and demonstrates abnormal flexion (decorticate posturing) in response to pain.",
         "retrieved_chunks": [
@@ -1379,9 +1371,9 @@
             "id": "pecarn_head_injury_chunk_1",
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Inputs Required\nContent:\n- Age group (under 2 years vs 2 years and older)\n- Glasgow Coma Scale (GCS) score\n- Signs of basilar skull fracture\n- Altered mental status\n- History of loss of consciousness (LOC)\n- History of vomiting\n- Severe mechanism of injury (e.g. MVC with ejection, fall >3 feet for <2 years, fall >5 feet for >=2 years)\n- Severe headache (for >=2 years)\n- Acted normally per parent (for <2 years)\n- Occipital or parietal or temporal scalp hematoma (for <2 years)",
             "metadata": {
-              "section": "Inputs Required",
               "source": "pecarn_head_injury.md",
-              "calculator": "PECARN Pediatric Head Injury Rule"
+              "calculator": "PECARN Pediatric Head Injury Rule",
+              "section": "Inputs Required"
             },
             "distance": 0.7783834934234619
           }
@@ -1399,8 +1391,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00021719932556152344,
-          "pipeline_latency": 0.022993803024291992,
+          "generation_latency": 8.511543273925781e-05,
+          "pipeline_latency": 0.005099058151245117,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1460,7 +1452,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7935391068458557,
+      "similarity": 0.587195634841919,
       "pipeline_result": {
         "query": "A 72-year-old female patient with atrial fibrillation is starting warfarin. She has a history of ischemic stroke and hypertension with SBP of 165 mmHg. Estimate her bleeding risk.",
         "retrieved_chunks": [
@@ -1468,9 +1460,9 @@
             "id": "has_bled_chunk_2",
             "text": "Calculator: HAS-BLED Score for Major Bleeding Risk\nSection: Scoring Logic\nContent:\nOne point is assigned for each criterion met:\n- **H**ypertension (Uncontrolled, Systolic BP >= 160 mmHg): +1 point\n- **A**bnormal Renal function (dialysis, transplant, or creatinine >= 2.26 mg/dL) OR Abnormal Liver function (cirrhosis, bilirubin > 2x normal, AST/ALT/AP > 3x normal): +1 point each (max 2)\n- **S**troke history: +1 point\n- **B**leeding history/predisposition (anemia, prior bleed): +1 point\n- **L**abile INRs (for patients on warfarin): +1 point\n- **E**lderly (Age > 65 years): +1 point\n- **D**rugs (antiplatelets, NSAIDs) OR Alcohol (>= 8 drinks/week): +1 point each (max 2)",
             "metadata": {
+              "calculator": "HAS-BLED Score for Major Bleeding Risk",
               "source": "has_bled.md",
-              "section": "Scoring Logic",
-              "calculator": "HAS-BLED Score for Major Bleeding Risk"
+              "section": "Scoring Logic"
             },
             "distance": 0.3764994740486145
           },
@@ -1478,9 +1470,9 @@
             "id": "chads2_vasc_chunk_4",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Interpretation Bands\nContent:\n- 0 points (male) or 1 point (female): Low risk. No antithrombotic therapy (or aspirin) is recommended.\n- 1 point (male): Moderate risk. Oral anticoagulation should be considered.\n- 2 or more points (male or female): High risk. Oral anticoagulation therapy is strongly recommended.",
             "metadata": {
-              "source": "chads2_vasc.md",
+              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
               "section": "Interpretation Bands",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "source": "chads2_vasc.md"
             },
             "distance": 0.39371103048324585
           },
@@ -1489,8 +1481,8 @@
             "text": "Calculator: HAS-BLED Score for Major Bleeding Risk\nSection: Purpose\nContent:\nThe HAS-BLED score estimates the risk of major bleeding in patients with atrial fibrillation who are starting or taking oral anticoagulation. It assists in identifying correctable bleeding risk factors.",
             "metadata": {
               "section": "Purpose",
-              "calculator": "HAS-BLED Score for Major Bleeding Risk",
-              "source": "has_bled.md"
+              "source": "has_bled.md",
+              "calculator": "HAS-BLED Score for Major Bleeding Risk"
             },
             "distance": 0.4461313486099243
           }
@@ -1508,8 +1500,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00022721290588378906,
-          "pipeline_latency": 0.02219223976135254,
+          "generation_latency": 8.702278137207031e-05,
+          "pipeline_latency": 0.0049169063568115234,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1569,7 +1561,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6327833533287048,
+      "similarity": 0.6516285538673401,
       "pipeline_result": {
         "query": "A 25-year-old female presents with chest pain. The clinician gestates a low risk (<15%) of pulmonary embolism. She is non-pregnant, has no leg swelling, HR is 80 bpm, SpO2 is 98% on room air, no history of DVT/PE, no recent trauma/surgery, no hemoptysis, and takes no estrogen.",
         "retrieved_chunks": [
@@ -1578,8 +1570,8 @@
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Scoring Logic\nContent:\nThe rule is applied to patients who are already stratified as low risk for PE (e.g., clinician gestates < 15% probability of PE).\nA patient must meet ALL 8 criteria to be \"PERC negative\":\n1. Age < 50 years\n2. Heart rate < 100 bpm\n3. SpO2 >= 95% on room air\n4. No prior DVT or PE\n5. No recent trauma or surgery (within 4 weeks)\n6. No hemoptysis\n7. No exogenous estrogen use\n8. No unilateral leg swelling",
             "metadata": {
               "section": "Scoring Logic",
-              "source": "perc_rule.md",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "source": "perc_rule.md"
             },
             "distance": 0.37330126762390137
           },
@@ -1588,8 +1580,8 @@
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Inputs Required\nContent:\n- Age (< 50 years)\n- Heart rate (< 100 beats per minute)\n- Oxygen saturation (SpO2 >= 95% on room air)\n- Prior history of DVT or PE\n- Recent trauma or surgery within the last 4 weeks (requiring hospitalization or anesthesia)\n- Hemoptysis (coughing up blood)\n- Exogenous estrogen use (oral contraceptives, hormone replacement therapy, or transdermal estrogen)\n- Unilateral leg swelling (visual asymmetry of the calves)",
             "metadata": {
               "section": "Inputs Required",
-              "source": "perc_rule.md",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "source": "perc_rule.md"
             },
             "distance": 0.4322240948677063
           },
@@ -1617,8 +1609,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002791881561279297,
-          "pipeline_latency": 0.03439688682556152,
+          "generation_latency": 8.702278137207031e-05,
+          "pipeline_latency": 0.0060350894927978516,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1678,7 +1670,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6759161949157715,
+      "similarity": 0.6808381676673889,
       "pipeline_result": {
         "query": "A 60-year-old male with cirrhosis has a total bilirubin of 2.5 mg/dL, albumin of 3.0 g/dL, and INR of 1.9. He has mild ascites that is responsive to diuretics and has no signs of encephalopathy.",
         "retrieved_chunks": [
@@ -1706,9 +1698,9 @@
             "id": "meld_chunk_3",
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Scoring Logic\nContent:\nNotes on MELD calculation:\n- If bilirubin, creatinine, or INR is < 1.0, use 1.0.\n- If the patient has had dialysis twice or more within the past week, or continuous venovenous hemodiafiltration, creatinine is automatically set to 4.0 mg/dL.\n- Maximum MELD score is capped at 40.\n- Modern MELD (MELD-Na) incorporates serum sodium when MELD > 11.",
             "metadata": {
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
               "source": "meld.md",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "calculator": "MELD Score (Model for End-Stage Liver Disease)"
             },
             "distance": 0.5129556655883789
           }
@@ -1726,8 +1718,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00023221969604492188,
-          "pipeline_latency": 0.028382062911987305,
+          "generation_latency": 7.557868957519531e-05,
+          "pipeline_latency": 0.005896091461181641,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1787,7 +1779,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6324998736381531,
+      "similarity": 0.7802508473396301,
       "pipeline_result": {
         "query": "An 80-year-old female in the emergency department has a suspected urinary tract infection. On assessment, she is disoriented, SBP is 95 mmHg, and her respiratory rate is 24 breaths per minute. Assess her risk.",
         "retrieved_chunks": [
@@ -1795,9 +1787,9 @@
             "id": "sirs_chunk_2",
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
+              "section": "Scoring Logic",
               "source": "sirs.md",
-              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
-              "section": "Scoring Logic"
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
             },
             "distance": 0.5209882259368896
           },
@@ -1805,9 +1797,9 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
               "section": "Inputs Required",
-              "source": "curb_65.md"
+              "source": "curb_65.md",
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.5213152170181274
           },
@@ -1815,9 +1807,9 @@
             "id": "qsofa_chunk_4",
             "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Low risk. Indicates a low risk of in-hospital mortality or ICU stay. Continue clinical monitoring as appropriate.\n- Score 2 to 3: High risk. Associated with a significantly higher risk of death or prolonged ICU stay (a 3- to 14-fold increase in mortality). Suggests a high likelihood of sepsis; clinicians should assess for organ dysfunction and consider escalation of care.",
             "metadata": {
-              "source": "qsofa.md",
+              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
               "section": "Interpretation Bands",
-              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)"
+              "source": "qsofa.md"
             },
             "distance": 0.5450819730758667
           }
@@ -1834,8 +1826,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00021505355834960938,
-          "pipeline_latency": 0.019613027572631836,
+          "generation_latency": 8.177757263183594e-05,
+          "pipeline_latency": 0.005052089691162109,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -1895,7 +1887,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.8968856334686279,
+      "similarity": 0.7426410913467407,
       "pipeline_result": {
         "query": "A 40-year-old male patient has a temperature of 39.2\u00b0C, a heart rate of 105 bpm, a respiratory rate of 24 breaths/minute, and a normal WBC count. Does he meet SIRS criteria?",
         "retrieved_chunks": [
@@ -1904,8 +1896,8 @@
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
               "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
-              "source": "sirs.md",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "sirs.md"
             },
             "distance": 0.284085214138031
           },
@@ -1913,21 +1905,21 @@
             "id": "sirs_chunk_1",
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Inputs Required\nContent:\n- Body temperature\n- Heart rate\n- Respiratory rate (or partial pressure of CO2 in arterial blood)\n- White blood cell (WBC) count",
             "metadata": {
-              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
               "section": "Inputs Required",
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
               "source": "sirs.md"
             },
             "distance": 0.3262339234352112
           },
           {
-            "id": "sirs_chunk_4",
-            "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Negative for SIRS.\n- Score 2 to 4: Positive for SIRS. If SIRS is due to a suspected or documented infection, the patient is traditionally diagnosed with sepsis (under the older Sepsis-2 definition).",
+            "id": "curb_65_chunk_2",
+            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
             "metadata": {
-              "source": "sirs.md",
-              "section": "Interpretation Bands",
-              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
+              "source": "curb_65.md",
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
+              "section": "Scoring Logic"
             },
-            "distance": 0.4116252660751343
+            "distance": 0.5556195378303528
           }
         ],
         "recommendation": {
@@ -1936,16 +1928,15 @@
           "confidence": 0.8,
           "citations": [
             "sirs_chunk_2",
-            "sirs_chunk_1",
-            "sirs_chunk_4"
+            "sirs_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00022101402282714844,
-          "pipeline_latency": 0.031538963317871094,
+          "generation_latency": 8.58306884765625e-05,
+          "pipeline_latency": 0.004820108413696289,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2005,7 +1996,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7532580494880676,
+      "similarity": 0.5856842994689941,
       "pipeline_result": {
         "query": "An 18-month-old child is brought to the clinic after falling from a bed (2 feet) and hitting their head. There was no loss of consciousness, parent states child is acting normally, no scalp hematoma is present, and child has GCS of 15.",
         "retrieved_chunks": [
@@ -2023,8 +2014,8 @@
             "id": "pecarn_head_injury_chunk_0",
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Purpose\nContent:\nThe PECARN Pediatric Head Injury Algorithm helps clinicians identify pediatric patients (under 18 years) with minor head trauma who are at very low risk for clinically important traumatic brain injuries (ciTBI), thereby avoiding unnecessary head CT scans.",
             "metadata": {
-              "section": "Purpose",
               "source": "pecarn_head_injury.md",
+              "section": "Purpose",
               "calculator": "PECARN Pediatric Head Injury Rule"
             },
             "distance": 0.5068751573562622
@@ -2053,8 +2044,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00028896331787109375,
-          "pipeline_latency": 0.03171181678771973,
+          "generation_latency": 7.987022399902344e-05,
+          "pipeline_latency": 0.004729032516479492,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2114,7 +2105,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7532580494880676,
+      "similarity": 0.6110140681266785,
       "pipeline_result": {
         "query": "A 5-year-old child sustained minor head trauma from a motor vehicle accident. The child reports a severe headache and had one episode of vomiting. GCS is 15 and there are no signs of skull fracture.",
         "retrieved_chunks": [
@@ -2122,9 +2113,9 @@
             "id": "pecarn_head_injury_chunk_1",
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Inputs Required\nContent:\n- Age group (under 2 years vs 2 years and older)\n- Glasgow Coma Scale (GCS) score\n- Signs of basilar skull fracture\n- Altered mental status\n- History of loss of consciousness (LOC)\n- History of vomiting\n- Severe mechanism of injury (e.g. MVC with ejection, fall >3 feet for <2 years, fall >5 feet for >=2 years)\n- Severe headache (for >=2 years)\n- Acted normally per parent (for <2 years)\n- Occipital or parietal or temporal scalp hematoma (for <2 years)",
             "metadata": {
-              "source": "pecarn_head_injury.md",
               "section": "Inputs Required",
-              "calculator": "PECARN Pediatric Head Injury Rule"
+              "calculator": "PECARN Pediatric Head Injury Rule",
+              "source": "pecarn_head_injury.md"
             },
             "distance": 0.35234373807907104
           },
@@ -2133,8 +2124,8 @@
             "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Interpretation Bands\nContent:\nClassification of head injury severity:\n- Score 13 to 15: Mild brain injury / concussion.\n- Score 9 to 12: Moderate brain injury.\n- Score 3 to 8: Severe brain injury / Coma. A score of 8 or less typically indicates the need for intubation.",
             "metadata": {
               "section": "Interpretation Bands",
-              "calculator": "Glasgow Coma Scale (GCS)",
-              "source": "gcs.md"
+              "source": "gcs.md",
+              "calculator": "Glasgow Coma Scale (GCS)"
             },
             "distance": 0.41353511810302734
           },
@@ -2143,8 +2134,8 @@
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Scoring Logic\nContent:\n### Age >= 2 years:\n- High risk (GCS = 14 or altered mental status or signs of basilar skull fracture): CT recommended (ciTBI risk ~4.6%).\n- Intermediate risk (history of LOC or history of vomiting or severe mechanism of injury or severe headache): Observation vs CT (ciTBI risk ~0.9%).\n- Low risk (none of the above): CT not recommended (ciTBI risk <0.05%).",
             "metadata": {
               "section": "Scoring Logic",
-              "calculator": "PECARN Pediatric Head Injury Rule",
-              "source": "pecarn_head_injury.md"
+              "source": "pecarn_head_injury.md",
+              "calculator": "PECARN Pediatric Head Injury Rule"
             },
             "distance": 0.4322282075881958
           }
@@ -2162,8 +2153,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002300739288330078,
-          "pipeline_latency": 0.025184154510498047,
+          "generation_latency": 7.295608520507812e-05,
+          "pipeline_latency": 0.004602193832397461,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2223,7 +2214,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5256087183952332,
+      "similarity": 0.34093156456947327,
       "pipeline_result": {
         "query": "A 64-year-old female patient with atrial fibrillation has a history of treated hypertension but no other cardiovascular history or diabetes. What is her CHA2DS2-VASc score?",
         "retrieved_chunks": [
@@ -2232,8 +2223,8 @@
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Congestive heart failure (CHF) history: +1 point\n- Hypertension (HTN) history: +1 point\n- Age >= 75 years: +2 points\n- Diabetes Mellitus (DM): +1 point\n- Stroke / TIA / thromboembolism history: +2 points\n- Vascular disease history: +1 point\n- Age 65-74 years: +1 point\n- Female sex: +1 point",
             "metadata": {
               "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
-              "source": "chads2_vasc.md",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "chads2_vasc.md"
             },
             "distance": 0.20196819305419922
           },
@@ -2241,21 +2232,21 @@
             "id": "chads2_vasc_chunk_1",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Inputs Required\nContent:\n- Congestive heart failure (or left ventricular dysfunction)\n- Hypertension (or treated hypertension)\n- Age (under 65, 65-74, or 75 and older)\n- Diabetes mellitus\n- Stroke, TIA, or thromboembolism history\n- Vascular disease (prior MI, peripheral artery disease, or aortic plaque)\n- Sex category (female or male)",
             "metadata": {
+              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
               "source": "chads2_vasc.md",
-              "section": "Inputs Required",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "section": "Inputs Required"
             },
             "distance": 0.20368510484695435
           },
           {
-            "id": "chads2_vasc_chunk_0",
-            "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Purpose\nContent:\nThe CHA2DS2-VASc score is a clinical prediction rule for estimating the risk of stroke in patients with non-valvular atrial fibrillation (AF). It helps clinicians decide whether treatment is needed with anticoagulant therapy or antiplatelet therapy.",
+            "id": "heart_score_chunk_2",
+            "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Scoring Logic\nContent:\nPoints are assigned from 0 to 2 for each of the 5 categories (HEART):\n- **H**istory:\n  - Highly suspicious: 2 points\n  - Moderately suspicious: 1 point\n  - Slightly or non-suspicious: 0 points\n- **E**CG:\n  - Significant ST-deviation: 2 points\n  - Non-specific repolarization disturbance / LBBB / PM: 1 point\n  - Normal: 0 points\n- **A**ge:\n  - Age >= 65: 2 points\n  - Age 45 to 64: 1 point\n  - Age < 45: 0 points\n- **R**isk Factors (HTN, hypercholesterolemia, DM, smoking, family history, obesity):\n  - >= 3 risk factors or history of atherosclerotic disease: 2 points\n  - 1 or 2 risk factors: 1 point\n  - No risk factors: 0 points\n- **T**roponin:\n  - >= 2x normal limit: 2 points\n  - 1 to <2x normal limit: 1 point\n  - Normal limit (<= normal): 0 points",
             "metadata": {
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
-              "section": "Purpose",
-              "source": "chads2_vasc.md"
+              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
+              "section": "Scoring Logic",
+              "source": "heart_score.md"
             },
-            "distance": 0.2603723406791687
+            "distance": 0.4653872847557068
           }
         ],
         "recommendation": {
@@ -2264,16 +2255,15 @@
           "confidence": 0.8,
           "citations": [
             "chads2_vasc_chunk_2",
-            "chads2_vasc_chunk_1",
-            "chads2_vasc_chunk_0"
+            "chads2_vasc_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00025010108947753906,
-          "pipeline_latency": 0.029901742935180664,
+          "generation_latency": 7.915496826171875e-05,
+          "pipeline_latency": 0.00475621223449707,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2333,7 +2323,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7490276098251343,
+      "similarity": 0.35573339462280273,
       "pipeline_result": {
         "query": "A patient with sudden onset dyspnea has a heart rate of exactly 100 beats per minute. No leg swelling, no surgery, no active cancer. Clinician thinks PE is possible but alternative diagnosis is equally likely.",
         "retrieved_chunks": [
@@ -2342,8 +2332,8 @@
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Clinical signs and symptoms of DVT (objective swelling, pain): +3.0 points\n- An alternative diagnosis is less likely than PE: +3.0 points\n- Heart rate > 100 beats per minute: +1.5 points\n- Immobilization (>= 3 days) or surgery in the previous 4 weeks: +1.5 points\n- Previous objectively documented DVT or PE: +1.5 points\n- Hemoptysis (coughing up blood): +1.0 point\n- Malignancy with active treatment within 6 months or palliative: +1.0 point",
             "metadata": {
               "source": "wells_pe.md",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
             },
             "distance": 0.5919604301452637
           },
@@ -2351,8 +2341,8 @@
             "id": "heart_score_chunk_2",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Scoring Logic\nContent:\nPoints are assigned from 0 to 2 for each of the 5 categories (HEART):\n- **H**istory:\n  - Highly suspicious: 2 points\n  - Moderately suspicious: 1 point\n  - Slightly or non-suspicious: 0 points\n- **E**CG:\n  - Significant ST-deviation: 2 points\n  - Non-specific repolarization disturbance / LBBB / PM: 1 point\n  - Normal: 0 points\n- **A**ge:\n  - Age >= 65: 2 points\n  - Age 45 to 64: 1 point\n  - Age < 45: 0 points\n- **R**isk Factors (HTN, hypercholesterolemia, DM, smoking, family history, obesity):\n  - >= 3 risk factors or history of atherosclerotic disease: 2 points\n  - 1 or 2 risk factors: 1 point\n  - No risk factors: 0 points\n- **T**roponin:\n  - >= 2x normal limit: 2 points\n  - 1 to <2x normal limit: 1 point\n  - Normal limit (<= normal): 0 points",
             "metadata": {
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
               "section": "Scoring Logic",
+              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
               "source": "heart_score.md"
             },
             "distance": 0.6136802434921265
@@ -2361,9 +2351,9 @@
             "id": "wells_pe_chunk_1",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Inputs Required\nContent:\n- Clinical signs and symptoms of deep vein thrombosis (DVT)\n- An alternative diagnosis is less likely than PE\n- Heart rate (tachycardia)\n- Immobilization or surgery in the previous 4 weeks\n- Previous DVT or PE\n- Hemoptysis\n- Malignancy (treatment ongoing, within 6 months, or palliative)",
             "metadata": {
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "source": "wells_pe.md",
-              "section": "Inputs Required",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
+              "section": "Inputs Required"
             },
             "distance": 0.622321367263794
           }
@@ -2381,8 +2371,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0010831356048583984,
-          "pipeline_latency": 0.04225516319274902,
+          "generation_latency": 7.581710815429688e-05,
+          "pipeline_latency": 0.004787921905517578,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2442,7 +2432,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6616829037666321,
+      "similarity": 0.28330281376838684,
       "pipeline_result": {
         "query": "A 64-year-old patient with pneumonia has a respiratory rate of 28 breaths per minute, a blood pressure of 90/60 mmHg, and is oriented. BUN is 18 mg/dL.",
         "retrieved_chunks": [
@@ -2450,8 +2440,8 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
-              "section": "Inputs Required",
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
+              "section": "Inputs Required",
               "source": "curb_65.md"
             },
             "distance": 0.3668127655982971
@@ -2467,14 +2457,14 @@
             "distance": 0.3784705400466919
           },
           {
-            "id": "curb_65_chunk_4",
-            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Low risk. 30-day mortality risk is low (< 3%). Suitable for outpatient treatment.\n- Score 2: Moderate risk. 30-day mortality risk is moderate (approx. 9%). Consider short-stay inpatient admission or close outpatient monitoring.\n- Score 3 to 5: High risk. 30-day mortality risk is high (15% to 57%). Requires urgent hospitalization; for scores 4 or 5, consider intensive care unit (ICU) admission.",
+            "id": "qsofa_chunk_2",
+            "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Respiratory rate >= 22 breaths per minute: +1 point\n- Altered mentation (GCS < 15 or acute change in mental status): +1 point\n- Systolic blood pressure <= 100 mmHg: +1 point",
             "metadata": {
-              "section": "Interpretation Bands",
-              "source": "curb_65.md",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
+              "source": "qsofa.md",
+              "section": "Scoring Logic",
+              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)"
             },
-            "distance": 0.49931395053863525
+            "distance": 0.5541524887084961
           }
         ],
         "recommendation": {
@@ -2483,16 +2473,15 @@
           "confidence": 0.8,
           "citations": [
             "curb_65_chunk_1",
-            "curb_65_chunk_2",
-            "curb_65_chunk_4"
+            "curb_65_chunk_2"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00026988983154296875,
-          "pipeline_latency": 0.04571104049682617,
+          "generation_latency": 8.988380432128906e-05,
+          "pipeline_latency": 0.005155086517333984,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2523,7 +2512,7 @@
       "weight": "normal",
       "expected_calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
       "recommended_calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
-      "retrieval_ok": false,
+      "retrieval_ok": true,
       "generation_ok": true,
       "citations_valid": true,
       "scores": {
@@ -2551,8 +2540,8 @@
       },
       "overall_pass": true,
       "safety_gate_fail": false,
-      "triage": "RETRIEVAL",
-      "similarity": 0.6324998736381531,
+      "triage": "PASS",
+      "similarity": 0.3382582366466522,
       "pipeline_result": {
         "query": "A patient with suspected pneumonia has a systolic blood pressure of exactly 100 mmHg, a respiratory rate of 21 breaths per minute, and is alert and oriented.",
         "retrieved_chunks": [
@@ -2561,8 +2550,8 @@
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
               "section": "Inputs Required",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "source": "curb_65.md"
+              "source": "curb_65.md",
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.38068467378616333
           },
@@ -2570,35 +2559,37 @@
             "id": "curb_65_chunk_2",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
             "metadata": {
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
               "source": "curb_65.md",
-              "section": "Scoring Logic",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
+              "section": "Scoring Logic"
             },
             "distance": 0.4109589457511902
           },
           {
-            "id": "curb_65_chunk_4",
-            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Interpretation Bands\nContent:\n- Score 0 to 1: Low risk. 30-day mortality risk is low (< 3%). Suitable for outpatient treatment.\n- Score 2: Moderate risk. 30-day mortality risk is moderate (approx. 9%). Consider short-stay inpatient admission or close outpatient monitoring.\n- Score 3 to 5: High risk. 30-day mortality risk is high (15% to 57%). Requires urgent hospitalization; for scores 4 or 5, consider intensive care unit (ICU) admission.",
+            "id": "qsofa_chunk_2",
+            "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Respiratory rate >= 22 breaths per minute: +1 point\n- Altered mentation (GCS < 15 or acute change in mental status): +1 point\n- Systolic blood pressure <= 100 mmHg: +1 point",
             "metadata": {
-              "source": "curb_65.md",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "section": "Interpretation Bands"
+              "source": "qsofa.md",
+              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
+              "section": "Scoring Logic"
             },
-            "distance": 0.4968225955963135
+            "distance": 0.5301623344421387
           }
         ],
         "recommendation": {
           "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
           "rationale": "The patient has suspected infection with sepsis risk features; qSOFA is appropriate for rapid bedside assessment.",
           "confidence": 0.8,
-          "citations": []
+          "citations": [
+            "qsofa_chunk_2"
+          ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0003972053527832031,
-          "pipeline_latency": 0.042944908142089844,
+          "generation_latency": 7.176399230957031e-05,
+          "pipeline_latency": 0.0047130584716796875,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2658,7 +2649,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.8968856334686279,
+      "similarity": 0.4262789189815521,
       "pipeline_result": {
         "query": "A patient has a body temperature of exactly 38.0\u00b0C and a heart rate of 90 bpm. White blood cell count is normal and respiratory rate is 18 breaths per minute.",
         "retrieved_chunks": [
@@ -2666,8 +2657,8 @@
             "id": "sirs_chunk_2",
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "section": "Scoring Logic",
               "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
+              "section": "Scoring Logic",
               "source": "sirs.md"
             },
             "distance": 0.512057900428772
@@ -2677,8 +2668,8 @@
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Inputs Required\nContent:\n- Body temperature\n- Heart rate\n- Respiratory rate (or partial pressure of CO2 in arterial blood)\n- White blood cell (WBC) count",
             "metadata": {
               "section": "Inputs Required",
-              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
-              "source": "sirs.md"
+              "source": "sirs.md",
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
             },
             "distance": 0.5609517097473145
           },
@@ -2686,8 +2677,8 @@
             "id": "qsofa_chunk_2",
             "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Respiratory rate >= 22 breaths per minute: +1 point\n- Altered mentation (GCS < 15 or acute change in mental status): +1 point\n- Systolic blood pressure <= 100 mmHg: +1 point",
             "metadata": {
-              "section": "Scoring Logic",
               "source": "qsofa.md",
+              "section": "Scoring Logic",
               "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)"
             },
             "distance": 0.6370875835418701
@@ -2706,8 +2697,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.000324249267578125,
-          "pipeline_latency": 0.029720783233642578,
+          "generation_latency": 6.699562072753906e-05,
+          "pipeline_latency": 0.004558086395263672,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2767,7 +2758,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7720451354980469,
+      "similarity": 0.3769538104534149,
       "pipeline_result": {
         "query": "A 45-year-old male with no cardiac risk factors presents with chest pain that is slightly suspicious for cardiac origin. His ECG is normal, and troponin is normal.",
         "retrieved_chunks": [
@@ -2775,9 +2766,9 @@
             "id": "heart_score_chunk_1",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Inputs Required\nContent:\n- History (highly suspicious, moderately suspicious, or slightly/non-suspicious chest pain description)\n- ECG (significant ST-depression, non-specific repolarization disturbance, or normal)\n- Age (< 45, 45-64, or >= 65 years)\n- Risk factors (presence of hypertension, hypercholesterolemia, diabetes, smoking, family history of CAD, obesity)\n- Troponin (elevated 1-2x normal, > 2x normal, or normal)",
             "metadata": {
+              "section": "Inputs Required",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "source": "heart_score.md",
-              "section": "Inputs Required"
+              "source": "heart_score.md"
             },
             "distance": 0.5916407108306885
           },
@@ -2785,21 +2776,21 @@
             "id": "heart_score_chunk_2",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Scoring Logic\nContent:\nPoints are assigned from 0 to 2 for each of the 5 categories (HEART):\n- **H**istory:\n  - Highly suspicious: 2 points\n  - Moderately suspicious: 1 point\n  - Slightly or non-suspicious: 0 points\n- **E**CG:\n  - Significant ST-deviation: 2 points\n  - Non-specific repolarization disturbance / LBBB / PM: 1 point\n  - Normal: 0 points\n- **A**ge:\n  - Age >= 65: 2 points\n  - Age 45 to 64: 1 point\n  - Age < 45: 0 points\n- **R**isk Factors (HTN, hypercholesterolemia, DM, smoking, family history, obesity):\n  - >= 3 risk factors or history of atherosclerotic disease: 2 points\n  - 1 or 2 risk factors: 1 point\n  - No risk factors: 0 points\n- **T**roponin:\n  - >= 2x normal limit: 2 points\n  - 1 to <2x normal limit: 1 point\n  - Normal limit (<= normal): 0 points",
             "metadata": {
-              "section": "Scoring Logic",
+              "source": "heart_score.md",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "source": "heart_score.md"
+              "section": "Scoring Logic"
             },
             "distance": 0.6714301109313965
           },
           {
-            "id": "heart_score_chunk_4",
-            "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Interpretation Bands\nContent:\n- Score 0 to 3: Low risk (0.9% - 1.7% risk of MACE). Candidates for early discharge.\n- Score 4 to 6: Intermediate risk (12% - 17% risk of MACE). Observation, serial troponins, and further testing recommended.\n- Score 7 to 10: High risk (50% - 65% risk of MACE). Immediate invasive treatment (cardiology consultation, coronary angiography).",
+            "id": "sirs_chunk_2",
+            "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "source": "heart_score.md",
-              "section": "Interpretation Bands"
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
+              "source": "sirs.md",
+              "section": "Scoring Logic"
             },
-            "distance": 0.6749563217163086
+            "distance": 0.7863467335700989
           }
         ],
         "recommendation": {
@@ -2808,16 +2799,15 @@
           "confidence": 0.8,
           "citations": [
             "heart_score_chunk_1",
-            "heart_score_chunk_2",
-            "heart_score_chunk_4"
+            "heart_score_chunk_2"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0005509853363037109,
-          "pipeline_latency": 0.035857200622558594,
+          "generation_latency": 7.82012939453125e-05,
+          "pipeline_latency": 0.0075452327728271484,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2877,7 +2867,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7210137248039246,
+      "similarity": 0.32404568791389465,
       "pipeline_result": {
         "query": "A head trauma patient opens eyes to painful pressure on their finger. They are moaning and making incomprehensible sounds. When pressure is applied, they pull their hand away (normal flexion/withdrawal).",
         "retrieved_chunks": [
@@ -2885,9 +2875,9 @@
             "id": "gcs_chunk_2",
             "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Scoring Logic\nContent:\nThe GCS is calculated by adding the scores of the three behaviors: GCS = E + V + M.\n- **Eye Opening Response (E)**:\n  - Spontaneous (eyes open before stimulus): 4 points\n  - To sound (eyes open to spoken or shouted request): 3 points\n  - To pressure (eyes open to stimulus applied to finger nail bed): 2 points\n  - None (no eye opening at any time): 1 point\n- **Verbal Response (V)**:\n  - Oriented (correctly gives name, place, and date): 5 points\n  - Confused (answers questions but is disoriented): 4 points\n  - Inappropriate words (random, shouting, or expletives): 3 points\n  - Incomprehensible sounds (moaning or groaning, no words): 2 points\n  - None (no verbal response): 1 point\n- **Motor Response (M)**:\n  - Obeys commands (moves limb as requested): 6 points\n  - Localizing (moves hand toward pressure stimulus on head/neck): 5 points\n  - Normal flexion / Withdrawal (pulls limb away from pressure stimulus): 4 points\n  - Abnormal flexion / Decorticate (flexion at elbow, internal rotation, adduction): 3 points\n  - Extension / Decerebrate (extension at elbow, adduction, internal rotation): 2 points\n  - None (no motor response): 1 point",
             "metadata": {
-              "section": "Scoring Logic",
               "calculator": "Glasgow Coma Scale (GCS)",
-              "source": "gcs.md"
+              "source": "gcs.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.5830508470535278
           },
@@ -2895,8 +2885,8 @@
             "id": "pecarn_head_injury_chunk_1",
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Inputs Required\nContent:\n- Age group (under 2 years vs 2 years and older)\n- Glasgow Coma Scale (GCS) score\n- Signs of basilar skull fracture\n- Altered mental status\n- History of loss of consciousness (LOC)\n- History of vomiting\n- Severe mechanism of injury (e.g. MVC with ejection, fall >3 feet for <2 years, fall >5 feet for >=2 years)\n- Severe headache (for >=2 years)\n- Acted normally per parent (for <2 years)\n- Occipital or parietal or temporal scalp hematoma (for <2 years)",
             "metadata": {
-              "source": "pecarn_head_injury.md",
               "section": "Inputs Required",
+              "source": "pecarn_head_injury.md",
               "calculator": "PECARN Pediatric Head Injury Rule"
             },
             "distance": 0.6952375173568726
@@ -2905,9 +2895,9 @@
             "id": "pecarn_head_injury_chunk_0",
             "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Purpose\nContent:\nThe PECARN Pediatric Head Injury Algorithm helps clinicians identify pediatric patients (under 18 years) with minor head trauma who are at very low risk for clinically important traumatic brain injuries (ciTBI), thereby avoiding unnecessary head CT scans.",
             "metadata": {
-              "section": "Purpose",
+              "calculator": "PECARN Pediatric Head Injury Rule",
               "source": "pecarn_head_injury.md",
-              "calculator": "PECARN Pediatric Head Injury Rule"
+              "section": "Purpose"
             },
             "distance": 0.6966131925582886
           }
@@ -2924,8 +2914,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0005619525909423828,
-          "pipeline_latency": 0.052632808685302734,
+          "generation_latency": 7.510185241699219e-05,
+          "pipeline_latency": 0.005182981491088867,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -2985,7 +2975,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7935391068458557,
+      "similarity": 0.6117931008338928,
       "pipeline_result": {
         "query": "A 60-year-old patient on anticoagulants has abnormal liver function (cirrhosis) and SBP of 158 mmHg. They do not drink alcohol and take no other medications.",
         "retrieved_chunks": [
@@ -3003,9 +2993,9 @@
             "id": "child_pugh_chunk_2",
             "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Scoring Logic\nContent:\nPoints are assigned from 1 to 3 for each of the 5 measures:\n- **Total Bilirubin**:\n  - < 2.0 mg/dL (< 34 umol/L): 1 point\n  - 2.0 to 3.0 mg/dL (34 to 51 umol/L): 2 points\n  - > 3.0 mg/dL (> 51 umol/L): 3 points\n- **Serum Albumin**:\n  - > 3.5 g/dL (> 35 g/L): 1 point\n  - 2.8 to 3.5 g/dL (28 to 35 g/L): 2 points\n  - < 2.8 g/dL (< 28 g/L): 3 points\n- **INR**:\n  - < 1.7: 1 point\n  - 1.7 to 2.3: 2 points\n  - > 2.3: 3 points\n- **Ascites**:\n  - None: 1 point\n  - Mild / Diuretic-responsive: 2 points\n  - Moderate to Severe / Refractory: 3 points\n- **Encephalopathy**:\n  - None: 1 point\n  - Grade 1 to 2 (mild confusion, sleep disturbance): 2 points\n  - Grade 3 to 4 (somnolence, stupor, coma): 3 points",
             "metadata": {
-              "source": "child_pugh.md",
               "calculator": "Child-Pugh Score for Cirrhosis Mortality",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "child_pugh.md"
             },
             "distance": 0.6378888487815857
           },
@@ -3013,9 +3003,9 @@
             "id": "chads2_vasc_chunk_4",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Interpretation Bands\nContent:\n- 0 points (male) or 1 point (female): Low risk. No antithrombotic therapy (or aspirin) is recommended.\n- 1 point (male): Moderate risk. Oral anticoagulation should be considered.\n- 2 or more points (male or female): High risk. Oral anticoagulation therapy is strongly recommended.",
             "metadata": {
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
               "section": "Interpretation Bands",
-              "source": "chads2_vasc.md"
+              "source": "chads2_vasc.md",
+              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
             },
             "distance": 0.6459294557571411
           }
@@ -3032,8 +3022,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00032401084899902344,
-          "pipeline_latency": 0.04783201217651367,
+          "generation_latency": 7.200241088867188e-05,
+          "pipeline_latency": 0.004349231719970703,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3093,7 +3083,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6759161949157715,
+      "similarity": 0.3400019407272339,
       "pipeline_result": {
         "query": "A patient with cirrhosis has total bilirubin of exactly 2.0 mg/dL, albumin of 3.5 g/dL, INR of 1.7, no ascites, and no encephalopathy.",
         "retrieved_chunks": [
@@ -3102,8 +3092,8 @@
             "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Scoring Logic\nContent:\nPoints are assigned from 1 to 3 for each of the 5 measures:\n- **Total Bilirubin**:\n  - < 2.0 mg/dL (< 34 umol/L): 1 point\n  - 2.0 to 3.0 mg/dL (34 to 51 umol/L): 2 points\n  - > 3.0 mg/dL (> 51 umol/L): 3 points\n- **Serum Albumin**:\n  - > 3.5 g/dL (> 35 g/L): 1 point\n  - 2.8 to 3.5 g/dL (28 to 35 g/L): 2 points\n  - < 2.8 g/dL (< 28 g/L): 3 points\n- **INR**:\n  - < 1.7: 1 point\n  - 1.7 to 2.3: 2 points\n  - > 2.3: 3 points\n- **Ascites**:\n  - None: 1 point\n  - Mild / Diuretic-responsive: 2 points\n  - Moderate to Severe / Refractory: 3 points\n- **Encephalopathy**:\n  - None: 1 point\n  - Grade 1 to 2 (mild confusion, sleep disturbance): 2 points\n  - Grade 3 to 4 (somnolence, stupor, coma): 3 points",
             "metadata": {
               "calculator": "Child-Pugh Score for Cirrhosis Mortality",
-              "section": "Scoring Logic",
-              "source": "child_pugh.md"
+              "source": "child_pugh.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.39092063903808594
           },
@@ -3111,8 +3101,8 @@
             "id": "child_pugh_chunk_1",
             "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Inputs Required\nContent:\n- Total Bilirubin (umol/L or mg/dL)\n- Serum Albumin (g/dL or g/L)\n- INR (or prothrombin time prolongation)\n- Ascites (none, mild/medically controlled, or moderate-severe/refractory)\n- Hepatic encephalopathy (none, grade 1-2, or grade 3-4)",
             "metadata": {
-              "section": "Inputs Required",
               "calculator": "Child-Pugh Score for Cirrhosis Mortality",
+              "section": "Inputs Required",
               "source": "child_pugh.md"
             },
             "distance": 0.3925701379776001
@@ -3121,8 +3111,8 @@
             "id": "meld_chunk_3",
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Scoring Logic\nContent:\nNotes on MELD calculation:\n- If bilirubin, creatinine, or INR is < 1.0, use 1.0.\n- If the patient has had dialysis twice or more within the past week, or continuous venovenous hemodiafiltration, creatinine is automatically set to 4.0 mg/dL.\n- Maximum MELD score is capped at 40.\n- Modern MELD (MELD-Na) incorporates serum sodium when MELD > 11.",
             "metadata": {
-              "source": "meld.md",
               "calculator": "MELD Score (Model for End-Stage Liver Disease)",
+              "source": "meld.md",
               "section": "Scoring Logic"
             },
             "distance": 0.4569786787033081
@@ -3141,8 +3131,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002751350402832031,
-          "pipeline_latency": 0.02784895896911621,
+          "generation_latency": 6.985664367675781e-05,
+          "pipeline_latency": 0.0046579837799072266,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3202,7 +3192,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.5412390828132629,
+      "similarity": 0.40194788575172424,
       "pipeline_result": {
         "query": "A patient has right calf swelling which measures exactly 3.0 cm larger than the left calf. There is no local tenderness, no active cancer, and no other symptoms. Alternative diagnosis is less likely.",
         "retrieved_chunks": [
@@ -3210,9 +3200,9 @@
             "id": "wells_dvt_chunk_1",
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Inputs Required\nContent:\n- Active cancer (treatment ongoing, within 6 months, or palliative)\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities\n- Recently bedridden for >= 3 days or major surgery within 12 weeks requiring general or regional anesthesia\n- Localized tenderness along the distribution of the deep venous system\n- Entire leg swollen\n- Calf swelling >= 3 cm larger than asymptomatic side (measured 10 cm below tibial tuberosity)\n- Pitting edema confined to the symptomatic leg\n- Collateral superficial veins (nonvaricose)\n- Previously documented DVT\n- Alternative diagnosis at least as likely as DVT",
             "metadata": {
-              "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
+              "section": "Inputs Required",
               "source": "wells_dvt.md",
-              "section": "Inputs Required"
+              "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)"
             },
             "distance": 0.5039688348770142
           },
@@ -3221,8 +3211,8 @@
             "text": "Calculator: Wells' Criteria for Deep Vein Thrombosis (DVT)\nSection: Scoring Logic\nContent:\nPoints are assigned as follows:\n- Active cancer (treatment ongoing, within 6 months, or palliative): +1 point\n- Paralysis, paresis, or recent plaster immobilization of the lower extremities: +1 point\n- Recently bedridden for >= 3 days or major surgery within 12 weeks: +1 point\n- Localized tenderness along the distribution of the deep venous system: +1 point\n- Entire leg swollen: +1 point\n- Calf swelling >= 3 cm larger than asymptomatic side: +1 point\n- Pitting edema confined to the symptomatic leg: +1 point\n- Collateral superficial veins (nonvaricose): +1 point\n- Previously documented DVT: +1 point\n- Alternative diagnosis at least as likely as DVT: -2 points",
             "metadata": {
               "calculator": "Wells' Criteria for Deep Vein Thrombosis (DVT)",
-              "source": "wells_dvt.md",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "wells_dvt.md"
             },
             "distance": 0.5120067000389099
           },
@@ -3250,8 +3240,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002613067626953125,
-          "pipeline_latency": 0.025093793869018555,
+          "generation_latency": 9.012222290039062e-05,
+          "pipeline_latency": 0.005133152008056641,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3311,7 +3301,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.17341728508472443,
+      "similarity": 0.31573188304901123,
       "pipeline_result": {
         "query": "A 22-year-old female presents with acute right lower quadrant abdominal pain, fever, and nausea. The clinician wants to calculate the Alvarado Score for appendicitis risk.",
         "retrieved_chunks": [
@@ -3319,9 +3309,9 @@
             "id": "sirs_chunk_3",
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nScore ranges from 0 to 4.",
             "metadata": {
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
               "source": "sirs.md",
-              "section": "Scoring Logic",
-              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
+              "section": "Scoring Logic"
             },
             "distance": 0.557052493095398
           },
@@ -3330,8 +3320,8 @@
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
               "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
-              "section": "Scoring Logic",
-              "source": "sirs.md"
+              "source": "sirs.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.565453052520752
           },
@@ -3339,9 +3329,9 @@
             "id": "child_pugh_chunk_2",
             "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Scoring Logic\nContent:\nPoints are assigned from 1 to 3 for each of the 5 measures:\n- **Total Bilirubin**:\n  - < 2.0 mg/dL (< 34 umol/L): 1 point\n  - 2.0 to 3.0 mg/dL (34 to 51 umol/L): 2 points\n  - > 3.0 mg/dL (> 51 umol/L): 3 points\n- **Serum Albumin**:\n  - > 3.5 g/dL (> 35 g/L): 1 point\n  - 2.8 to 3.5 g/dL (28 to 35 g/L): 2 points\n  - < 2.8 g/dL (< 28 g/L): 3 points\n- **INR**:\n  - < 1.7: 1 point\n  - 1.7 to 2.3: 2 points\n  - > 2.3: 3 points\n- **Ascites**:\n  - None: 1 point\n  - Mild / Diuretic-responsive: 2 points\n  - Moderate to Severe / Refractory: 3 points\n- **Encephalopathy**:\n  - None: 1 point\n  - Grade 1 to 2 (mild confusion, sleep disturbance): 2 points\n  - Grade 3 to 4 (somnolence, stupor, coma): 3 points",
             "metadata": {
-              "source": "child_pugh.md",
               "calculator": "Child-Pugh Score for Cirrhosis Mortality",
-              "section": "Scoring Logic"
+              "section": "Scoring Logic",
+              "source": "child_pugh.md"
             },
             "distance": 0.5734754800796509
           }
@@ -3356,8 +3346,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00022482872009277344,
-          "pipeline_latency": 0.02786421775817871,
+          "generation_latency": 7.390975952148438e-05,
+          "pipeline_latency": 0.0045928955078125,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3417,7 +3407,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.17341728508472443,
+      "similarity": 0.40572696924209595,
       "pipeline_result": {
         "query": "A patient has a sore throat, fever, tonsillar exudates, and tender anterior cervical adenopathy. The clinician wants to score their strep throat probability using the Centor Criteria.",
         "retrieved_chunks": [
@@ -3435,9 +3425,9 @@
             "id": "wells_pe_chunk_4",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Three-Tier Model (Clinical Probability):\n- Score 0 to 1: Low probability.\n- Score 2 to 6: Moderate probability.\n- Score > 6: High probability.",
             "metadata": {
+              "source": "wells_pe.md",
               "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
-              "section": "Interpretation Bands",
-              "source": "wells_pe.md"
+              "section": "Interpretation Bands"
             },
             "distance": 0.5499026775360107
           },
@@ -3462,8 +3452,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002453327178955078,
-          "pipeline_latency": 0.023567914962768555,
+          "generation_latency": 7.295608520507812e-05,
+          "pipeline_latency": 0.0047070980072021484,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3491,7 +3481,7 @@
     {
       "id": "adv_pediatric_wells_pe",
       "category": "adversarial",
-      "weight": "normal",
+      "weight": "high",
       "expected_calculator": "None",
       "recommended_calculator": "None",
       "retrieval_ok": true,
@@ -3523,7 +3513,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.0653269812464714,
+      "similarity": 0.5017907023429871,
       "pipeline_result": {
         "query": "A 5-year-old child presents with sudden onset dyspnea and tachycardia. The clinician wants to calculate the Wells' Criteria for Pulmonary Embolism (PE) score for this patient.",
         "retrieved_chunks": [
@@ -3531,9 +3521,9 @@
             "id": "wells_pe_chunk_3",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Two-Tier Model (Clinical Probability):\n- Score 0 to 4: PE Unlikely. Consider D-dimer testing to rule out PE.\n- Score > 4: PE Likely. Direct to diagnostic imaging (CTPA).",
             "metadata": {
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
+              "section": "Interpretation Bands",
               "source": "wells_pe.md",
-              "section": "Interpretation Bands"
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
             },
             "distance": 0.2489159107208252
           },
@@ -3541,21 +3531,21 @@
             "id": "wells_pe_chunk_1",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Inputs Required\nContent:\n- Clinical signs and symptoms of deep vein thrombosis (DVT)\n- An alternative diagnosis is less likely than PE\n- Heart rate (tachycardia)\n- Immobilization or surgery in the previous 4 weeks\n- Previous DVT or PE\n- Hemoptysis\n- Malignancy (treatment ongoing, within 6 months, or palliative)",
             "metadata": {
-              "section": "Inputs Required",
               "source": "wells_pe.md",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)"
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
+              "section": "Inputs Required"
             },
             "distance": 0.2588697075843811
           },
           {
-            "id": "wells_pe_chunk_4",
-            "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Three-Tier Model (Clinical Probability):\n- Score 0 to 1: Low probability.\n- Score 2 to 6: Moderate probability.\n- Score > 6: High probability.",
+            "id": "perc_rule_chunk_4",
+            "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Interpretation Bands\nContent:\n- **PERC Negative** (meets all 8 criteria): Post-test probability of PE is extremely low (< 1%). No further diagnostic evaluation for PE is required.\n- **PERC Positive** (fails 1 or more criteria): The rule cannot be used to exclude PE. Further testing (typically D-dimer or imaging) is needed.",
             "metadata": {
-              "source": "wells_pe.md",
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
-              "section": "Interpretation Bands"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "section": "Interpretation Bands",
+              "source": "perc_rule.md"
             },
-            "distance": 0.264018177986145
+            "distance": 0.345922589302063
           }
         ],
         "recommendation": {
@@ -3568,8 +3558,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00027108192443847656,
-          "pipeline_latency": 0.029163122177124023,
+          "generation_latency": 7.200241088867188e-05,
+          "pipeline_latency": 0.004624128341674805,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3597,7 +3587,7 @@
     {
       "id": "adv_pediatric_chads",
       "category": "adversarial",
-      "weight": "normal",
+      "weight": "high",
       "expected_calculator": "None",
       "recommended_calculator": "None",
       "retrieval_ok": true,
@@ -3629,7 +3619,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.0653269812464714,
+      "similarity": 0.44476139545440674,
       "pipeline_result": {
         "query": "A 12-year-old child diagnosed with congenital atrial fibrillation is presenting for stroke risk evaluation. The clinician requests a CHA2DS2-VASc score.",
         "retrieved_chunks": [
@@ -3638,8 +3628,8 @@
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Purpose\nContent:\nThe CHA2DS2-VASc score is a clinical prediction rule for estimating the risk of stroke in patients with non-valvular atrial fibrillation (AF). It helps clinicians decide whether treatment is needed with anticoagulant therapy or antiplatelet therapy.",
             "metadata": {
               "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
-              "source": "chads2_vasc.md",
-              "section": "Purpose"
+              "section": "Purpose",
+              "source": "chads2_vasc.md"
             },
             "distance": 0.20811951160430908
           },
@@ -3647,21 +3637,21 @@
             "id": "chads2_vasc_chunk_4",
             "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Interpretation Bands\nContent:\n- 0 points (male) or 1 point (female): Low risk. No antithrombotic therapy (or aspirin) is recommended.\n- 1 point (male): Moderate risk. Oral anticoagulation should be considered.\n- 2 or more points (male or female): High risk. Oral anticoagulation therapy is strongly recommended.",
             "metadata": {
+              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk",
               "section": "Interpretation Bands",
-              "source": "chads2_vasc.md",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "source": "chads2_vasc.md"
             },
             "distance": 0.22679972648620605
           },
           {
-            "id": "chads2_vasc_chunk_1",
-            "text": "Calculator: CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk\nSection: Inputs Required\nContent:\n- Congestive heart failure (or left ventricular dysfunction)\n- Hypertension (or treated hypertension)\n- Age (under 65, 65-74, or 75 and older)\n- Diabetes mellitus\n- Stroke, TIA, or thromboembolism history\n- Vascular disease (prior MI, peripheral artery disease, or aortic plaque)\n- Sex category (female or male)",
+            "id": "has_bled_chunk_0",
+            "text": "Calculator: HAS-BLED Score for Major Bleeding Risk\nSection: Purpose\nContent:\nThe HAS-BLED score estimates the risk of major bleeding in patients with atrial fibrillation who are starting or taking oral anticoagulation. It assists in identifying correctable bleeding risk factors.",
             "metadata": {
-              "section": "Inputs Required",
-              "source": "chads2_vasc.md",
-              "calculator": "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+              "calculator": "HAS-BLED Score for Major Bleeding Risk",
+              "section": "Purpose",
+              "source": "has_bled.md"
             },
-            "distance": 0.2740389108657837
+            "distance": 0.5816459655761719
           }
         ],
         "recommendation": {
@@ -3674,8 +3664,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0003199577331542969,
-          "pipeline_latency": 0.02399301528930664,
+          "generation_latency": 6.699562072753906e-05,
+          "pipeline_latency": 0.004589080810546875,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3735,7 +3725,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.09626201540231705,
+      "similarity": 0.35932299494743347,
       "pipeline_result": {
         "query": "We have a patient with chronic liver disease and cirrhosis. The clinician wants to calculate the MELD score to determine transplant priority, but the chart contains no lab values for bilirubin, creatinine, or INR.",
         "retrieved_chunks": [
@@ -3744,8 +3734,8 @@
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Inputs Required\nContent:\n- Serum Creatinine (mg/dL)\n- Total Bilirubin (mg/dL)\n- International Normalized Ratio (INR)\n- Serum Sodium (mEq/L)\n- Whether the patient has had hemodialysis or renal replacement therapy at least twice in the past week",
             "metadata": {
               "source": "meld.md",
-              "section": "Inputs Required",
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)"
+              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
+              "section": "Inputs Required"
             },
             "distance": 0.21945202350616455
           },
@@ -3753,21 +3743,21 @@
             "id": "meld_chunk_3",
             "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Scoring Logic\nContent:\nNotes on MELD calculation:\n- If bilirubin, creatinine, or INR is < 1.0, use 1.0.\n- If the patient has had dialysis twice or more within the past week, or continuous venovenous hemodiafiltration, creatinine is automatically set to 4.0 mg/dL.\n- Maximum MELD score is capped at 40.\n- Modern MELD (MELD-Na) incorporates serum sodium when MELD > 11.",
             "metadata": {
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
               "section": "Scoring Logic",
+              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
               "source": "meld.md"
             },
             "distance": 0.24316203594207764
           },
           {
-            "id": "meld_chunk_2",
-            "text": "Calculator: MELD Score (Model for End-Stage Liver Disease)\nSection: Scoring Logic\nContent:\nThe traditional MELD score formula is:\nMELD = 3.78 * ln(bilirubin [mg/dL]) + 11.2 * ln(INR) + 9.57 * ln(creatinine [mg/dL]) + 6.43",
+            "id": "child_pugh_chunk_1",
+            "text": "Calculator: Child-Pugh Score for Cirrhosis Mortality\nSection: Inputs Required\nContent:\n- Total Bilirubin (umol/L or mg/dL)\n- Serum Albumin (g/dL or g/L)\n- INR (or prothrombin time prolongation)\n- Ascites (none, mild/medically controlled, or moderate-severe/refractory)\n- Hepatic encephalopathy (none, grade 1-2, or grade 3-4)",
             "metadata": {
-              "calculator": "MELD Score (Model for End-Stage Liver Disease)",
-              "section": "Scoring Logic",
-              "source": "meld.md"
+              "source": "child_pugh.md",
+              "calculator": "Child-Pugh Score for Cirrhosis Mortality",
+              "section": "Inputs Required"
             },
-            "distance": 0.2576930522918701
+            "distance": 0.4193934202194214
           }
         ],
         "recommendation": {
@@ -3780,8 +3770,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00028705596923828125,
-          "pipeline_latency": 0.020164012908935547,
+          "generation_latency": 6.508827209472656e-05,
+          "pipeline_latency": 0.004737138748168945,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3841,7 +3831,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.09626201540231705,
+      "similarity": 0.4855318069458008,
       "pipeline_result": {
         "query": "A patient has suspected pneumonia. The clinician wants to calculate CURB-65, but we only know the patient is 70 years old and has no confusion. No urea level or blood pressure vitals are recorded.",
         "retrieved_chunks": [
@@ -3849,9 +3839,9 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
+              "section": "Inputs Required",
               "source": "curb_65.md",
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "section": "Inputs Required"
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.18884927034378052
           },
@@ -3860,20 +3850,20 @@
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- **C**onfusion: +1 point\n- **U**rea (BUN > 19 mg/dL): +1 point\n- **R**espiratory Rate >= 30 breaths/min: +1 point\n- **B**lood Pressure (Systolic < 90 mmHg or Diastolic <= 60 mmHg): +1 point\n- **65** (Age >= 65 years): +1 point",
             "metadata": {
               "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "section": "Scoring Logic",
-              "source": "curb_65.md"
+              "source": "curb_65.md",
+              "section": "Scoring Logic"
             },
             "distance": 0.25451338291168213
           },
           {
-            "id": "curb_65_chunk_0",
-            "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Purpose\nContent:\nThe CURB-65 score is a clinical prediction rule used to predict mortality in patients with community-acquired pneumonia. It helps clinicians decide whether the patient can be safely treated as an outpatient, needs inpatient admission, or requires intensive care unit (ICU) monitoring.",
+            "id": "qsofa_chunk_1",
+            "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Inputs Required\nContent:\n- Respiratory rate\n- Altered mental status\n- Systolic blood pressure",
             "metadata": {
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
-              "source": "curb_65.md",
-              "section": "Purpose"
+              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
+              "source": "qsofa.md",
+              "section": "Inputs Required"
             },
-            "distance": 0.2560496926307678
+            "distance": 0.5230897665023804
           }
         ],
         "recommendation": {
@@ -3886,8 +3876,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002338886260986328,
-          "pipeline_latency": 0.020982027053833008,
+          "generation_latency": 6.914138793945312e-05,
+          "pipeline_latency": 0.004536151885986328,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -3947,7 +3937,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7490276098251343,
+      "similarity": 0.5227612257003784,
       "pipeline_result": {
         "query": "A 55-year-old male smoker presents with sudden chest pain, dyspnea, and a swollen right calf. Heart rate is 120 bpm, and he has a prior history of pulmonary embolism. What is the pre-test probability of PE?",
         "retrieved_chunks": [
@@ -3955,8 +3945,8 @@
             "id": "wells_pe_chunk_4",
             "text": "Calculator: Wells' Criteria for Pulmonary Embolism (PE)\nSection: Interpretation Bands\nContent:\nUsing the Three-Tier Model (Clinical Probability):\n- Score 0 to 1: Low probability.\n- Score 2 to 6: Moderate probability.\n- Score > 6: High probability.",
             "metadata": {
-              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "source": "wells_pe.md",
+              "calculator": "Wells' Criteria for Pulmonary Embolism (PE)",
               "section": "Interpretation Bands"
             },
             "distance": 0.41827672719955444
@@ -3966,8 +3956,8 @@
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Interpretation Bands\nContent:\n- **PERC Negative** (meets all 8 criteria): Post-test probability of PE is extremely low (< 1%). No further diagnostic evaluation for PE is required.\n- **PERC Positive** (fails 1 or more criteria): The rule cannot be used to exclude PE. Further testing (typically D-dimer or imaging) is needed.",
             "metadata": {
               "source": "perc_rule.md",
-              "section": "Interpretation Bands",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "section": "Interpretation Bands"
             },
             "distance": 0.4184871315956116
           },
@@ -3976,8 +3966,8 @@
             "text": "Calculator: Pulmonary Embolism Rule-out Criteria (PERC Rule)\nSection: Scoring Logic\nContent:\nThe rule is applied to patients who are already stratified as low risk for PE (e.g., clinician gestates < 15% probability of PE).\nA patient must meet ALL 8 criteria to be \"PERC negative\":\n1. Age < 50 years\n2. Heart rate < 100 bpm\n3. SpO2 >= 95% on room air\n4. No prior DVT or PE\n5. No recent trauma or surgery (within 4 weeks)\n6. No hemoptysis\n7. No exogenous estrogen use\n8. No unilateral leg swelling",
             "metadata": {
               "section": "Scoring Logic",
-              "source": "perc_rule.md",
-              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
+              "calculator": "Pulmonary Embolism Rule-out Criteria (PERC Rule)",
+              "source": "perc_rule.md"
             },
             "distance": 0.43093210458755493
           }
@@ -3994,8 +3984,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.00024700164794921875,
-          "pipeline_latency": 0.0201263427734375,
+          "generation_latency": 7.605552673339844e-05,
+          "pipeline_latency": 0.004684925079345703,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -4055,7 +4045,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7720451354980469,
+      "similarity": 0.46008527278900146,
       "pipeline_result": {
         "query": "A 62-year-old male with a history of myocardial infarction presents with crushing retrosternal chest pain radiating to his left arm. ECG shows ST-segment depression in lateral leads, and troponin is highly elevated. What is his MACE risk?",
         "retrieved_chunks": [
@@ -4063,8 +4053,8 @@
             "id": "heart_score_chunk_4",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Interpretation Bands\nContent:\n- Score 0 to 3: Low risk (0.9% - 1.7% risk of MACE). Candidates for early discharge.\n- Score 4 to 6: Intermediate risk (12% - 17% risk of MACE). Observation, serial troponins, and further testing recommended.\n- Score 7 to 10: High risk (50% - 65% risk of MACE). Immediate invasive treatment (cardiology consultation, coronary angiography).",
             "metadata": {
-              "section": "Interpretation Bands",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
+              "section": "Interpretation Bands",
               "source": "heart_score.md"
             },
             "distance": 0.3803969621658325
@@ -4073,21 +4063,21 @@
             "id": "heart_score_chunk_0",
             "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Purpose\nContent:\nThe HEART Score predicts the 6-week risk of a major adverse cardiac event (MACE) in patients presenting to the emergency department with chest pain of suspected cardiac origin. It helps risk-stratify patients and identify those who can be safely discharged.",
             "metadata": {
-              "section": "Purpose",
               "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
+              "section": "Purpose",
               "source": "heart_score.md"
             },
             "distance": 0.39368605613708496
           },
           {
-            "id": "heart_score_chunk_1",
-            "text": "Calculator: HEART Score for Major Adverse Cardiac Events (MACE)\nSection: Inputs Required\nContent:\n- History (highly suspicious, moderately suspicious, or slightly/non-suspicious chest pain description)\n- ECG (significant ST-depression, non-specific repolarization disturbance, or normal)\n- Age (< 45, 45-64, or >= 65 years)\n- Risk factors (presence of hypertension, hypercholesterolemia, diabetes, smoking, family history of CAD, obesity)\n- Troponin (elevated 1-2x normal, > 2x normal, or normal)",
+            "id": "sirs_chunk_2",
+            "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "source": "heart_score.md",
-              "calculator": "HEART Score for Major Adverse Cardiac Events (MACE)",
-              "section": "Inputs Required"
+              "section": "Scoring Logic",
+              "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
+              "source": "sirs.md"
             },
-            "distance": 0.3984717130661011
+            "distance": 0.6953862905502319
           }
         ],
         "recommendation": {
@@ -4096,16 +4086,15 @@
           "confidence": 0.8,
           "citations": [
             "heart_score_chunk_4",
-            "heart_score_chunk_0",
-            "heart_score_chunk_1"
+            "heart_score_chunk_0"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002582073211669922,
-          "pipeline_latency": 0.01671314239501953,
+          "generation_latency": 8.20159912109375e-05,
+          "pipeline_latency": 0.005039691925048828,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -4165,7 +4154,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.7210137248039246,
+      "similarity": 0.3864084780216217,
       "pipeline_result": {
         "query": "An unconscious 25-year-old trauma victim from a motorcycle accident does not open eyes to any stimulus, has no verbal response, and exhibits decerebrate (extension) posturing when painful pressure is applied.",
         "retrieved_chunks": [
@@ -4173,8 +4162,8 @@
             "id": "gcs_chunk_2",
             "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Scoring Logic\nContent:\nThe GCS is calculated by adding the scores of the three behaviors: GCS = E + V + M.\n- **Eye Opening Response (E)**:\n  - Spontaneous (eyes open before stimulus): 4 points\n  - To sound (eyes open to spoken or shouted request): 3 points\n  - To pressure (eyes open to stimulus applied to finger nail bed): 2 points\n  - None (no eye opening at any time): 1 point\n- **Verbal Response (V)**:\n  - Oriented (correctly gives name, place, and date): 5 points\n  - Confused (answers questions but is disoriented): 4 points\n  - Inappropriate words (random, shouting, or expletives): 3 points\n  - Incomprehensible sounds (moaning or groaning, no words): 2 points\n  - None (no verbal response): 1 point\n- **Motor Response (M)**:\n  - Obeys commands (moves limb as requested): 6 points\n  - Localizing (moves hand toward pressure stimulus on head/neck): 5 points\n  - Normal flexion / Withdrawal (pulls limb away from pressure stimulus): 4 points\n  - Abnormal flexion / Decorticate (flexion at elbow, internal rotation, adduction): 3 points\n  - Extension / Decerebrate (extension at elbow, adduction, internal rotation): 2 points\n  - None (no motor response): 1 point",
             "metadata": {
-              "calculator": "Glasgow Coma Scale (GCS)",
               "section": "Scoring Logic",
+              "calculator": "Glasgow Coma Scale (GCS)",
               "source": "gcs.md"
             },
             "distance": 0.5994490385055542
@@ -4190,14 +4179,14 @@
             "distance": 0.641798734664917
           },
           {
-            "id": "gcs_chunk_4",
-            "text": "Calculator: Glasgow Coma Scale (GCS)\nSection: Interpretation Bands\nContent:\nClassification of head injury severity:\n- Score 13 to 15: Mild brain injury / concussion.\n- Score 9 to 12: Moderate brain injury.\n- Score 3 to 8: Severe brain injury / Coma. A score of 8 or less typically indicates the need for intubation.",
+            "id": "pecarn_head_injury_chunk_1",
+            "text": "Calculator: PECARN Pediatric Head Injury Rule\nSection: Inputs Required\nContent:\n- Age group (under 2 years vs 2 years and older)\n- Glasgow Coma Scale (GCS) score\n- Signs of basilar skull fracture\n- Altered mental status\n- History of loss of consciousness (LOC)\n- History of vomiting\n- Severe mechanism of injury (e.g. MVC with ejection, fall >3 feet for <2 years, fall >5 feet for >=2 years)\n- Severe headache (for >=2 years)\n- Acted normally per parent (for <2 years)\n- Occipital or parietal or temporal scalp hematoma (for <2 years)",
             "metadata": {
-              "calculator": "Glasgow Coma Scale (GCS)",
-              "source": "gcs.md",
-              "section": "Interpretation Bands"
+              "source": "pecarn_head_injury.md",
+              "section": "Inputs Required",
+              "calculator": "PECARN Pediatric Head Injury Rule"
             },
-            "distance": 0.6757289171218872
+            "distance": 0.7062140107154846
           }
         ],
         "recommendation": {
@@ -4206,16 +4195,15 @@
           "confidence": 0.8,
           "citations": [
             "gcs_chunk_2",
-            "gcs_chunk_1",
-            "gcs_chunk_4"
+            "gcs_chunk_1"
           ]
         },
         "citations_valid": true,
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002942085266113281,
-          "pipeline_latency": 0.01630711555480957,
+          "generation_latency": 8.0108642578125e-05,
+          "pipeline_latency": 0.00481724739074707,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -4275,7 +4263,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6324998736381531,
+      "similarity": 0.6510891914367676,
       "pipeline_result": {
         "query": "A 78-year-old nursing home resident presents with suspected urosepsis. She is stuporous, breathing at 28 breaths per minute, and has a blood pressure of 82/45 mmHg.",
         "retrieved_chunks": [
@@ -4293,8 +4281,8 @@
             "id": "qsofa_chunk_1",
             "text": "Calculator: Quick Sequential Organ Failure Assessment (qSOFA)\nSection: Inputs Required\nContent:\n- Respiratory rate\n- Altered mental status\n- Systolic blood pressure",
             "metadata": {
-              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
               "source": "qsofa.md",
+              "calculator": "Quick Sequential Organ Failure Assessment (qSOFA)",
               "section": "Inputs Required"
             },
             "distance": 0.6706932783126831
@@ -4322,8 +4310,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002067089080810547,
-          "pipeline_latency": 0.017915964126586914,
+          "generation_latency": 7.510185241699219e-05,
+          "pipeline_latency": 0.004732847213745117,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -4383,7 +4371,7 @@
       "overall_pass": true,
       "safety_gate_fail": false,
       "triage": "PASS",
-      "similarity": 0.6616829037666321,
+      "similarity": 0.4865540564060211,
       "pipeline_result": {
         "query": "An 85-year-old female with severe cough and fever is confused on exam. Her respiratory rate is 35 breaths per minute, urea is 45 mg/dL, and blood pressure is 80/50 mmHg.",
         "retrieved_chunks": [
@@ -4391,9 +4379,9 @@
             "id": "curb_65_chunk_1",
             "text": "Calculator: CURB-65 Severity Score for Community-Acquired Pneumonia\nSection: Inputs Required\nContent:\n- Confusion (new mental confusion or disorientation)\n- Urea (blood urea nitrogen > 19 mg/dL or > 7 mmol/L)\n- Respiratory rate (>= 30 breaths per minute)\n- Blood pressure (systolic < 90 mmHg or diastolic <= 60 mmHg)\n- Age >= 65 years",
             "metadata": {
-              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia",
               "section": "Inputs Required",
-              "source": "curb_65.md"
+              "source": "curb_65.md",
+              "calculator": "CURB-65 Severity Score for Community-Acquired Pneumonia"
             },
             "distance": 0.47613972425460815
           },
@@ -4401,9 +4389,9 @@
             "id": "sirs_chunk_2",
             "text": "Calculator: Systemic Inflammatory Response Syndrome (SIRS) Criteria\nSection: Scoring Logic\nContent:\nOne point is assigned for each of the following criteria met:\n- Temperature < 36\u00b0C (96.8\u00b0F) or > 38\u00b0C (100.4\u00b0F): +1 point\n- Heart rate > 90 beats per minute: +1 point\n- Respiratory rate > 20 breaths per minute OR PaCO2 < 32 mmHg: +1 point\n- WBC count < 4,000/uL, > 12,000/uL, or > 10% immature bands: +1 point",
             "metadata": {
-              "source": "sirs.md",
+              "section": "Scoring Logic",
               "calculator": "Systemic Inflammatory Response Syndrome (SIRS) Criteria",
-              "section": "Scoring Logic"
+              "source": "sirs.md"
             },
             "distance": 0.5004331469535828
           },
@@ -4431,8 +4419,8 @@
         "invalid_citations": [],
         "metrics": {
           "retrieval_count": 3,
-          "generation_latency": 0.0002009868621826172,
-          "pipeline_latency": 0.013215780258178711,
+          "generation_latency": 7.390975952148438e-05,
+          "pipeline_latency": 0.004884958267211914,
           "input_tokens": 250,
           "output_tokens": 150
         }
@@ -4467,12 +4455,12 @@
     "total": 41,
     "hard_gate_failures": 0,
     "failure_counts": {
-      "RETRIEVAL": 1,
+      "RETRIEVAL": 0,
       "GENERATION": 0,
       "JUDGE": 0,
       "INTEGRATION": 0,
       "DATA": 0,
-      "PASS": 40
+      "PASS": 41
     },
     "faithfulness_pass_rate": 100.0,
     "clinical_relevance_pass_rate": 100.0,
