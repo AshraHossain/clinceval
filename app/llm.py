@@ -81,10 +81,6 @@ class LLMClient:
             if is_pediatric and _contains("head trauma", "head injury", "minor head trauma", "fall", "vomiting"):
                 calculator = "PECARN Pediatric Head Injury Rule"
                 rationale = "The patient is a pediatric head injury case; we use PECARN to assess the need for imaging in a child."
-            elif is_pediatric:
-                # Safety guard: every non-PECARN calculator in the corpus is adult-only
-                calculator = "None"
-                rationale = "The patient is pediatric; the calculators matching this presentation are validated only in adults, so no recommendation can be made safely."
             elif is_missing_data:
                 calculator = "None"
                 rationale = "The clinical criteria are not met: required calculator inputs or vital values are missing."

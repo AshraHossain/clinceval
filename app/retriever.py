@@ -145,7 +145,7 @@ class Retriever:
         # ponytail: over-fetch then cap per doc — cheap diversity re-rank, MMR if this stops being enough
         results = self.collection.query(
             query_texts=[query],
-            n_results=max(k * 3, k)
+            n_results=k
         )
 
         retrieved_chunks = []
