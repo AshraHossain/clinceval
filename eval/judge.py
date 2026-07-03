@@ -158,7 +158,7 @@ Retrieved Chunks:
         }
         
         # Check for citation invalidity
-        if citations_valid:
+        if not citations_valid:
             scores["faithfulness"] = 2
             justifications["faithfulness"] = "Faithfulness is low because the assistant cited chunk IDs that were not retrieved."
             
