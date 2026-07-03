@@ -1,0 +1,10 @@
+anthropic
+chromadb
+sentence-transformers
+pytest
+pandas
+pyyaml
+fastapi
+uvicorn
+sqlalchemy
+# SQLite via stdlib — deliberate demo-scope choice, no psycopg2 needed

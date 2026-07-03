@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# local data
+*.sqlite3
+*.db
+chroma_store/
+eval/reports/*.md
+!eval/reports/.gitkeep
+
+# node / playwright
+node_modules/
+tests/e2e/test-results/
+tests/e2e/playwright-report/
+
+# env
+.env
+.DS_Store
