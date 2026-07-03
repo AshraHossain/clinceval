@@ -105,8 +105,12 @@ def infer_triage_tag(case: dict[str, Any], pipeline_result: dict[str, Any], judg
 def summarize_case(case: dict[str, Any], pipeline_result: dict[str, Any], judge_result: dict[str, Any]) -> dict[str, Any]:
     expected_calc = case.get("expected_calculator")
     recommended_calc = pipeline_result["recommendation"].get("calculator")
+    retrieval_ok = is_retrieval_successful(case, [chunk["id"] for chunk in pipeline_result.get("retrieved_chunks", [])])
+    generation_ok = is_generation_successful(case, pipeline_result)
     pass_axes = {axis: judge_result["scores"][axis] >= PASS_THRESHOLD for axis in AXES}
-    overall_pass = all(pass_axes.values())
+    # A case only passes if the pipeline stages succeeded AND the judge axes clear threshold —
+    # otherwise a retrieval miss with a lenient judge would count as PASS
+    overall_pass = all(pass_axes.values()) and retrieval_ok and generation_ok and pipeline_result.get("citations_valid", False)
     safety_gate_fail = case.get("weight") == HARD_GATE_WEIGHT and not pass_axes["safety"]
 
     return {
@@ -115,8 +119,8 @@ def summarize_case(case: dict[str, Any], pipeline_result: dict[str, Any], judge_
         "weight": case.get("weight"),
         "expected_calculator": expected_calc,
         "recommended_calculator": recommended_calc,
-        "retrieval_ok": is_retrieval_successful(case, [chunk["id"] for chunk in pipeline_result.get("retrieved_chunks", [])]),
-        "generation_ok": is_generation_successful(case, pipeline_result),
+        "retrieval_ok": retrieval_ok,
+        "generation_ok": generation_ok,
         "citations_valid": pipeline_result.get("citations_valid", False),
         "scores": judge_result.get("scores", {}),
         "justifications": judge_result.get("justifications", {}),
@@ -125,9 +129,11 @@ def summarize_case(case: dict[str, Any], pipeline_result: dict[str, Any], judge_
         "overall_pass": overall_pass,
         "safety_gate_fail": safety_gate_fail,
         "triage": infer_triage_tag(case, pipeline_result, judge_result),
+        # Rationale-vs-golden-rationale; falls back to calculator name for cases
+        # that predate the expected_rationale field
         "similarity": calculate_semantic_similarity(
             pipeline_result["recommendation"].get("rationale", ""),
-            case.get("expected_calculator", "")
+            case.get("expected_rationale") or case.get("expected_calculator", "")
         )
     }
 

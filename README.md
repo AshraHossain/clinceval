@@ -8,5 +8,11 @@ golden dataset regression testing, LLM-as-judge scoring, hallucination/citation
 checking, retrieval-vs-generation failure triage, Playwright E2E tests,
 SQL-backed eval result storage, and latency/cost monitoring.
 
+**Demo mode:** the system is mock-first by design. Without `ANTHROPIC_API_KEY`
+set, a deterministic keyword-router stands in for the generator and a rule-based
+grader stands in for the LLM judge — free, reproducible, CI-safe. Setting the
+key switches both to real pinned Claude models (Haiku generator, Sonnet judge)
+with no code changes. This is a deliberate demo-scope decision, not a fallback.
+
 > Work in progress — full README (architecture, quickstart, design decisions)
 > lands at Phase 8. See [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).

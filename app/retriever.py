@@ -134,25 +134,37 @@ class Retriever:
             )
             print(f"Indexed {len(ids)} chunks from {len(files)} files.")
 
+    MAX_CHUNKS_PER_DOC = 2
+
     def retrieve(self, query: str, k: int = 3) -> list[dict]:
         """
-        Retrieves the top k chunks matching the query.
-        Returns a list of dicts containing: id, document, metadata, and distance.
+        Retrieves the top k chunks matching the query, capped at
+        MAX_CHUNKS_PER_DOC chunks per source document so one calculator's
+        doc cannot crowd every competing calculator out of the context window.
         """
+        # ponytail: over-fetch then cap per doc — cheap diversity re-rank, MMR if this stops being enough
         results = self.collection.query(
             query_texts=[query],
-            n_results=k
+            n_results=max(k * 3, k)
         )
-        
+
         retrieved_chunks = []
+        per_doc_counts = {}
         if results and results["ids"] and results["ids"][0]:
             for idx in range(len(results["ids"][0])):
+                chunk_id = results["ids"][0][idx]
+                doc_id = chunk_id.rsplit("_chunk_", 1)[0]
+                if per_doc_counts.get(doc_id, 0) >= self.MAX_CHUNKS_PER_DOC:
+                    continue
+                per_doc_counts[doc_id] = per_doc_counts.get(doc_id, 0) + 1
                 retrieved_chunks.append({
-                    "id": results["ids"][0][idx],
+                    "id": chunk_id,
                     "text": results["documents"][0][idx],
                     "metadata": results["metadatas"][0][idx],
                     "distance": results["distances"][0][idx] if "distances" in results and results["distances"] else None
                 })
+                if len(retrieved_chunks) >= k:
+                    break
         return retrieved_chunks
 
 # Global helper function for ease of use
