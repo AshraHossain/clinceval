@@ -89,8 +89,6 @@ def infer_triage_tag(case: dict[str, Any], pipeline_result: dict[str, Any], judg
     retrieved_ids = [chunk["id"] for chunk in pipeline_result.get("retrieved_chunks", [])]
     retrieval_ok = is_retrieval_successful(case, retrieved_ids)
     generation_ok = is_generation_successful(case, pipeline_result)
-    expected_calc = normalize_calculator_name(case.get("expected_calculator"))
-    recommended_calc = normalize_calculator_name(pipeline_result["recommendation"].get("calculator"))
 
     if not retrieval_ok:
         return "RETRIEVAL"

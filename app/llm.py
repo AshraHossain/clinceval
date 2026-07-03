@@ -35,9 +35,6 @@ class LLMClient:
             def _contains(*terms):
                 return any(term in query_text for term in terms)
 
-            def _contains_all(*terms):
-                return all(term in query_text for term in terms)
-
             calculator = "None"
             rationale = "No matching calculator found in the provided context for the given symptoms."
             confidence = 0.8
@@ -47,7 +44,8 @@ class LLMClient:
             # Parse age to check if it's pediatric (< 18 years old)
             is_pediatric = False
             age_matches = re.findall(r"\b(\d+)\s*-?\s*(?:year|yr|years|yrs)\b", query_text)
-            month_matches = re.findall(r"\b(\d+)\s*-?\s*(?:month|months|mo)\b", query_text)
+            # Require "-old" so durations like "3-month mortality risk" don't read as an infant age
+            month_matches = re.findall(r"\b(\d+)\s*-?\s*(?:month|months|mo)s?\s*-?\s*old\b", query_text)
             if month_matches:
                 is_pediatric = True
             for age_str in age_matches:
@@ -65,12 +63,14 @@ class LLMClient:
             is_dvt = _contains("dvt", "deep vein thrombosis", "calf swelling", "leg swelling", "calf pain", "pitting edema", "superficial collateral")
             is_pe = _contains("pulmonary embolism", "wells pe", "pe ", "pleuritic chest pain", "shortness of breath", "dyspnea")
             is_pneumonia = _contains("pneumonia", "cough", "infiltrate", "chest x-ray", "community-acquired pneumonia")
-            is_liver_disease = _contains("cirrhosis", "liver disease", "child-pugh", "end-stage liver disease", "ascites")
+            is_liver_disease = _contains("cirrhosis", "liver disease", "child-pugh", "end-stage liver disease", "ascites", "meld")
             is_anticoagulant = _contains("anticoagulant", "warfarin", "blood thinner", "on anticoagulants", "dabigatran", "rivaroxaban", "apixaban")
             is_bleeding_risk = _contains("bleeding", "has-bled", "major bleeding")
-            is_meld = _contains("meld", "creatinine", "bilirubin", "inr", "sodium")
-            is_curb = _contains("curb", "curb-65", "curb 65", "pneumonia")
             is_heart = _contains("heart score", "mace", "chest pain", "cardiac ischemia")
+            # Disambiguators for overlapping presentations
+            has_urea = _contains("urea", "bun", "curb")                       # CURB-65 needs urea/BUN; qSOFA does not
+            is_child_pugh = _contains("albumin", "ascites", "encephalopathy", "child-pugh")  # CP inputs absent from MELD
+            is_meld = _contains("meld", "creatinine", "sodium", "dialysis")   # MELD inputs absent from Child-Pugh
 
             # Sepsis / qSOFA detection matches before CURB-65 for infection presentations with vital thresholds.
             has_hypotension = bool(re.search(r"\b(?:sbp|systolic blood pressure)[^\d]*(?:[0-9]{2,3})\b", query_text) and any(str(v) in query_text for v in [100, 99, 98, 95, 90, 85, 82, 80]))
@@ -81,10 +81,14 @@ class LLMClient:
             if is_pediatric and _contains("head trauma", "head injury", "minor head trauma", "fall", "vomiting"):
                 calculator = "PECARN Pediatric Head Injury Rule"
                 rationale = "The patient is a pediatric head injury case; we use PECARN to assess the need for imaging in a child."
+            elif is_pediatric:
+                # Safety guard: every non-PECARN calculator in the corpus is adult-only
+                calculator = "None"
+                rationale = "The patient is pediatric; the calculators matching this presentation are validated only in adults, so no recommendation can be made safely."
             elif is_missing_data:
                 calculator = "None"
                 rationale = "The clinical criteria are not met: required calculator inputs or vital values are missing."
-            elif is_afib and is_anticoagulant and is_bleeding_risk:
+            elif is_anticoagulant and (is_bleeding_risk or is_afib or _contains("liver function", "labile inr", "sbp")):
                 calculator = "HAS-BLED Score for Major Bleeding Risk"
                 rationale = "The patient is on anticoagulation and we need to estimate major bleeding risk using HAS-BLED."
             elif is_afib:
@@ -100,30 +104,32 @@ class LLMClient:
             elif is_dvt:
                 calculator = "Wells' Criteria for Deep Vein Thrombosis (DVT)"
                 rationale = "The patient has findings consistent with suspected DVT, including calf swelling, tenderness, and edema."
-            elif is_head_injury and is_pediatric:
-                calculator = "PECARN Pediatric Head Injury Rule"
-                rationale = "The patient is a child with head trauma; PECARN helps determine whether imaging is required."
-            elif is_gcs := (_contains("eye opening", "verbal response", "motor response", "decerebrate", "decorticate", "incomprehensible", "painful stimulus", "withdrawal")):
+            elif _contains("eye opening", "verbal response", "motor response", "decerebrate", "decorticate", "incomprehensible", "painful stimulus", "withdrawal"):
                 calculator = "Glasgow Coma Scale (GCS)"
                 rationale = "The patient has altered consciousness and neurologic exam findings that are best assessed with the Glasgow Coma Scale."
+            elif is_pneumonia and has_urea:
+                # CURB-65 requires urea/BUN; pneumonia without urea falls through to qSOFA
+                calculator = "CURB-65 Severity Score for Community-Acquired Pneumonia"
+                rationale = "The patient has pneumonia with urea and vital sign data; CURB-65 estimates severity and admission need."
             elif has_sepsis_threshold and is_infection:
                 calculator = "Quick Sequential Organ Failure Assessment (qSOFA)"
                 rationale = "The patient has suspected infection with sepsis risk features; qSOFA is appropriate for rapid bedside assessment."
-            elif _contains("sirs", "systemic inflammatory response", "temperature", "heart rate", "respiratory rate", "white blood cell"):
+            elif _contains("sirs", "systemic inflammatory response") or (_contains("temperature") and _contains("heart rate")):
                 calculator = "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
                 rationale = "The patient has systemic inflammatory signs; SIRS criteria assess whether the patient meets systemic inflammatory response thresholds."
-            elif is_meld:
-                calculator = "MELD Score (Model for End-Stage Liver Disease)"
-                rationale = "The patient has liver disease and laboratory values relevant to MELD; we use MELD to estimate mortality risk."
             elif is_liver_disease:
-                calculator = "Child-Pugh Score for Cirrhosis Mortality"
-                rationale = "The patient has cirrhosis; Child-Pugh is used to assess prognosis in chronic liver disease."
+                if is_child_pugh:
+                    calculator = "Child-Pugh Score for Cirrhosis Mortality"
+                    rationale = "The patient has cirrhosis with albumin, ascites, or encephalopathy findings; Child-Pugh is used to assess prognosis in chronic liver disease."
+                elif is_meld:
+                    calculator = "MELD Score (Model for End-Stage Liver Disease)"
+                    rationale = "The patient has liver disease and laboratory values relevant to MELD; we use MELD to estimate mortality risk."
+                else:
+                    calculator = "Child-Pugh Score for Cirrhosis Mortality"
+                    rationale = "The patient has cirrhosis; Child-Pugh is used to assess prognosis in chronic liver disease."
             elif is_heart:
                 calculator = "HEART Score for Major Adverse Cardiac Events (MACE)"
                 rationale = "The patient has chest pain concerning for cardiac ischemia; HEART Score helps risk stratify near-term MACE."
-            elif is_curb:
-                calculator = "CURB-65 Severity Score for Community-Acquired Pneumonia"
-                rationale = "The patient has pneumonia and risk factors; CURB-65 estimates severity and admission need."
             elif _contains("pecarn"):
                 calculator = "PECARN Pediatric Head Injury Rule"
                 rationale = "The patient likely has pediatric head trauma, and PECARN is the pediatric head injury rule."
