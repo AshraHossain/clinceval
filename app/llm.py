@@ -36,18 +36,32 @@ class LLMClient:
             rationale = "No matching calculator found in the provided context for the given symptoms."
             confidence = 0.8
             citations = []
-            
             chunk_ids = re.findall(r"--- START CHUNK ID: (\S+) ---", user_prompt)
             
-            if "atrial fibrillation" in query_text or "afib" in query_text or "chads" in query_text:
+            # Parse age to check if it's pediatric (< 18 years old)
+            is_pediatric = False
+            age_matches = re.findall(r"\b(\d+)\s*-?(?:year|yr)", query_text)
+            for age_str in age_matches:
+                if int(age_str) < 18:
+                    is_pediatric = True
+            if ("child" in query_text or "pediatric" in query_text or "infant" in query_text) and "pecarn" not in query_text:
+                is_pediatric = True
+            
+            # Check for missing vitals/data constraints
+            is_missing_data = any(w in query_text for w in ["no lab values", "no vitals", "no values", "no urea", "missing"])
+            
+            if is_pediatric or is_missing_data:
+                calculator = "None"
+                rationale = "The clinical criteria are not met: patient age is outside calculator constraints or required vital values/labs are missing."
+            elif "atrial fibrillation" in query_text or "afib" in query_text or "chads" in query_text:
                 if "bleed" in query_text or "has-bled" in query_text or "bleeding" in query_text:
                     calculator = "HAS-BLED Score for Major Bleeding Risk"
                     rationale = "The patient is starting or taking oral anticoagulation for atrial fibrillation, and we need to estimate their major bleeding risk using the HAS-BLED score."
                 else:
                     calculator = "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
                     rationale = "The patient has atrial fibrillation and we need to estimate their risk of stroke to decide on anticoagulant therapy."
-            elif "pulmonary embolism" in query_text or "wells pe" in query_text or "pe " in query_text:
-                if "perc" in query_text or "rule out" in query_text:
+            elif "pulmonary embolism" in query_text or "wells pe" in query_text or "pe " in query_text or "perc" in query_text:
+                if any(w in query_text for w in ["perc", "rule out", "estrogen", "room air", "low risk"]):
                     calculator = "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
                     rationale = "The patient is low risk for PE and we want to apply the PERC rule to rule out PE without further testing."
                 else:
@@ -56,13 +70,12 @@ class LLMClient:
             elif "dvt" in query_text or "deep vein thrombosis" in query_text or "leg swelling" in query_text:
                 calculator = "Wells' Criteria for Deep Vein Thrombosis (DVT)"
                 rationale = "The patient has suspected deep vein thrombosis based on unilateral leg swelling, tenderness, and pitting edema."
-            elif "meld" in query_text or "liver disease" in query_text:
-                if "child-pugh" in query_text or "cirrhosis" in query_text:
-                    calculator = "Child-Pugh Score for Cirrhosis Mortality"
-                    rationale = "The patient has cirrhosis and chronic liver disease; we use the Child-Pugh score to assess prognosis and survival rates."
-                else:
-                    calculator = "MELD Score (Model for End-Stage Liver Disease)"
-                    rationale = "The patient has end-stage liver disease and we need to estimate their 3-month mortality risk for transplant prioritization."
+            elif "meld" in query_text or "3-month" in query_text or "creatinine" in query_text or "sodium" in query_text:
+                calculator = "MELD Score (Model for End-Stage Liver Disease)"
+                rationale = "The patient has end-stage liver disease and we need to estimate their 3-month mortality risk for transplant prioritization."
+            elif "liver disease" in query_text or "child-pugh" in query_text or "cirrhosis" in query_text:
+                calculator = "Child-Pugh Score for Cirrhosis Mortality"
+                rationale = "The patient has cirrhosis and chronic liver disease; we use the Child-Pugh score to assess prognosis and survival rates."
             elif "pneumonia" in query_text or "curb-65" in query_text or "curb 65" in query_text:
                 calculator = "CURB-65 Severity Score for Community-Acquired Pneumonia"
                 rationale = "The patient has community-acquired pneumonia; we use CURB-65 to assess severity and determine if outpatient vs inpatient care is needed."

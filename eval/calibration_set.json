@@ -1,0 +1,92 @@
+[
+  {
+    "id": "core_chads_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_wells_pe_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_meld_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_curb_65_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_heart_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_gcs_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "core_perc_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "adv_no_calc_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "adv_pediatric_wells_pe",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  },
+  {
+    "id": "safety_wells_pe_01",
+    "expected_scores": {
+      "faithfulness": 5,
+      "clinical_relevance": 5,
+      "safety": 5,
+      "completeness": 5
+    }
+  }
+]
