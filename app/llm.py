@@ -32,6 +32,12 @@ class LLMClient:
             query_match = re.search(r"Patient Query:\s*(.*?)\s*(?:Retrieved Context:|$)", user_prompt, re.DOTALL | re.IGNORECASE)
             query_text = query_match.group(1).lower() if query_match else user_prompt.lower()
             
+            def _contains(*terms):
+                return any(term in query_text for term in terms)
+
+            def _contains_all(*terms):
+                return all(term in query_text for term in terms)
+
             calculator = "None"
             rationale = "No matching calculator found in the provided context for the given symptoms."
             confidence = 0.8
@@ -40,60 +46,90 @@ class LLMClient:
             
             # Parse age to check if it's pediatric (< 18 years old)
             is_pediatric = False
-            age_matches = re.findall(r"\b(\d+)\s*-?(?:year|yr)", query_text)
+            age_matches = re.findall(r"\b(\d+)\s*-?\s*(?:year|yr|years|yrs)\b", query_text)
+            month_matches = re.findall(r"\b(\d+)\s*-?\s*(?:month|months|mo)\b", query_text)
+            if month_matches:
+                is_pediatric = True
             for age_str in age_matches:
                 if int(age_str) < 18:
                     is_pediatric = True
-            if ("child" in query_text or "pediatric" in query_text or "infant" in query_text) and "pecarn" not in query_text:
+            if _contains("child", "pediatric", "infant") and not _contains("pecarn"):
                 is_pediatric = True
             
             # Check for missing vitals/data constraints
-            is_missing_data = any(w in query_text for w in ["no lab values", "no vitals", "no values", "no urea", "missing"])
+            is_missing_data = any(w in query_text for w in ["no lab values", "no vitals", "no values", "no urea", "missing", "unknown", "not recorded"])
             
-            if is_pediatric or is_missing_data:
+            is_infection = _contains("sepsis", "infection", "uremia", "pneumonia", "urosepsis", "systemic inflammatory")
+            is_head_injury = _contains("head injury", "head trauma", "concussion", "scalp hematoma", "gcs", "glasgow")
+            is_afib = _contains("atrial fibrillation", "afib", "chads")
+            is_dvt = _contains("dvt", "deep vein thrombosis", "calf swelling", "leg swelling", "calf pain", "pitting edema", "superficial collateral")
+            is_pe = _contains("pulmonary embolism", "wells pe", "pe ", "pleuritic chest pain", "shortness of breath", "dyspnea")
+            is_pneumonia = _contains("pneumonia", "cough", "infiltrate", "chest x-ray", "community-acquired pneumonia")
+            is_liver_disease = _contains("cirrhosis", "liver disease", "child-pugh", "end-stage liver disease", "ascites")
+            is_anticoagulant = _contains("anticoagulant", "warfarin", "blood thinner", "on anticoagulants", "dabigatran", "rivaroxaban", "apixaban")
+            is_bleeding_risk = _contains("bleeding", "has-bled", "major bleeding")
+            is_meld = _contains("meld", "creatinine", "bilirubin", "inr", "sodium")
+            is_curb = _contains("curb", "curb-65", "curb 65", "pneumonia")
+            is_heart = _contains("heart score", "mace", "chest pain", "cardiac ischemia")
+
+            # Sepsis / qSOFA detection matches before CURB-65 for infection presentations with vital thresholds.
+            has_hypotension = bool(re.search(r"\b(?:sbp|systolic blood pressure)[^\d]*(?:[0-9]{2,3})\b", query_text) and any(str(v) in query_text for v in [100, 99, 98, 95, 90, 85, 82, 80]))
+            has_rr = bool(re.search(r"\brespiratory rate\s*[:\-]?\s*([0-9]{2,3})\b", query_text))
+            has_altered_mental = _contains("disoriented", "stuporous", "confused", "not alert", "altered mental", "incomprehensible")
+            has_sepsis_threshold = has_rr or has_hypotension or has_altered_mental
+            
+            if is_pediatric and _contains("head trauma", "head injury", "minor head trauma", "fall", "vomiting"):
+                calculator = "PECARN Pediatric Head Injury Rule"
+                rationale = "The patient is a pediatric head injury case; we use PECARN to assess the need for imaging in a child."
+            elif is_missing_data:
                 calculator = "None"
-                rationale = "The clinical criteria are not met: patient age is outside calculator constraints or required vital values/labs are missing."
-            elif "atrial fibrillation" in query_text or "afib" in query_text or "chads" in query_text:
-                if "bleed" in query_text or "has-bled" in query_text or "bleeding" in query_text:
-                    calculator = "HAS-BLED Score for Major Bleeding Risk"
-                    rationale = "The patient is starting or taking oral anticoagulation for atrial fibrillation, and we need to estimate their major bleeding risk using the HAS-BLED score."
-                else:
-                    calculator = "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
-                    rationale = "The patient has atrial fibrillation and we need to estimate their risk of stroke to decide on anticoagulant therapy."
-            elif "pulmonary embolism" in query_text or "wells pe" in query_text or "pe " in query_text or "perc" in query_text:
-                if any(w in query_text for w in ["perc", "rule out", "estrogen", "room air", "low risk"]):
+                rationale = "The clinical criteria are not met: required calculator inputs or vital values are missing."
+            elif is_afib and is_anticoagulant and is_bleeding_risk:
+                calculator = "HAS-BLED Score for Major Bleeding Risk"
+                rationale = "The patient is on anticoagulation and we need to estimate major bleeding risk using HAS-BLED."
+            elif is_afib:
+                calculator = "CHA2DS2-VASc Score for Atrial Fibrillation Stroke Risk"
+                rationale = "The patient has atrial fibrillation and we need to estimate stroke risk for anticoagulant decision-making."
+            elif is_pe:
+                if _contains("perc", "rule out", "low risk", "room air"):
                     calculator = "Pulmonary Embolism Rule-out Criteria (PERC Rule)"
-                    rationale = "The patient is low risk for PE and we want to apply the PERC rule to rule out PE without further testing."
+                    rationale = "The patient is low risk for PE and we want to apply the PERC rule to avoid unnecessary imaging."
                 else:
                     calculator = "Wells' Criteria for Pulmonary Embolism (PE)"
-                    rationale = "The patient has symptoms suggestive of pulmonary embolism, so we use Wells' Criteria for PE to estimate pre-test probability."
-            elif "dvt" in query_text or "deep vein thrombosis" in query_text or "leg swelling" in query_text:
+                    rationale = "The patient has concern for pulmonary embolism, so Wells' Criteria is appropriate to estimate pre-test probability."
+            elif is_dvt:
                 calculator = "Wells' Criteria for Deep Vein Thrombosis (DVT)"
-                rationale = "The patient has suspected deep vein thrombosis based on unilateral leg swelling, tenderness, and pitting edema."
-            elif "meld" in query_text or "3-month" in query_text or "creatinine" in query_text or "sodium" in query_text:
-                calculator = "MELD Score (Model for End-Stage Liver Disease)"
-                rationale = "The patient has end-stage liver disease and we need to estimate their 3-month mortality risk for transplant prioritization."
-            elif "liver disease" in query_text or "child-pugh" in query_text or "cirrhosis" in query_text:
-                calculator = "Child-Pugh Score for Cirrhosis Mortality"
-                rationale = "The patient has cirrhosis and chronic liver disease; we use the Child-Pugh score to assess prognosis and survival rates."
-            elif "pneumonia" in query_text or "curb-65" in query_text or "curb 65" in query_text:
-                calculator = "CURB-65 Severity Score for Community-Acquired Pneumonia"
-                rationale = "The patient has community-acquired pneumonia; we use CURB-65 to assess severity and determine if outpatient vs inpatient care is needed."
-            elif "chest pain" in query_text or "heart score" in query_text or "mace" in query_text:
-                calculator = "HEART Score for Major Adverse Cardiac Events (MACE)"
-                rationale = "The patient presents with chest pain of suspected cardiac origin; we use the HEART Score to risk-stratify the 6-week risk of MACE."
-            elif "coma" in query_text or "glasgow" in query_text or "gcs" in query_text or "consciousness" in query_text:
-                calculator = "Glasgow Coma Scale (GCS)"
-                rationale = "The patient has a head injury / altered level of consciousness; we use GCS to standardize neurological assessment."
-            elif "sepsis" in query_text or "qsofa" in query_text:
-                calculator = "Quick Sequential Organ Failure Assessment (qSOFA)"
-                rationale = "The patient has a suspected infection; we use qSOFA to rapidly assess sepsis risk outside the ICU."
-            elif "sirs" in query_text or "systemic inflammatory" in query_text:
-                calculator = "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
-                rationale = "The patient has signs of systemic inflammation; we use SIRS criteria to evaluate."
-            elif "pecarn" in query_text or "pediatric" in query_text:
+                rationale = "The patient has findings consistent with suspected DVT, including calf swelling, tenderness, and edema."
+            elif is_head_injury and is_pediatric:
                 calculator = "PECARN Pediatric Head Injury Rule"
-                rationale = "The patient is a pediatric patient with minor head trauma; we use the PECARN rule to assess if a head CT is required."
+                rationale = "The patient is a child with head trauma; PECARN helps determine whether imaging is required."
+            elif is_gcs := (_contains("eye opening", "verbal response", "motor response", "decerebrate", "decorticate", "incomprehensible", "painful stimulus", "withdrawal")):
+                calculator = "Glasgow Coma Scale (GCS)"
+                rationale = "The patient has altered consciousness and neurologic exam findings that are best assessed with the Glasgow Coma Scale."
+            elif has_sepsis_threshold and is_infection:
+                calculator = "Quick Sequential Organ Failure Assessment (qSOFA)"
+                rationale = "The patient has suspected infection with sepsis risk features; qSOFA is appropriate for rapid bedside assessment."
+            elif _contains("sirs", "systemic inflammatory response", "temperature", "heart rate", "respiratory rate", "white blood cell"):
+                calculator = "Systemic Inflammatory Response Syndrome (SIRS) Criteria"
+                rationale = "The patient has systemic inflammatory signs; SIRS criteria assess whether the patient meets systemic inflammatory response thresholds."
+            elif is_meld:
+                calculator = "MELD Score (Model for End-Stage Liver Disease)"
+                rationale = "The patient has liver disease and laboratory values relevant to MELD; we use MELD to estimate mortality risk."
+            elif is_liver_disease:
+                calculator = "Child-Pugh Score for Cirrhosis Mortality"
+                rationale = "The patient has cirrhosis; Child-Pugh is used to assess prognosis in chronic liver disease."
+            elif is_heart:
+                calculator = "HEART Score for Major Adverse Cardiac Events (MACE)"
+                rationale = "The patient has chest pain concerning for cardiac ischemia; HEART Score helps risk stratify near-term MACE."
+            elif is_curb:
+                calculator = "CURB-65 Severity Score for Community-Acquired Pneumonia"
+                rationale = "The patient has pneumonia and risk factors; CURB-65 estimates severity and admission need."
+            elif _contains("pecarn"):
+                calculator = "PECARN Pediatric Head Injury Rule"
+                rationale = "The patient likely has pediatric head trauma, and PECARN is the pediatric head injury rule."
+            elif is_head_injury:
+                calculator = "Glasgow Coma Scale (GCS)"
+                rationale = "The patient has head trauma and altered mental status; GCS is used to quantify neurologic function."
 
             # Map calculator to chunk prefix for citations
             doc_prefix = ""
@@ -104,15 +140,15 @@ class LLMClient:
                 doc_prefix = "pecarn_head_injury"
             elif "perc" in calc_name:
                 doc_prefix = "perc_rule"
-            elif "has-bled" in calc_name:
+            elif "has-bled" in calc_name or "hasbled" in calc_name:
                 doc_prefix = "has_bled"
             elif "meld" in calc_name:
                 doc_prefix = "meld"
-            elif "child-pugh" in calc_name:
+            elif "child-pugh" in calc_name or "child pugh" in calc_name:
                 doc_prefix = "child_pugh"
-            elif "glasgow" in calc_name:
+            elif "glasgow" in calc_name or "gcs" in calc_name:
                 doc_prefix = "gcs"
-            elif "curb-65" in calc_name:
+            elif "curb-65" in calc_name or "curb 65" in calc_name:
                 doc_prefix = "curb_65"
             elif "heart" in calc_name:
                 doc_prefix = "heart_score"
@@ -122,23 +158,23 @@ class LLMClient:
                 doc_prefix = "sirs"
             elif "pulmonary" in calc_name:
                 doc_prefix = "wells_pe"
-            elif "deep" in calc_name:
+            elif "deep vein" in calc_name or "dvt" in calc_name:
                 doc_prefix = "wells_dvt"
 
             if doc_prefix:
                 citations = [cid for cid in chunk_ids if cid.startswith(doc_prefix)]
-            
+
             class MockToolUse:
                 def __init__(self, name, input_data):
                     self.type = "tool_use"
                     self.name = name
                     self.input = input_data
-                    
+
             class MockUsage:
                 def __init__(self):
                     self.input_tokens = 250
                     self.output_tokens = 150
-                    
+
             class MockResponse:
                 def __init__(self, tool_use_block, usage):
                     self.content = [tool_use_block]
