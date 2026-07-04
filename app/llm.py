@@ -2,6 +2,8 @@ import os
 import time
 from anthropic import Anthropic
 
+from monitoring.latency_cost_tracker import record as record_llm_call
+
 class LLMClient:
     def __init__(self):
         self.api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -199,6 +201,7 @@ class LLMClient:
             )
             
             latency = time.time() - start_time
+            record_llm_call(model, latency, 250, 150, mock=True)
             return {
                 "response": response,
                 "latency": latency,
@@ -224,7 +227,8 @@ class LLMClient:
         # Track usage
         input_tokens = response.usage.input_tokens
         output_tokens = response.usage.output_tokens
-        
+        record_llm_call(model, latency, input_tokens, output_tokens, mock=False)
+
         return {
             "response": response,
             "latency": latency,
