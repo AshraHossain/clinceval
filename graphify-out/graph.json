@@ -1382,297 +1382,297 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/llm.py",
       "source_location": "L24",
-      "id": "llm_rationale_24",
       "community": 1,
-      "norm_label": "calls claude model (or returns a simulated mock if no api key is set)."
+      "norm_label": "calls claude model (or returns a simulated mock if no api key is set).",
+      "id": "llm_rationale_24"
     },
     {
       "label": "test_server.py",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L1",
-      "id": "tests_test_server_py",
       "community": 8,
-      "norm_label": "test_server.py"
+      "norm_label": "test_server.py",
+      "id": "tests_test_server_py"
     },
     {
       "label": "client()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L9",
-      "id": "test_server_client",
       "community": 8,
-      "norm_label": "client()"
+      "norm_label": "client()",
+      "id": "test_server_client"
     },
     {
       "label": "test_recommend_returns_structured_result()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L18",
-      "id": "test_server_test_recommend_returns_structured_result",
       "community": 8,
-      "norm_label": "test_recommend_returns_structured_result()"
+      "norm_label": "test_recommend_returns_structured_result()",
+      "id": "test_server_test_recommend_returns_structured_result"
     },
     {
       "label": "test_blank_query_rejected()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L29",
-      "id": "test_server_test_blank_query_rejected",
       "community": 8,
-      "norm_label": "test_blank_query_rejected()"
+      "norm_label": "test_blank_query_rejected()",
+      "id": "test_server_test_blank_query_rejected"
     },
     {
       "label": "test_missing_field_rejected()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L34",
-      "id": "test_server_test_missing_field_rejected",
       "community": 8,
-      "norm_label": "test_missing_field_rejected()"
+      "norm_label": "test_missing_field_rejected()",
+      "id": "test_server_test_missing_field_rejected"
     },
     {
       "label": "test_serves_chat_ui()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L39",
-      "id": "test_server_test_serves_chat_ui",
       "community": 8,
-      "norm_label": "test_serves_chat_ui()"
+      "norm_label": "test_serves_chat_ui()",
+      "id": "test_server_test_serves_chat_ui"
     },
     {
       "label": "API surface: FastAPI endpoint behavior (complements the Playwright E2E suite).",
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_server.py",
       "source_location": "L1",
-      "id": "test_server_rationale_1",
       "community": 8,
-      "norm_label": "api surface: fastapi endpoint behavior (complements the playwright e2e suite)."
+      "norm_label": "api surface: fastapi endpoint behavior (complements the playwright e2e suite).",
+      "id": "test_server_rationale_1"
     },
     {
       "label": "test_triage_and_judge.py",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L1",
-      "id": "tests_test_triage_and_judge_py",
       "community": 4,
-      "norm_label": "test_triage_and_judge.py"
+      "norm_label": "test_triage_and_judge.py",
+      "id": "tests_test_triage_and_judge_py"
     },
     {
       "label": "_pipeline_result()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L11",
-      "id": "test_triage_and_judge_pipeline_result",
       "community": 4,
-      "norm_label": "_pipeline_result()"
+      "norm_label": "_pipeline_result()",
+      "id": "test_triage_and_judge_pipeline_result"
     },
     {
       "label": "_judge_result()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L22",
-      "id": "test_triage_and_judge_judge_result",
       "community": 4,
-      "norm_label": "_judge_result()"
+      "norm_label": "_judge_result()",
+      "id": "test_triage_and_judge_judge_result"
     },
     {
       "label": "test_triage_integration_on_error()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L33",
-      "id": "test_triage_and_judge_test_triage_integration_on_error",
       "community": 4,
-      "norm_label": "test_triage_integration_on_error()"
+      "norm_label": "test_triage_integration_on_error()",
+      "id": "test_triage_and_judge_test_triage_integration_on_error"
     },
     {
       "label": "test_triage_retrieval_when_required_chunk_missing()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L37",
-      "id": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
       "community": 4,
-      "norm_label": "test_triage_retrieval_when_required_chunk_missing()"
+      "norm_label": "test_triage_retrieval_when_required_chunk_missing()",
+      "id": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing"
     },
     {
       "label": "test_triage_generation_when_wrong_calculator()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L42",
-      "id": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
       "community": 4,
-      "norm_label": "test_triage_generation_when_wrong_calculator()"
+      "norm_label": "test_triage_generation_when_wrong_calculator()",
+      "id": "test_triage_and_judge_test_triage_generation_when_wrong_calculator"
     },
     {
       "label": "test_triage_judge_when_scores_below_threshold()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L46",
-      "id": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
       "community": 4,
-      "norm_label": "test_triage_judge_when_scores_below_threshold()"
+      "norm_label": "test_triage_judge_when_scores_below_threshold()",
+      "id": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold"
     },
     {
       "label": "test_triage_pass_when_everything_ok()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L51",
-      "id": "test_triage_and_judge_test_triage_pass_when_everything_ok",
       "community": 4,
-      "norm_label": "test_triage_pass_when_everything_ok()"
+      "norm_label": "test_triage_pass_when_everything_ok()",
+      "id": "test_triage_and_judge_test_triage_pass_when_everything_ok"
     },
     {
       "label": "test_retrieval_check_is_case_insensitive()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L55",
-      "id": "test_triage_and_judge_test_retrieval_check_is_case_insensitive",
       "community": 4,
-      "norm_label": "test_retrieval_check_is_case_insensitive()"
+      "norm_label": "test_retrieval_check_is_case_insensitive()",
+      "id": "test_triage_and_judge_test_retrieval_check_is_case_insensitive"
     },
     {
       "label": "test_generation_check_none_expected()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L59",
-      "id": "test_triage_and_judge_test_generation_check_none_expected",
       "community": 4,
-      "norm_label": "test_generation_check_none_expected()"
+      "norm_label": "test_generation_check_none_expected()",
+      "id": "test_triage_and_judge_test_generation_check_none_expected"
     },
     {
       "label": "test_mock_judge_penalizes_invalid_citations()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L67",
-      "id": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations",
       "community": 4,
-      "norm_label": "test_mock_judge_penalizes_invalid_citations()"
+      "norm_label": "test_mock_judge_penalizes_invalid_citations()",
+      "id": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations"
     },
     {
       "label": "test_mock_judge_penalizes_hallucinated_recommendation()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L72",
-      "id": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation",
       "community": 4,
-      "norm_label": "test_mock_judge_penalizes_hallucinated_recommendation()"
+      "norm_label": "test_mock_judge_penalizes_hallucinated_recommendation()",
+      "id": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation"
     },
     {
       "label": "test_mock_judge_penalizes_wrongful_decline()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L78",
-      "id": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline",
       "community": 4,
-      "norm_label": "test_mock_judge_penalizes_wrongful_decline()"
+      "norm_label": "test_mock_judge_penalizes_wrongful_decline()",
+      "id": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline"
     },
     {
       "label": "test_mock_judge_penalizes_wrong_calculator()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L83",
-      "id": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator",
       "community": 4,
-      "norm_label": "test_mock_judge_penalizes_wrong_calculator()"
+      "norm_label": "test_mock_judge_penalizes_wrong_calculator()",
+      "id": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator"
     },
     {
       "label": "test_mock_judge_full_marks_on_correct_answer()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L88",
-      "id": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer",
       "community": 4,
-      "norm_label": "test_mock_judge_full_marks_on_correct_answer()"
+      "norm_label": "test_mock_judge_full_marks_on_correct_answer()",
+      "id": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer"
     },
     {
       "label": "Unit coverage for triage heuristics and the mock judge's scoring branches.",
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_triage_and_judge.py",
       "source_location": "L1",
-      "id": "test_triage_and_judge_rationale_1",
       "community": 4,
-      "norm_label": "unit coverage for triage heuristics and the mock judge's scoring branches."
+      "norm_label": "unit coverage for triage heuristics and the mock judge's scoring branches.",
+      "id": "test_triage_and_judge_rationale_1"
     },
     {
       "label": "format_llm_usage()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/regression_runner.py",
       "source_location": "L167",
-      "id": "regression_runner_format_llm_usage",
       "community": 3,
-      "norm_label": "format_llm_usage()"
+      "norm_label": "format_llm_usage()",
+      "id": "regression_runner_format_llm_usage"
     },
     {
       "label": "latency_cost_tracker.py",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L1",
-      "id": "monitoring_latency_cost_tracker_py",
       "community": 9,
-      "norm_label": "latency_cost_tracker.py"
+      "norm_label": "latency_cost_tracker.py",
+      "id": "monitoring_latency_cost_tracker_py"
     },
     {
       "label": "CallEvent",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L17",
-      "id": "latency_cost_tracker_callevent",
       "community": 9,
-      "norm_label": "callevent"
+      "norm_label": "callevent",
+      "id": "latency_cost_tracker_callevent"
     },
     {
       "label": "record()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L28",
-      "id": "latency_cost_tracker_record",
       "community": 9,
-      "norm_label": "record()"
+      "norm_label": "record()",
+      "id": "latency_cost_tracker_record"
     },
     {
       "label": "estimate_cost()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L32",
-      "id": "latency_cost_tracker_estimate_cost",
       "community": 9,
-      "norm_label": "estimate_cost()"
+      "norm_label": "estimate_cost()",
+      "id": "latency_cost_tracker_estimate_cost"
     },
     {
       "label": "snapshot_and_reset()",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L39",
-      "id": "latency_cost_tracker_snapshot_and_reset",
       "community": 9,
-      "norm_label": "snapshot_and_reset()"
+      "norm_label": "snapshot_and_reset()",
+      "id": "latency_cost_tracker_snapshot_and_reset"
     },
     {
       "label": "Per-run latency, token, and cost accounting for all LLM calls.  Every call funne",
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L1",
-      "id": "latency_cost_tracker_rationale_1",
       "community": 9,
-      "norm_label": "per-run latency, token, and cost accounting for all llm calls.  every call funne"
+      "norm_label": "per-run latency, token, and cost accounting for all llm calls.  every call funne",
+      "id": "latency_cost_tracker_rationale_1"
     },
     {
       "label": "Aggregate accumulated events and clear the buffer.",
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L40",
-      "id": "latency_cost_tracker_rationale_40",
       "community": 9,
-      "norm_label": "aggregate accumulated events and clear the buffer."
+      "norm_label": "aggregate accumulated events and clear the buffer.",
+      "id": "latency_cost_tracker_rationale_40"
     },
     {
       "label": "__init__.py",
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/__init__.py",
       "source_location": "L1",
-      "id": "monitoring_init_py",
       "community": 19,
-      "norm_label": "__init__.py"
+      "norm_label": "__init__.py",
+      "id": "monitoring_init_py"
     }
   ],
   "links": [
@@ -2055,9 +2055,9 @@
       "weight": 1.0,
       "_src": "llm_rationale_24",
       "_tgt": "llm_llmclient_call_claude",
+      "confidence_score": 1.0,
       "source": "llm_llmclient_call_claude",
-      "target": "llm_rationale_24",
-      "confidence_score": 1.0
+      "target": "llm_rationale_24"
     },
     {
       "relation": "calls",
@@ -2773,9 +2773,9 @@
       "weight": 1.0,
       "_src": "eval_regression_runner_py",
       "_tgt": "regression_runner_format_llm_usage",
+      "confidence_score": 1.0,
       "source": "eval_regression_runner_py",
-      "target": "regression_runner_format_llm_usage",
-      "confidence_score": 1.0
+      "target": "regression_runner_format_llm_usage"
     },
     {
       "relation": "calls",
@@ -3181,9 +3181,9 @@
       "weight": 1.0,
       "_src": "regression_runner_format_report",
       "_tgt": "regression_runner_format_llm_usage",
+      "confidence_score": 1.0,
       "source": "regression_runner_format_report",
-      "target": "regression_runner_format_llm_usage",
-      "confidence_score": 1.0
+      "target": "regression_runner_format_llm_usage"
     },
     {
       "relation": "calls",
@@ -4787,9 +4787,9 @@
       "weight": 1.0,
       "_src": "tests_test_server_py",
       "_tgt": "test_server_client",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_client",
-      "confidence_score": 1.0
+      "target": "test_server_client"
     },
     {
       "relation": "contains",
@@ -4799,9 +4799,9 @@
       "weight": 1.0,
       "_src": "tests_test_server_py",
       "_tgt": "test_server_test_recommend_returns_structured_result",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_test_recommend_returns_structured_result",
-      "confidence_score": 1.0
+      "target": "test_server_test_recommend_returns_structured_result"
     },
     {
       "relation": "contains",
@@ -4811,9 +4811,9 @@
       "weight": 1.0,
       "_src": "tests_test_server_py",
       "_tgt": "test_server_test_blank_query_rejected",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_test_blank_query_rejected",
-      "confidence_score": 1.0
+      "target": "test_server_test_blank_query_rejected"
     },
     {
       "relation": "contains",
@@ -4823,9 +4823,9 @@
       "weight": 1.0,
       "_src": "tests_test_server_py",
       "_tgt": "test_server_test_missing_field_rejected",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_test_missing_field_rejected",
-      "confidence_score": 1.0
+      "target": "test_server_test_missing_field_rejected"
     },
     {
       "relation": "contains",
@@ -4835,9 +4835,9 @@
       "weight": 1.0,
       "_src": "tests_test_server_py",
       "_tgt": "test_server_test_serves_chat_ui",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_test_serves_chat_ui",
-      "confidence_score": 1.0
+      "target": "test_server_test_serves_chat_ui"
     },
     {
       "relation": "rationale_for",
@@ -4847,9 +4847,9 @@
       "weight": 1.0,
       "_src": "test_server_rationale_1",
       "_tgt": "tests_test_server_py",
+      "confidence_score": 1.0,
       "source": "tests_test_server_py",
-      "target": "test_server_rationale_1",
-      "confidence_score": 1.0
+      "target": "test_server_rationale_1"
     },
     {
       "relation": "contains",
@@ -4859,9 +4859,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_pipeline_result",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_pipeline_result"
     },
     {
       "relation": "contains",
@@ -4871,9 +4871,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_judge_result",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_judge_result"
     },
     {
       "relation": "contains",
@@ -4883,9 +4883,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_triage_integration_on_error",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_triage_integration_on_error",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_integration_on_error"
     },
     {
       "relation": "contains",
@@ -4895,9 +4895,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing"
     },
     {
       "relation": "contains",
@@ -4907,9 +4907,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator"
     },
     {
       "relation": "contains",
@@ -4919,9 +4919,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold"
     },
     {
       "relation": "contains",
@@ -4931,9 +4931,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_triage_pass_when_everything_ok",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok"
     },
     {
       "relation": "contains",
@@ -4943,9 +4943,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_retrieval_check_is_case_insensitive",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_retrieval_check_is_case_insensitive",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_retrieval_check_is_case_insensitive"
     },
     {
       "relation": "contains",
@@ -4955,9 +4955,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_generation_check_none_expected",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_generation_check_none_expected",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_generation_check_none_expected"
     },
     {
       "relation": "contains",
@@ -4967,9 +4967,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations"
     },
     {
       "relation": "contains",
@@ -4979,9 +4979,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation"
     },
     {
       "relation": "contains",
@@ -4991,9 +4991,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline"
     },
     {
       "relation": "contains",
@@ -5003,9 +5003,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator"
     },
     {
       "relation": "contains",
@@ -5015,9 +5015,9 @@
       "weight": 1.0,
       "_src": "tests_test_triage_and_judge_py",
       "_tgt": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer"
     },
     {
       "relation": "rationale_for",
@@ -5027,9 +5027,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_rationale_1",
       "_tgt": "tests_test_triage_and_judge_py",
+      "confidence_score": 1.0,
       "source": "tests_test_triage_and_judge_py",
-      "target": "test_triage_and_judge_rationale_1",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_rationale_1"
     },
     {
       "relation": "calls",
@@ -5039,9 +5039,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_integration_on_error",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_triage_integration_on_error",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_integration_on_error"
     },
     {
       "relation": "calls",
@@ -5051,9 +5051,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing"
     },
     {
       "relation": "calls",
@@ -5063,9 +5063,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator"
     },
     {
       "relation": "calls",
@@ -5075,9 +5075,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold"
     },
     {
       "relation": "calls",
@@ -5087,9 +5087,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_pass_when_everything_ok",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok"
     },
     {
       "relation": "calls",
@@ -5099,9 +5099,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_generation_check_none_expected",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_generation_check_none_expected",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_generation_check_none_expected"
     },
     {
       "relation": "calls",
@@ -5111,9 +5111,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_invalid_citations"
     },
     {
       "relation": "calls",
@@ -5123,9 +5123,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_hallucinated_recommendation"
     },
     {
       "relation": "calls",
@@ -5135,9 +5135,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrongful_decline"
     },
     {
       "relation": "calls",
@@ -5147,9 +5147,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_penalizes_wrong_calculator"
     },
     {
       "relation": "calls",
@@ -5159,9 +5159,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer",
       "_tgt": "test_triage_and_judge_pipeline_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_pipeline_result",
-      "target": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_mock_judge_full_marks_on_correct_answer"
     },
     {
       "relation": "calls",
@@ -5171,9 +5171,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_integration_on_error",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_judge_result",
-      "target": "test_triage_and_judge_test_triage_integration_on_error",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_integration_on_error"
     },
     {
       "relation": "calls",
@@ -5183,9 +5183,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_judge_result",
-      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_retrieval_when_required_chunk_missing"
     },
     {
       "relation": "calls",
@@ -5195,9 +5195,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_judge_result",
-      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_generation_when_wrong_calculator"
     },
     {
       "relation": "calls",
@@ -5207,9 +5207,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_judge_result",
-      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_judge_when_scores_below_threshold"
     },
     {
       "relation": "calls",
@@ -5219,9 +5219,9 @@
       "weight": 1.0,
       "_src": "test_triage_and_judge_test_triage_pass_when_everything_ok",
       "_tgt": "test_triage_and_judge_judge_result",
+      "confidence_score": 1.0,
       "source": "test_triage_and_judge_judge_result",
-      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok",
-      "confidence_score": 1.0
+      "target": "test_triage_and_judge_test_triage_pass_when_everything_ok"
     },
     {
       "relation": "contains",
@@ -5231,9 +5231,9 @@
       "weight": 1.0,
       "_src": "monitoring_latency_cost_tracker_py",
       "_tgt": "latency_cost_tracker_callevent",
+      "confidence_score": 1.0,
       "source": "monitoring_latency_cost_tracker_py",
-      "target": "latency_cost_tracker_callevent",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_callevent"
     },
     {
       "relation": "contains",
@@ -5243,9 +5243,9 @@
       "weight": 1.0,
       "_src": "monitoring_latency_cost_tracker_py",
       "_tgt": "latency_cost_tracker_record",
+      "confidence_score": 1.0,
       "source": "monitoring_latency_cost_tracker_py",
-      "target": "latency_cost_tracker_record",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_record"
     },
     {
       "relation": "contains",
@@ -5255,9 +5255,9 @@
       "weight": 1.0,
       "_src": "monitoring_latency_cost_tracker_py",
       "_tgt": "latency_cost_tracker_estimate_cost",
+      "confidence_score": 1.0,
       "source": "monitoring_latency_cost_tracker_py",
-      "target": "latency_cost_tracker_estimate_cost",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_estimate_cost"
     },
     {
       "relation": "contains",
@@ -5267,9 +5267,9 @@
       "weight": 1.0,
       "_src": "monitoring_latency_cost_tracker_py",
       "_tgt": "latency_cost_tracker_snapshot_and_reset",
+      "confidence_score": 1.0,
       "source": "monitoring_latency_cost_tracker_py",
-      "target": "latency_cost_tracker_snapshot_and_reset",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_snapshot_and_reset"
     },
     {
       "relation": "rationale_for",
@@ -5279,9 +5279,9 @@
       "weight": 1.0,
       "_src": "latency_cost_tracker_rationale_1",
       "_tgt": "monitoring_latency_cost_tracker_py",
+      "confidence_score": 1.0,
       "source": "monitoring_latency_cost_tracker_py",
-      "target": "latency_cost_tracker_rationale_1",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_rationale_1"
     },
     {
       "relation": "calls",
@@ -5291,9 +5291,9 @@
       "weight": 1.0,
       "_src": "latency_cost_tracker_record",
       "_tgt": "latency_cost_tracker_callevent",
+      "confidence_score": 1.0,
       "source": "latency_cost_tracker_callevent",
-      "target": "latency_cost_tracker_record",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_record"
     },
     {
       "relation": "calls",
@@ -5303,9 +5303,9 @@
       "weight": 1.0,
       "_src": "latency_cost_tracker_snapshot_and_reset",
       "_tgt": "latency_cost_tracker_estimate_cost",
+      "confidence_score": 1.0,
       "source": "latency_cost_tracker_estimate_cost",
-      "target": "latency_cost_tracker_snapshot_and_reset",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_snapshot_and_reset"
     },
     {
       "relation": "rationale_for",
@@ -5315,9 +5315,9 @@
       "weight": 1.0,
       "_src": "latency_cost_tracker_rationale_40",
       "_tgt": "latency_cost_tracker_snapshot_and_reset",
+      "confidence_score": 1.0,
       "source": "latency_cost_tracker_snapshot_and_reset",
-      "target": "latency_cost_tracker_rationale_40",
-      "confidence_score": 1.0
+      "target": "latency_cost_tracker_rationale_40"
     }
   ],
   "hyperedges": []
