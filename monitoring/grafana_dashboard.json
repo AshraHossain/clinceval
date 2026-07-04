@@ -1,0 +1,76 @@
+{
+  "dashboard": {
+    "title": "ClinCalc-Eval",
+    "panels": [
+      {
+        "title": "Pass Rate (Overall)",
+        "targets": [
+          {
+            "expr": "eval_pass_rate{axis=\"overall\"}"
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "title": "Pass Rate by Axis",
+        "targets": [
+          {
+            "expr": "eval_pass_rate"
+          }
+        ],
+        "type": "graph"
+      },
+      {
+        "title": "Cost per Run",
+        "targets": [
+          {
+            "expr": "eval_cost_usd"
+          }
+        ],
+        "type": "graph"
+      },
+      {
+        "title": "Triage Distribution",
+        "targets": [
+          {
+            "expr": "triage_total"
+          }
+        ],
+        "type": "piechart"
+      },
+      {
+        "title": "Eval Latency (P50/P95/P99)",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.5, eval_latency_seconds)"
+          },
+          {
+            "expr": "histogram_quantile(0.95, eval_latency_seconds)"
+          },
+          {
+            "expr": "histogram_quantile(0.99, eval_latency_seconds)"
+          }
+        ],
+        "type": "graph"
+      },
+      {
+        "title": "LLM Calls (Mock vs Live)",
+        "targets": [
+          {
+            "expr": "llm_calls_total"
+          }
+        ],
+        "type": "graph"
+      },
+      {
+        "title": "Cost Trend (5-run rolling avg)",
+        "targets": [
+          {
+            "expr": "avg_over_time(eval_cost_usd[5h])"
+          }
+        ],
+        "type": "graph"
+      }
+    ]
+  }
+}

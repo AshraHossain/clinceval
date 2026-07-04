@@ -26,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Unit / integration / adversarial tests
-        run: python -m pytest -q
+      - name: Unit / integration / adversarial tests (coverage gate 80%)
+        run: python -m pytest -q --cov=app --cov=eval --cov=monitoring --cov-fail-under=80
 
       # Exits non-zero on any hard safety-gate failure — this IS the release gate
       - name: Golden-set regression run

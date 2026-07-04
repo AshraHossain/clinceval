@@ -1,6 +1,6 @@
 PY := .venv/bin/python
 
-.PHONY: demo install test eval e2e serve
+.PHONY: demo install test eval e2e serve dev backup analytics
 
 demo: install test eval
 	@echo "Demo complete — see the newest report in eval/reports/"
@@ -20,3 +20,11 @@ e2e:
 
 serve:
 	$(PY) -m uvicorn app.server:app --port 8000
+
+dev: install test serve
+
+backup:
+	$(PY) scripts/backup_db.py
+
+analytics:
+	$(PY) -m eval.analytics
