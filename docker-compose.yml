@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  chroma:
+    image: ghcr.io/chroma-core/chroma:0.4.24
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/data
+    ports:
+      - "8001:8000"  # Chroma API (optional, for debugging)
+    volumes:
+      - chroma_data:/chroma/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+
+  app:
+    build: .
+    environment:
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}  # Optional; unset uses mock mode
+      - HF_HOME=/app/.cache/huggingface
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.cache/huggingface:/app/.cache/huggingface
+      - ./eval/eval_results.db:/app/eval/eval_results.db
+      - ./eval/reports:/app/eval/reports
+    depends_on:
+      chroma:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+
+volumes:
+  chroma_data:

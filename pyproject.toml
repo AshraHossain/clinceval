@@ -1,3 +1,14 @@
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+[tool.coverage.run]
+# Phase 10 prototypes: declared design stubs (fake returns, unwired), excluded
+# until each is activated with real integration + tests. Everything else is gated.
+omit = [
+    "eval/ab_testing.py",
+    "eval/model_optimization.py",
+    "eval/retraining_pipeline.py",
+    "app/streaming_response.py",
+    "monitoring/prometheus_metrics.py",
+]
