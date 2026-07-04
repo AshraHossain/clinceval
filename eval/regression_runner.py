@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from app.pipeline import run_pipeline
+from eval.db import DEFAULT_DB_PATH, get_engine, record_run
 from eval.judge import grade_output
 from eval.semantic_sim import calculate_semantic_similarity
 
@@ -14,6 +15,7 @@ GOLDEN_PATH = BASE_DIR / "golden_dataset.jsonl"
 BASELINES_DIR = BASE_DIR / "baselines"
 REPORTS_DIR = BASE_DIR / "reports"
 BASELINE_PATH = BASELINES_DIR / "baseline.json"
+DB_PATH = DEFAULT_DB_PATH
 
 AXES = ["faithfulness", "clinical_relevance", "safety", "completeness"]
 PASS_THRESHOLD = 4
@@ -270,6 +272,9 @@ def run():
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     report_path = REPORTS_DIR / f"run_{timestamp}.md"
     create_report(report_path, report_body)
+
+    run_id = record_run(get_engine(DB_PATH), started, current_summary, cases, results)
+    print(f"Run {run_id} persisted to SQLite")
 
     if baseline_data is None:
         save_baseline(BASELINE_PATH, {"created_at": started, "results": results, "summary": current_summary})
