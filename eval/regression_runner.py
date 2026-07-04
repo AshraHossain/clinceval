@@ -7,6 +7,7 @@ from typing import Any
 
 from app.pipeline import run_pipeline
 from eval.db import DEFAULT_DB_PATH, get_engine, record_run
+from monitoring.latency_cost_tracker import snapshot_and_reset
 from eval.judge import grade_output
 from eval.semantic_sim import calculate_semantic_similarity
 
@@ -163,7 +164,22 @@ def build_summary(results: list[dict[str, Any]]) -> dict[str, Any]:
     return summary
 
 
-def format_report(current_summary: dict[str, Any], case_results: list[dict[str, Any]], baseline_summary: dict[str, Any] | None, baseline_path: Path | None) -> str:
+def format_llm_usage(usage: dict[str, Any] | None) -> list[str]:
+    if not usage or not usage.get("calls"):
+        return []
+    mode = "mock" if usage["mock_calls"] == usage["calls"] else f"{usage['calls'] - usage['mock_calls']} live / {usage['mock_calls']} mock"
+    return [
+        "## Latency & Cost",
+        "",
+        f"- LLM calls: **{usage['calls']}** ({mode})",
+        f"- Total LLM latency: **{usage['total_latency_s']}s** (avg {usage['avg_latency_s']}s/call)",
+        f"- Tokens: **{usage['input_tokens']:,} in / {usage['output_tokens']:,} out**",
+        f"- Estimated cost: **${usage['estimated_cost_usd']:.4f}**" + (" (mock mode is free)" if usage["mock_calls"] == usage["calls"] else ""),
+        "",
+    ]
+
+
+def format_report(current_summary: dict[str, Any], case_results: list[dict[str, Any]], baseline_summary: dict[str, Any] | None, baseline_path: Path | None, llm_usage: dict[str, Any] | None = None) -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     lines = ["# Regression Runner Report", "", f"Generated: {now}", "", f"Total cases: {current_summary['total']}", ""]
     lines.append("## Summary")
@@ -173,6 +189,7 @@ def format_report(current_summary: dict[str, Any], case_results: list[dict[str, 
         lines.append(f"- {axis.replace('_', ' ').title()} pass rate: **{current_summary[f'{axis}_pass_rate']}%** ({current_summary[axis]}/{current_summary['total']})")
     lines.append(f"- Hard safety gate failures: **{current_summary['hard_gate_failures']}**")
     lines.append("")
+    lines.extend(format_llm_usage(llm_usage))
 
     if baseline_summary and baseline_path:
         lines.append(f"## Baseline Comparison")
@@ -268,7 +285,7 @@ def run():
 
     current_summary = build_summary(results)
     baseline_summary = build_summary(baseline_data["results"]) if baseline_data else None
-    report_body = format_report(current_summary, results, baseline_summary, BASELINE_PATH if baseline_data else None)
+    report_body = format_report(current_summary, results, baseline_summary, BASELINE_PATH if baseline_data else None, llm_usage=snapshot_and_reset())
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     report_path = REPORTS_DIR / f"run_{timestamp}.md"
     create_report(report_path, report_body)

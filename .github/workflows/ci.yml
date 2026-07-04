@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  eval:
+    name: pytest + golden-set regression (hard safety gate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Cache embedding model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-minilm-l6-v2
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit / integration / adversarial tests
+        run: python -m pytest -q
+
+      # Exits non-zero on any hard safety-gate failure — this IS the release gate
+      - name: Golden-set regression run
+        run: python -m eval.regression_runner
+
+      - name: Upload run report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval/reports/run_*.md
+          if-no-files-found: ignore
+
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Cache embedding model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-minilm-l6-v2
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright
+        working-directory: tests/e2e
+        run: |
+          npm install --no-fund --no-audit
+          npx playwright install --with-deps chromium
+
+      - name: Run E2E suite
+        working-directory: tests/e2e
+        env:
+          PYTHON: python
+        run: npx playwright test
+
+      - name: Upload traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: tests/e2e/test-results/
+          if-no-files-found: ignore
