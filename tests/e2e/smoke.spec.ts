@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 
-// ponytail: placeholder so `playwright test` exits 0 pre-UI; real E2E lands in Phase 7
-test('harness runs', async () => {
-  expect(true).toBe(true);
+test('landing page loads with query form', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('h1')).toHaveText('ClinCalc-Eval');
+  await expect(page.locator('#query')).toBeVisible();
+  await expect(page.locator('#submit')).toBeEnabled();
 });

@@ -14,6 +14,7 @@ def test_pipeline_exception_becomes_integration_triage(monkeypatch, tmp_path):
     monkeypatch.setattr(runner, "run_pipeline", exploding_pipeline)
     monkeypatch.setattr(runner, "REPORTS_DIR", tmp_path / "reports")
     monkeypatch.setattr(runner, "BASELINE_PATH", tmp_path / "baseline.json")
+    monkeypatch.setattr(runner, "DB_PATH", tmp_path / "eval.db")
 
     # High-weight cases crashing => safety gate => exit 1, which is the correct
     # release-blocking behavior for a fully broken pipeline
@@ -36,6 +37,7 @@ def test_judge_exception_is_not_swallowed(monkeypatch, tmp_path):
     monkeypatch.setattr(runner, "grade_output", exploding_judge)
     monkeypatch.setattr(runner, "REPORTS_DIR", tmp_path / "reports")
     monkeypatch.setattr(runner, "BASELINE_PATH", tmp_path / "baseline.json")
+    monkeypatch.setattr(runner, "DB_PATH", tmp_path / "eval.db")
 
     with pytest.raises(SystemExit) as excinfo:
         runner.run()
