@@ -35,18 +35,30 @@ result storage, and latency/cost monitoring.
 
 ## Quickstart
 
+**Local (venv):**
+
 ```bash
 make demo          # venv + deps + unit/integration tests + full golden-set eval
 make e2e           # Playwright suite (boots the FastAPI app automatically)
 make serve         # chat UI at http://localhost:8000
 ```
 
-Or manually: `python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt`,
+**Docker:**
+
+```bash
+docker-compose up -d
+# Chat UI: http://localhost:8000
+# API: http://localhost:8000/api/recommend
+```
+
+Or manual venv: `python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt`,
 then `.venv/bin/python -m eval.regression_runner`.
 
 **Mock-first by design.** Without `ANTHROPIC_API_KEY`, a deterministic keyword-router
 stands in for the generator and a rule-based grader for the judge — free, reproducible,
 CI-safe. Setting the key switches both to real pinned Claude models with no code changes.
+
+See [DOCKER.md](DOCKER.md) for compose configuration, environment variables, and K8s roadmap.
 
 ## The proof: catching planted bugs
 

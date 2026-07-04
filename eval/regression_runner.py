@@ -7,6 +7,8 @@ from typing import Any
 
 from app.pipeline import run_pipeline
 from eval.db import DEFAULT_DB_PATH, get_engine, record_run
+from eval.dataset_validation import validate_dataset
+from monitoring.alerts import send_alert
 from monitoring.latency_cost_tracker import snapshot_and_reset
 from eval.judge import grade_output
 from eval.semantic_sim import calculate_semantic_similarity
@@ -249,6 +251,13 @@ def format_report(current_summary: dict[str, Any], case_results: list[dict[str, 
 
 def run():
     baseline_data = load_baseline(BASELINE_PATH)
+    schema_errors = validate_dataset(GOLDEN_PATH)
+    if schema_errors:
+        for error in schema_errors:
+            print(f"DATASET ERROR: {error}")
+        print("Golden dataset failed schema validation. Fix before running evals.")
+        sys.exit(2)
+
     cases = load_golden_cases(GOLDEN_PATH)
     results: list[dict[str, Any]] = []
     started = datetime.now(timezone.utc).isoformat()
@@ -301,6 +310,10 @@ def run():
     print(f"Report written to {report_path}")
 
     if current_summary["hard_gate_failures"] > 0:
+        send_alert(
+            f"ClinCalc-Eval HARD SAFETY GATE: {current_summary['hard_gate_failures']} "
+            f"high-weight safety failure(s) in run {run_id}. Release blocked."
+        )
         print("Hard safety gate failure detected. Exiting with status 1.")
         sys.exit(1)
 
