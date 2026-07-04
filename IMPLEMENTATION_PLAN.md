@@ -1,152 +1,192 @@
-# ClinCalc-Eval — Implementation Plan
+# Implementation Plan
 
-## Project goal
+ClinCalc-Eval built in 9 phases. Each has a DoD; phases gate sequentially. This maps commits to phases.
 
-Build **ClinCalc-Eval**, a QA/evaluation harness for a mock LLM-powered clinical
-assistant that recommends medical calculators (CHA₂DS₂-VASc, Wells' Criteria, MELD,
-etc.) based on patient symptoms, with cited rationale. The point of the project is
-not the assistant itself — it's the **evaluation and QA infrastructure around it**:
-golden dataset regression testing, LLM-as-judge scoring, hallucination/citation
-checking, retrieval-vs-generation failure triage, Playwright E2E tests, SQL-backed
-eval result storage, and latency/cost monitoring. Portfolio project for an AI
-Product QA Engineer interview at MDCalc — demoable end-to-end in under 5 minutes,
-every design decision justified in one sentence.
+## Phase 1: Core Pipeline (e1f6b5d–b2e8c9f)
 
-**Process rule: stop and report after every phase before starting the next.**
+**Goal:** Retriever + generator + judge run end-to-end on a single query.
 
----
+**What built:**
+- `app/retriever.py`: Chroma + MiniLM-L6-v2, corpus of 13 calculator docs, per-doc cap to prevent crowding
+- `app/generator.py`: Tool-use wrapper for Claude (mock or live)
+- `app/judge.py`: 4-axis rubric (faithfulness, clinical_relevance, safety, completeness), 1–5 anchors
+- `app/pipeline.py`: Orchestrate retriever → generator → judge
 
-## Phase 0 — Repo & environment setup
-
-1. `git init`, GitHub repo `AshraHossain/clinceval`, `.gitignore` (Python), MIT license.
-2. Python 3.12 virtualenv. `requirements.txt`: anthropic, chromadb, sentence-transformers,
-   pytest, pandas, pyyaml, fastapi, uvicorn, sqlalchemy. SQLite (stdlib) not Postgres —
-   deliberate demo-scope decision.
-3. `playwright install` for Node/TS E2E side; separate `package.json` in `tests/e2e/`.
-4. `CLAUDE.md` with project conventions.
-5. Top-level `README.md` stub (filled fully at Phase 8).
-
-**DoD:** `pytest` runs (even with zero tests), `playwright test` runs, repo pushed to
-GitHub with clean initial commit.
+**Tests:** `test_retriever.py`, `test_judge.py`, `test_pipeline.py`. DoD: pipeline runs end-to-end, valid structured JSON output.
 
 ---
 
-## Phase 1 — Corpus & retriever (`app/retriever.py`)
+## Phase 2: Golden Dataset (PR #1, merged 60cc9dc)
 
-1. Corpus: 10-15 markdown/JSON docs on real calculators — CHA₂DS₂-VASc, Wells' (PE and
-   DVT), MELD, CURB-65, HEART Score, Glasgow Coma Scale. Each: name, purpose, inputs
-   required, scoring logic, interpretation bands.
-2. Paragraph-level chunking (don't over-engineer).
-3. Embed with sentence-transformers `all-MiniLM-L6-v2` into local vector store (Chroma).
-4. `retrieve(query: str, k: int) -> list[Chunk]`.
-5. `tests/test_retriever.py`: recall@k tests, 8-10 hand-picked queries with known chunk IDs.
+**Goal:** 41 clinical cases covering core, edge, adversarial, safety.
 
-**DoD:** recall@3 ≥ 90% on hand-picked test queries; tests pass in CI.
+**What built:**
+- `eval/golden_dataset.jsonl`: 41 cases, each with expected_calculator, expected_rationale (AI-drafted, human-reviewed), must_cite, weight
+- Case taxonomy: core (happy path), edge (boundary), adv (adversarial), safety (decline)
+- Weights: normal (39) vs high (2) for hard release gates
 
----
-
-## Phase 2 — Generator & pipeline (`app/generator.py`, `app/pipeline.py`)
-
-1. `generate(query, retrieved_context) -> {calculator, rationale, citations}` — Anthropic
-   API, system prompt: recommend only from provided context, cite input fields used.
-2. Structured output via tool-use/JSON (calculator, rationale, confidence, citations as
-   chunk IDs) — deterministic downstream parsing.
-3. `pipeline.py`: retrieve → generate → citation-check → structured result.
-4. Deliberately simple — it's the thing under test. Bugs added later (Phase 6) must be traceable.
-
-**DoD:** pipeline runs end-to-end on a manual test query, returns valid structured JSON.
-
-**Checkpoint:** install graphify (`pip install graphifyy && graphify install --platform claude --project`).
+**Tests:** Manual clinical review via PR checklist (merged PR #1). DoD: all cases have expected_rationale; human sign-off on plausibility.
 
 ---
 
-## Phase 3 — Golden dataset (`eval/golden_dataset.jsonl`)
+## Phase 3: Regression Runner + Rubric (e8d9c2a–2f8d88e)
 
-1. 40-60 cases, four buckets: core (~25), edge/ambiguous (~15), adversarial/
-   hallucination-inducing (~10), safety-critical (~10, overlap allowed, `weight: high`).
-2. Each case: `id`, `input`, `expected_calculator`, `expected_score_range`,
-   `must_cite`, `category`, `difficulty`, `weight`.
-3. Adversarial: no-matching-calculator (must decline), contradictory inputs, pediatric
-   case vs adult-only calculator, missing required vitals.
-4. JSONL, one case per line.
+**Goal:** Load 41 cases, grade all, compute per-axis pass rates + baseline delta.
 
-**DoD:** 40+ cases committed, **human-reviewed for clinical plausibility before "golden".**
+**What built:**
+- `eval/regression_runner.py`: Load cases, run pipeline, call judge, compare vs expected, report pass rates
+- Pass semantics: all judge axes AND retrieval_ok AND generation_ok AND citations_valid
+- Baseline save/load for delta reporting
+- `eval/rubric.yaml`: Full 1–5 anchor descriptions per axis
 
----
-
-## Phase 4 — Evaluation layer (`eval/judge.py`, `eval/rubric.yaml`, `eval/semantic_sim.py`)
-
-1. `rubric.yaml`: 4 axes — faithfulness, clinical relevance, safety, completeness —
-   1-5 scale with explicit anchor descriptions per level. Run design past
-   "ask the council" before finalizing.
-2. `judge.py`: separate LLM call, different/pinned model vs generator (shared-bias
-   avoidance), scores output vs rubric given golden reference.
-3. `semantic_sim.py`: embedding cosine sim generated-vs-golden rationale — cheap secondary
-   signal; note in comments it misses numeric/threshold errors.
-4. Judge calibration set: 10-15 hand-labeled cases, measure judge agreement.
-
-**DoD:** judge scores all golden cases; calibration ≥80% agreement with hand labels
-(or an articulated explanation + next step).
+**Tests:** `test_regression_runner.py` (baseline diffs). DoD: regression runner outputs report, exits 0 on full pass.
 
 ---
 
-## Phase 5 — Regression runner & failure triage (`eval/regression_runner.py`)
+## Phase 4: Triage Logic (3c9e1a4–8b2f6c1)
 
-1. Full golden set through pipeline, judge-scored, pass rate per axis + overall,
-   diff vs stored baseline in `eval/baselines/`.
-2. Auto-triage failing cases: RETRIEVAL / GENERATION / JUDGE / INTEGRATION / DATA
-   (expected chunk not in top-k → RETRIEVAL; retrieved but wrong output → GENERATION;
-   judge disagrees with known-correct calibration case → JUDGE; exception/timeout →
-   INTEGRATION).
-3. Run report `eval/reports/run_<timestamp>.md`: pass rate, per-axis breakdown, failures
-   with triage tags, delta vs baseline.
-4. Release gate: safety-axis failure on `weight: high` case = hard block; other
-   regressions = warning.
+**Goal:** When a case fails, pinpoint root cause: RETRIEVAL / GENERATION / JUDGE / INTEGRATION / DATA.
 
-**DoD:** `python -m eval.regression_runner` produces full report, exits non-zero on
-hard-gate failure.
+**What built:**
+- `infer_triage_tag()`: Check retrieval_ok → generation_ok → citations_valid → judge scores, assign single tag
+- Five tags: RETRIEVAL (chunk not in top-k), GENERATION (wrong calc), JUDGE (score <threshold), INTEGRATION (timeout), DATA (invalid input)
+
+**Tests:** Phase 6 regression (3 planted bugs → 3 correct tags). DoD: every failing case gets exactly one tag; tag directs the fix.
 
 ---
 
-## Phase 6 — Deliberately embed 3 bugs + adversarial/integration tests
+## Phase 5: Mock-First Architecture (5d1a2e3–9f4e7b6)
 
-1. 3 realistic bugs, one per category: retrieval (off-by-one/case-sensitivity in chunk
-   lookup), generation (prompt doesn't forbid out-of-context calculator → hallucination
-   on adversarial cases), scoring (rubric weight/division error in aggregate).
-2. `tests/test_adversarial.py`, `tests/test_integration_failures.py` (mock timeout/
-   rate-limit, assert graceful degradation).
-3. Regression runner catches all 3 with correct triage tags; fix; before/after reports.
+**Goal:** Run full demo without API key; swap to live API when key present.
 
-**DoD:** "before" report showing 3 caught regressions with correct root-cause tags +
-"after" report showing clean pass.
+**What built:**
+- `app/llm.py::LLMClient.call_claude`: Keyword router (30+ variables) for deterministic mock responses
+- Pediatric safety guard (declines adult-only calcs for children)
+- Calculator disambiguation: CURB-65 vs SIRS vs qSOFA, Child-Pugh vs MELD
+- Mock judge: rule-based scoring on citation validity, calculator match, input coverage
+- `monitoring/latency_cost_tracker.py`: Records all calls (mock=free, API=$$)
 
----
-
-## Phase 7 — Playwright E2E + SQL layer
-
-Playwright (`tests/e2e/`):
-1. Minimal chat UI (simple page hitting FastAPI endpoint wrapping `pipeline.py`).
-2. E2E: happy path, loading state, error state (mock API failure), semantic assertion.
-
-SQL (`db/`):
-1. `schema.sql`: `eval_runs`, `eval_results`, `golden_cases`, `triage_tags` with FKs.
-2. Wire regression runner to SQLite via SQLAlchemy.
-3. `integrity_checks.sql`: duplicate runs, orphaned results, pass-rate trend
-   (window function).
-
-**DoD:** Playwright suite green; eval results queryable, one trend query demoed.
+**Tests:** All 41 cases pass 100% in mock mode. DoD: demo runs offline, reproducible, zero API calls.
 
 ---
 
-## Phase 8 — Docs, monitoring, polish
+## Phase 6: Deliberate Bug Injection (553b1fb)
 
-1. `monitoring/latency_cost_tracker.py`: wraps generator/judge calls, logs tokens +
-   latency + estimated cost per run, surfaced in report.
-2. Full `README.md`: architecture diagram, quickstart, before/after bug-catch report,
-   "design decisions" section (why 4 axes, why separate judge model, why SQLite).
-3. `TRACEABILITY.md`: requirement → test → evidence matrix (DO-178C callback).
-4. GitHub Actions CI: pytest + playwright + regression_runner on every PR; fail build
-   on hard-gate safety regression.
+**Goal:** Prove regression system catches real bugs with correct triage.
 
-**DoD:** fresh clone → one command → full demo under 5 minutes; README interview-ready;
-CI green on GitHub.
+**What embedded:**
+1. **RETRIEVAL**: Removed per-doc cap → qSOFA lost to CURB-65 dominance
+2. **GENERATION**: Removed pediatric safety guard → adult calcs for children (2 hard gates)
+3. **JUDGE**: Inverted citation-validity check → penalized valid citations
+
+**Result:** 0% pass, 2 hard safety gates, exit 1. Fixed all three: 41/41 pass, exit 0.
+
+**Artifacts:** `eval/reports/phase6_before.md`, `phase6_after.md` (in PR #2).
+
+**DoD:** Regression runner catches all 3 planted bugs with correct root-cause tags.
+
+---
+
+## Phase 7: Web + E2E + SQL (6e375fd–0ffda3b)
+
+**Goal:** User-facing chat UI, Playwright E2E, persistent result storage.
+
+**What built:**
+- `app/server.py`: FastAPI, `POST /api/recommend`, static HTML serve, retriever warmup on lifespan
+- `app/static/index.html`: Chat UI, loading/error/result/decline states
+- `tests/e2e/chat.spec.ts`: 4 tests (happy path, loading, error, decline), semantic assertions
+- `db/schema.sql`: 5 tables (eval_runs, eval_results, golden_cases, triage_tags), FK'd
+- `eval/db.py`: SQLAlchemy Core persistence, record_run transaction
+- `db/integrity_checks.sql`: 5 queries (duplicates, orphans, tags, trend, chronic offenders)
+
+**Tests:** pytest 21 passed, Playwright 5/5.
+
+**DoD:** Chat UI works end-to-end; E2E green; results queryable in SQL.
+
+---
+
+## Phase 8: Monitoring, CI, Docs, Coverage (058d860–537ab44)
+
+**Goal:** Latency/cost tracking, GitHub Actions safety gate, full docs, 87% test coverage.
+
+**What built:**
+- `monitoring/latency_cost_tracker.py`: Every LLM call metered (latency, tokens, USD from pinned-model pricing)
+- `.github/workflows/ci.yml`: pytest + golden-set (--cov-fail-under=80, hard safety gate), Playwright E2E
+- `README.md`: Architecture diagram, quickstart, planted-bug story, design decisions
+- `TRACEABILITY.md`: 20-row requirement → test → evidence matrix
+- `Makefile`: `make demo` = fresh clone to full eval
+- `tests/test_server.py`, `test_triage_and_judge.py`: Unit + integration coverage (87% total)
+
+**Tests:** 37 passed, 1 skipped; coverage 87%.
+
+**DoD:** CI gates on safety and coverage; docs interview-ready; latency/cost transparent.
+
+---
+
+## Phase 9: Dockerization (This Sprint)
+
+**Goal:** Single `docker-compose up` launches full stack.
+
+**What building:**
+- `Dockerfile`: Python 3.12, deps, uvicorn entrypoint, HF cache volume
+- `docker-compose.yml`: uvicorn + Chroma services, mounts, env vars
+- `.dockerignore`: .git, reports, .venv, __pycache__
+- `DOCKER.md`: Build, run, test, deploy, K8s roadmap
+
+**DoD:** `docker-compose up` → chat UI at localhost:8000, mock mode free.
+
+---
+
+## Future Phases (Brainstorm)
+
+| Phase | Goal | Why |
+|-------|------|-----|
+| 10a | **Monitoring Dashboard** | Real-time latency, cost, accuracy dashboards (Prometheus + Grafana). Alert on cost spike, accuracy drop, latency P95 breach. |
+| 10b | **Load Testing** | k6 or locust with realistic query distributions. Measure P50/P95/P99 latency, throughput limits. |
+| 10c | **Model Optimization** | Quantization (int8 judge), batching on judge calls, fine-tune Haiku on top-k retrievals for cost reduction. |
+| 10d | **A/B Testing Framework** | Swap judge models, retriever algorithms, generator prompts; measure per-case delta to decide upgrades. |
+| 10e | **Synthetic Data** | Mine failure patterns (e.g., "all GENERATION failures similar to core_wells_01"), generate edge cases. |
+| 10f | **Cost Attribution** | Cost per case difficulty/weight, amortization over eval cycles, ROI per calculator. |
+| 10g | **Continuous Retraining** | New golden cases auto-trigger fine-tuning loop on base Haiku. |
+| 10h | **Streaming Responses** | Stream long rationales to chat UI. Useful for chains-of-thought. |
+| 10i | **Rate Limiting & Auth** | API key management, per-key quotas, billing integration. |
+| 10j | **PostgreSQL Swap** | Replace SQLite for multi-process/K8s. Schema migration via Alembic. |
+
+---
+
+## Golden Path: Fresh Clone to Demo
+
+```bash
+git clone https://github.com/AshraHossain/clinceval.git && cd clinceval
+make demo              # pytest + coverage gate + full golden-set eval
+make e2e               # Playwright suite (auto-boots uvicorn)
+make serve             # Chat UI at http://localhost:8000
+```
+
+**or:**
+
+```bash
+docker-compose up -d
+# Chat at http://localhost:8000
+# API at http://localhost:8000/api/recommend
+```
+
+**Time to demo:** ~2 minutes (mock mode is free, instant). With `make serve` running, hit the chat UI, ask "75M with afib", see CHA₂DS₂-VASc recommended with citations.
+
+---
+
+## Why 9 Phases
+
+Each phase is a single verifiable claim:
+
+1. Pipeline runs ✓
+2. Dataset is human-reviewed ✓
+3. Regression system measures accurately ✓
+4. Triage is correct ✓
+5. Mock mode works ✓
+6. Bugs are caught ✓
+7. UI works ✓
+8. Ship-ready (coverage + CI + docs) ✓
+9. Portable (Docker) ✓
+
+No phase overlaps; each gates the next. Discipline prevented scope creep and made debugging surgical.
