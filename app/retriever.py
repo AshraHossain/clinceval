@@ -167,11 +167,29 @@ class Retriever:
                     break
         return retrieved_chunks
 
+def embed_text(text: str):
+    """Embed a single string with the same model the corpus uses (numpy vector)."""
+    import numpy as np
+    return np.array(EMBEDDING_FUNCTION([text])[0])
+
+
 # Global helper function for ease of use
 _global_retriever = None
+# ponytail: plain dict cache, cleared when full; real LRU only if query
+# cardinality ever grows past the golden suite's repeated 41 queries
+_retrieve_cache: dict[tuple[str, int], list[dict]] = {}
+_RETRIEVE_CACHE_MAX = 256
+
 
 def retrieve(query: str, k: int = 3) -> list[dict]:
     global _global_retriever
+    cache_key = (query, k)
+    if cache_key in _retrieve_cache:
+        return [dict(chunk) for chunk in _retrieve_cache[cache_key]]
     if _global_retriever is None:
         _global_retriever = Retriever()
-    return _global_retriever.retrieve(query, k=k)
+    result = _global_retriever.retrieve(query, k=k)
+    if len(_retrieve_cache) >= _RETRIEVE_CACHE_MAX:
+        _retrieve_cache.clear()
+    _retrieve_cache[cache_key] = [dict(chunk) for chunk in result]
+    return result
