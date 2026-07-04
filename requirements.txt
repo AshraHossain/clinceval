@@ -2,6 +2,7 @@ anthropic
 chromadb
 sentence-transformers
 pytest
+pytest-cov
 pandas
 pyyaml
 fastapi
