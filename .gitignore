@@ -21,3 +21,6 @@ tests/e2e/playwright-report/
 # env
 .env
 .DS_Store
+
+# local interview-prep walkthrough (not for public repo)
+WALKTHROUGH-QA.md
