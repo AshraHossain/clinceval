@@ -1,42 +1,22 @@
-version: '3.8'
-
 services:
-  chroma:
-    image: ghcr.io/chroma-core/chroma:0.4.24
-    environment:
-      - IS_PERSISTENT=TRUE
-      - PERSIST_DIRECTORY=/chroma/data
-    ports:
-      - "8001:8000"  # Chroma API (optional, for debugging)
-    volumes:
-      - chroma_data:/chroma/data
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
-      interval: 5s
-      timeout: 2s
-      retries: 3
-
   app:
     build: .
     environment:
-      - CHROMA_HOST=chroma
-      - CHROMA_PORT=8000
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}  # Optional; unset uses mock mode
+      # Optional; unset → deterministic mock mode (free, no API calls)
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - HF_HOME=/app/.cache/huggingface
     ports:
       - "8000:8000"
     volumes:
+      # Persist the embedding-model cache and Chroma store across restarts so
+      # the first request isn't a cold re-download / re-index. Chroma is
+      # embedded (chromadb.PersistentClient) — no separate DB container needed.
       - ./.cache/huggingface:/app/.cache/huggingface
-      - ./eval/eval_results.db:/app/eval/eval_results.db
+      - ./chroma_store:/app/chroma_store
       - ./eval/reports:/app/eval/reports
-    depends_on:
-      chroma:
-        condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 5s
-      timeout: 2s
-      retries: 3
-
-volumes:
-  chroma_data:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 40s

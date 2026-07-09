@@ -7,9 +7,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install Python dependencies
+# Install CPU-only torch FIRST so sentence-transformers doesn't drag in the
+# full NVIDIA CUDA stack (~5GB of GPU libs this CPU-only app never uses).
+# Generous timeout/retries: wheels are large and hosted files can stall.
+RUN pip install --no-cache-dir --timeout 300 --retries 10 \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
+# Copy requirements and install the rest (torch already satisfied → no CUDA pull)
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --timeout 300 --retries 10 -r requirements.txt
 
 # Copy application code
 COPY . .
