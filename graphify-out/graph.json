@@ -449,7 +449,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/regression_runner.py",
       "source_location": "L90",
-      "community": 7,
+      "community": 3,
       "norm_label": "infer_triage_tag()",
       "id": "regression_runner_infer_triage_tag"
     },
@@ -1265,7 +1265,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L1",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_adversarial.py",
       "id": "tests_test_adversarial_py"
     },
@@ -1274,7 +1274,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L13",
-      "community": 14,
+      "community": 13,
       "norm_label": "_cases_by_prefix()",
       "id": "test_adversarial_cases_by_prefix"
     },
@@ -1283,7 +1283,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L20",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_declines_adult_calculator_for_pediatric_patient()",
       "id": "test_adversarial_test_declines_adult_calculator_for_pediatric_patient"
     },
@@ -1292,7 +1292,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L28",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_declines_when_calculator_not_in_corpus()",
       "id": "test_adversarial_test_declines_when_calculator_not_in_corpus"
     },
@@ -1301,7 +1301,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L36",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_declines_on_missing_required_inputs()",
       "id": "test_adversarial_test_declines_on_missing_required_inputs"
     },
@@ -1310,7 +1310,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L43",
-      "community": 14,
+      "community": 13,
       "norm_label": "test_citations_are_subset_of_retrieved_chunks()",
       "id": "test_adversarial_test_citations_are_subset_of_retrieved_chunks"
     },
@@ -1319,7 +1319,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_adversarial.py",
       "source_location": "L1",
-      "community": 14,
+      "community": 13,
       "norm_label": "adversarial behavior: the assistant must decline rather than fabricate.",
       "id": "test_adversarial_rationale_1"
     },
@@ -1607,7 +1607,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 14,
       "norm_label": "latency_cost_tracker.py",
       "id": "monitoring_latency_cost_tracker_py"
     },
@@ -1616,7 +1616,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L17",
-      "community": 15,
+      "community": 14,
       "norm_label": "callevent",
       "id": "latency_cost_tracker_callevent"
     },
@@ -1625,7 +1625,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L28",
-      "community": 15,
+      "community": 14,
       "norm_label": "record()",
       "id": "latency_cost_tracker_record"
     },
@@ -1634,7 +1634,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L32",
-      "community": 15,
+      "community": 14,
       "norm_label": "estimate_cost()",
       "id": "latency_cost_tracker_estimate_cost"
     },
@@ -1643,7 +1643,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L39",
-      "community": 15,
+      "community": 14,
       "norm_label": "snapshot_and_reset()",
       "id": "latency_cost_tracker_snapshot_and_reset"
     },
@@ -1652,7 +1652,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L1",
-      "community": 15,
+      "community": 14,
       "norm_label": "per-run latency, token, and cost accounting for all llm calls.  every call funne",
       "id": "latency_cost_tracker_rationale_1"
     },
@@ -1661,7 +1661,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/monitoring/latency_cost_tracker.py",
       "source_location": "L40",
-      "community": 15,
+      "community": 14,
       "norm_label": "aggregate accumulated events and clear the buffer.",
       "id": "latency_cost_tracker_rationale_40"
     },
@@ -1733,7 +1733,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L1",
-      "community": 12,
+      "community": 0,
       "norm_label": "rate_limiter.py",
       "id": "app_rate_limiter_py"
     },
@@ -1742,7 +1742,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L21",
-      "community": 12,
+      "community": 0,
       "norm_label": "get_api_key_tier()",
       "id": "rate_limiter_get_api_key_tier"
     },
@@ -1751,7 +1751,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L27",
-      "community": 12,
+      "community": 0,
       "norm_label": "rate_limit()",
       "id": "rate_limiter_rate_limit"
     },
@@ -1760,7 +1760,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L1",
-      "community": 12,
+      "community": 0,
       "norm_label": "rate limiting & api key auth for fastapi.  per-key quotas: defaults to 1000 call",
       "id": "rate_limiter_rationale_1"
     },
@@ -1769,7 +1769,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L22",
-      "community": 12,
+      "community": 0,
       "norm_label": "look up tier from a db or config. stub: return 'free'.",
       "id": "rate_limiter_rationale_22"
     },
@@ -1778,7 +1778,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/app/rate_limiter.py",
       "source_location": "L28",
-      "community": 12,
+      "community": 0,
       "norm_label": "validate api key and check rate limit. return the key if valid.",
       "id": "rate_limiter_rationale_28"
     },
@@ -2075,7 +2075,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L1",
-      "community": 13,
+      "community": 12,
       "norm_label": "model_optimization.py",
       "id": "eval_model_optimization_py"
     },
@@ -2084,7 +2084,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L9",
-      "community": 13,
+      "community": 12,
       "norm_label": "quantize_judge_int8()",
       "id": "model_optimization_quantize_judge_int8"
     },
@@ -2093,7 +2093,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L16",
-      "community": 13,
+      "community": 12,
       "norm_label": "batch_judge_calls()",
       "id": "model_optimization_batch_judge_calls"
     },
@@ -2102,7 +2102,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L25",
-      "community": 13,
+      "community": 12,
       "norm_label": "fine_tune_haiku_on_context()",
       "id": "model_optimization_fine_tune_haiku_on_context"
     },
@@ -2111,7 +2111,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L1",
-      "community": 13,
+      "community": 12,
       "norm_label": "model optimization: quantization, batching, fine-tuning.  phase 10c: reduce cost",
       "id": "model_optimization_rationale_1"
     },
@@ -2120,7 +2120,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L10",
-      "community": 13,
+      "community": 12,
       "norm_label": "quantize judge model to int8 for 4x memory + speed improvement.",
       "id": "model_optimization_rationale_10"
     },
@@ -2129,7 +2129,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L17",
-      "community": 13,
+      "community": 12,
       "norm_label": "batch judge calls to amortize overhead (10-20% cost savings).",
       "id": "model_optimization_rationale_17"
     },
@@ -2138,7 +2138,7 @@
       "file_type": "rationale",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/eval/model_optimization.py",
       "source_location": "L26",
-      "community": 13,
+      "community": 12,
       "norm_label": "fine-tune haiku on retrieved context only (vs full query).      reduces input to",
       "id": "model_optimization_rationale_26"
     },
@@ -2588,7 +2588,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_ops_hardening.py",
       "source_location": "L133",
-      "community": 12,
+      "community": 0,
       "norm_label": "test_rate_limit_enforces_quota()",
       "id": "test_ops_hardening_test_rate_limit_enforces_quota"
     },
@@ -2597,7 +2597,7 @@
       "file_type": "code",
       "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_ops_hardening.py",
       "source_location": "L148",
-      "community": 12,
+      "community": 0,
       "norm_label": "test_rate_limit_anonymous_unlimited()",
       "id": "test_ops_hardening_test_rate_limit_anonymous_unlimited"
     },
@@ -2978,6 +2978,69 @@
       "community": 0,
       "norm_label": "post {\"text\": message} to alert_webhook_url. returns true if delivered.",
       "id": "alerts_rationale_13"
+    },
+    {
+      "label": "test_report_and_cli.py",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L1",
+      "id": "tests_test_report_and_cli_py",
+      "community": 15,
+      "norm_label": "test_report_and_cli.py"
+    },
+    {
+      "label": "_result()",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L9",
+      "id": "test_report_and_cli_result",
+      "community": 15,
+      "norm_label": "_result()"
+    },
+    {
+      "label": "test_format_report_renders_failure_table_and_baseline_delta()",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L22",
+      "id": "test_report_and_cli_test_format_report_renders_failure_table_and_baseline_delta",
+      "community": 15,
+      "norm_label": "test_format_report_renders_failure_table_and_baseline_delta()"
+    },
+    {
+      "label": "test_format_report_all_pass_message()",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L39",
+      "id": "test_report_and_cli_test_format_report_all_pass_message",
+      "community": 15,
+      "norm_label": "test_format_report_all_pass_message()"
+    },
+    {
+      "label": "test_generate_test_cases_cli_outputs_reviewable_jsonl()",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L46",
+      "id": "test_report_and_cli_test_generate_test_cases_cli_outputs_reviewable_jsonl",
+      "community": 15,
+      "norm_label": "test_generate_test_cases_cli_outputs_reviewable_jsonl()"
+    },
+    {
+      "label": "test_augment_golden_dataset_appends_synthetic_variants()",
+      "file_type": "code",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L63",
+      "id": "test_report_and_cli_test_augment_golden_dataset_appends_synthetic_variants",
+      "community": 15,
+      "norm_label": "test_augment_golden_dataset_appends_synthetic_variants()"
+    },
+    {
+      "label": "Coverage for report-formatting branches and the synthetic-case CLI.",
+      "file_type": "rationale",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L1",
+      "id": "test_report_and_cli_rationale_1",
+      "community": 15,
+      "norm_label": "coverage for report-formatting branches and the synthetic-case cli."
     }
   ],
   "links": [
@@ -8675,6 +8738,102 @@
       "confidence_score": 1.0,
       "source": "alerts_send_alert",
       "target": "alerts_rationale_13"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "tests_test_report_and_cli_py",
+      "_tgt": "test_report_and_cli_result",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "tests_test_report_and_cli_py",
+      "_tgt": "test_report_and_cli_test_format_report_renders_failure_table_and_baseline_delta",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_test_format_report_renders_failure_table_and_baseline_delta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "tests_test_report_and_cli_py",
+      "_tgt": "test_report_and_cli_test_format_report_all_pass_message",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_test_format_report_all_pass_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "tests_test_report_and_cli_py",
+      "_tgt": "test_report_and_cli_test_generate_test_cases_cli_outputs_reviewable_jsonl",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_test_generate_test_cases_cli_outputs_reviewable_jsonl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "tests_test_report_and_cli_py",
+      "_tgt": "test_report_and_cli_test_augment_golden_dataset_appends_synthetic_variants",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_test_augment_golden_dataset_appends_synthetic_variants",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "test_report_and_cli_rationale_1",
+      "_tgt": "tests_test_report_and_cli_py",
+      "source": "tests_test_report_and_cli_py",
+      "target": "test_report_and_cli_rationale_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "test_report_and_cli_test_format_report_renders_failure_table_and_baseline_delta",
+      "_tgt": "test_report_and_cli_result",
+      "source": "test_report_and_cli_result",
+      "target": "test_report_and_cli_test_format_report_renders_failure_table_and_baseline_delta",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/ashraf-macbookair/repos/projects/clinceval/tests/test_report_and_cli.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "test_report_and_cli_test_format_report_all_pass_message",
+      "_tgt": "test_report_and_cli_result",
+      "source": "test_report_and_cli_result",
+      "target": "test_report_and_cli_test_format_report_all_pass_message",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": []
