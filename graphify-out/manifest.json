@@ -49,7 +49,7 @@
   "/Users/ashraf-macbookair/repos/projects/clinceval/MODEL_CARD.md": 1783203681.0117874,
   "/Users/ashraf-macbookair/repos/projects/clinceval/RUNBOOK.md": 1783203681.0133154,
   "/Users/ashraf-macbookair/repos/projects/clinceval/TRACEABILITY.md": 1783203633.3319316,
-  "/Users/ashraf-macbookair/repos/projects/clinceval/README.md": 1783203681.0128636,
+  "/Users/ashraf-macbookair/repos/projects/clinceval/README.md": 1784009624.7577775,
   "/Users/ashraf-macbookair/repos/projects/clinceval/DOCKER.md": 1783203681.0101533,
   "/Users/ashraf-macbookair/repos/projects/clinceval/IMPLEMENTATION_PLAN.md": 1783203681.0110571,
   "/Users/ashraf-macbookair/repos/projects/clinceval/CLAUDE.md": 1783069079.3608925,
@@ -84,5 +84,6 @@
   "/Users/ashraf-macbookair/repos/projects/clinceval/eval/reports/run_20260703T205922Z.md": 1783112362.2614117,
   "/Users/ashraf-macbookair/repos/projects/clinceval/eval/reports/run_20260703T203200Z.md": 1783110720.5931556,
   "/Users/ashraf-macbookair/repos/projects/clinceval/eval/reports/run_20260703T215908Z.md": 1783115948.7431357,
-  "/Users/ashraf-macbookair/repos/projects/clinceval/graphify-out/memory/query_20260703_200734_why_does_run_pipeline___connect_pipeline___semanti.md": 1783109254.0220473
+  "/Users/ashraf-macbookair/repos/projects/clinceval/graphify-out/memory/query_20260703_200734_why_does_run_pipeline___connect_pipeline___semanti.md": 1783109254.0220473,
+  "/Users/ashraf-macbookair/repos/projects/clinceval/docs/chat-ui.png": 1784008679.4550428
 }
