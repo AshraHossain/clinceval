@@ -1,11 +1,15 @@
 # ClinCalc-Eval
 
+[![CI](https://github.com/AshraHossain/clinceval/actions/workflows/ci.yml/badge.svg)](https://github.com/AshraHossain/clinceval/actions/workflows/ci.yml)
+
 QA/evaluation harness for a mock LLM-powered clinical assistant that recommends
 medical calculators (CHA₂DS₂-VASc, Wells' Criteria, MELD, CURB-65, …) with cited
 rationale. **The evaluation infrastructure is the product** — the assistant exists
 to be tested: golden dataset regression, LLM-as-judge scoring, hallucination and
 citation checking, retrieval-vs-generation failure triage, Playwright E2E, SQL-backed
 result storage, and latency/cost monitoring.
+
+![Chat UI: CHA2DS2-VASc recommendation with citation](docs/chat-ui.png)
 
 ## Architecture
 
