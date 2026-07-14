@@ -21,7 +21,10 @@ docker-compose down
 | Service | Port | Role |
 |---------|------|------|
 | `app` | 8000 | FastAPI (retriever, generator, judge, chat UI) |
-| `chroma` | 8001 | Vector DB (optional, for inspection) |
+
+Chroma is **embedded** (`chromadb.PersistentClient`) inside the app process — no
+separate vector-DB container. The Chroma store persists via the `./chroma_store`
+volume mount.
 
 ## Configuration
 
@@ -32,10 +35,6 @@ Create a `.env` file:
 ```bash
 # Optional: provide API key for live Claude calls (mock mode used if unset)
 ANTHROPIC_API_KEY=sk-ant-...
-
-# Optional: override Chroma host/port
-CHROMA_HOST=chroma
-CHROMA_PORT=8000
 
 # Optional: HuggingFace token for private models
 HUGGINGFACE_TOKEN=hf_...
@@ -59,8 +58,8 @@ Set `ANTHROPIC_API_KEY` to use live Claude models (Haiku for gen, Sonnet for jud
 
 | Path | Purpose |
 |------|---------|
-| `.cache/huggingface/` | Embedding model cache (MiniLM-L6-v2, ~50MB). Persisted across restarts. |
-| `eval/eval_results.db` | SQLite results database. Persisted. |
+| `.cache/huggingface/` | Embedding model cache (MiniLM-L6-v2, ~90MB). Persisted across restarts. |
+| `chroma_store/` | Embedded Chroma vector store. Persisted (no re-index on restart). |
 | `eval/reports/` | Markdown regression reports. Persisted. |
 
 Remove volumes to reset:
@@ -90,12 +89,13 @@ docker-compose exec app bash -c "cd tests/e2e && npm install && npx playwright i
 docker build -t clinceval:latest .
 docker run -p 8000:8000 \
   -e ANTHROPIC_API_KEY=sk-ant-... \
-  -e CHROMA_HOST=localhost \
   -v ~/.cache/huggingface:/app/.cache/huggingface \
   clinceval:latest
 ```
 
-This requires Chroma running elsewhere (or embedded). For embedded Chroma, use `docker-compose`.
+Chroma is embedded, so the single image is fully self-contained (verified: app
+ready ~10s after container start, `POST /api/recommend` returns real
+recommendations, image ~2.9GB with CPU-only torch).
 
 ### Multi-Stage Build (If Optimization Needed)
 
@@ -147,8 +147,6 @@ spec:
             secretKeyRef:
               name: clinceval-secrets
               key: api-key
-        - name: CHROMA_HOST
-          value: "chroma"
         volumeMounts:
         - name: hf-cache
           mountPath: /app/.cache/huggingface
@@ -233,7 +231,7 @@ Note: LLM calls are I/O-bound, so 2–4 workers sufficient.
 docker-compose down
 
 # Remove images
-docker rmi clinceval:latest ghcr.io/chroma-core/chroma:0.4.24
+docker rmi clinceval:latest
 
 # Remove volumes (⚠️ loses data)
 docker volume rm clinceval_chroma_data
